@@ -1,0 +1,84 @@
+---
+id: LoginPhone
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/Login/phone';
+export const method = 'POST';
+
+
+
+
+
+# Login 
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+Crea el OTP para poder iniciar sesión.
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Content-Type` | application/json |
+| `Accept` | application/json |
+
+
+
+
+
+### JSON Body
+
+| Name      | Type     | Required | Description                          |
+|--------------|----------|---------------------|--------------------------------------|
+| `phone`      | `string` | :white_check_mark:  | numero de telefono del usuario.
+| `countryCode`| `string` | :white_check_mark:  | codigo de pais.     |     |
+
+
+
+
+```JSON
+{
+  "phone": "7149816149",
+  "countryCode": "1"
+}
+
+```
+
+### JSON Response Succes (200)
+```JSON
+null
+
+```
+
+### JSON Response error
+```JSON
+Retorne un mensaje donde especifique que el número no existe dentro de los registros.
+```
+
+```JSON
+
+
+```
+
+
+```JSON
+
+
+```
+
+
+```JSON
+
+
+```
+
+
+

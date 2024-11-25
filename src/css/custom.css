@@ -28,3 +28,15 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+
+
+.highlight-box {
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 20px;
+  
+}
+
+

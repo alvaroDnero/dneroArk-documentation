@@ -1,0 +1,83 @@
+---
+id: Prefab
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/Login';
+export const method = 'POST';
+
+
+
+
+
+# Title 
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+Este endpoint devuelve la lista de usuarios.
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Content-Type` | application/json |
+| `Accept` | application/json |
+| `accessToken` | Bearer key|
+| `refreshToken` | string |
+
+### Parameter
+- id (int)
+
+{apiPath}/id
+
+### Body
+
+| Name      | Type     | Required | Description                          |
+|-------------|----------|-----------|--------------------------------------|
+| `id`        | `string` | :white_check_mark:   :x:        | Identificador único del usuario.     |
+
+
+
+```JSON
+{
+  "phone": "7149816149",
+  "countryCode": "1"
+}
+
+```
+
+### JSON Response Succes (200)
+```JSON
+null
+
+```
+
+### JSON Response error
+```JSON
+Retorne un mensaje donde especifique que el número no existe dentro de los registros.
+```
+
+```JSON
+
+
+```
+
+
+```JSON
+
+
+```
+
+
+```JSON
+
+
+```
+

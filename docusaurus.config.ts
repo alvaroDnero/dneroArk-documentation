@@ -38,6 +38,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          include: ['**/*.md', '**/*.mdx'], // Asegúrate de incluir archivos .mdx
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -143,3 +144,4 @@ const config: Config = {
 };
 
 export default config;
+
