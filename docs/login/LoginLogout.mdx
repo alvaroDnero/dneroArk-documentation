@@ -1,0 +1,51 @@
+---
+id: logout
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/Login';
+export const method = 'POST';
+
+
+
+
+
+# Title 
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+Elimina los tokens y deja registro de cierre de sesión en el dispositivo.
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `accessToken` | Bearer `accessToken`|
+
+
+
+
+
+
+
+### JSON Response: Succes (200)
+```JSON
+null
+
+```
+
+### JSON Response: Error
+```JSON
+accessToken invalido
+```
+
+
+
+

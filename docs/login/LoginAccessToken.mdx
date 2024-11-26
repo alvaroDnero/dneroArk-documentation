@@ -1,0 +1,67 @@
+---
+id: accessToken
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/login/updateToken';
+export const method = 'POST';
+
+
+
+
+
+# Login 
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+Crea un nuevo `accessToken` y un nuevo `refreshToken` y elimina los antiguos
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Authorization` | Bearer `{{accessToken}}`|
+|`Accept`|application/json|
+
+
+
+
+
+
+
+### JSON Response: Succes (200)
+
+| Name      | Type     | Description |
+|--------------|----------|--------------------|
+| `accessToken`| `string` |  Token de corta duración con información del usuario.     |     
+| `refreshToken`| `string` | Token de larga duración.    | 
+
+```JSON
+{
+  "accessToken": "newAccessToken123",
+  "refreshToken": "newRefreshToken456"
+}
+
+```
+
+### JSON Response: Error
+```JSON
+accessToken invalido
+```
+
+```JSON
+refreshToken invalido
+
+```
+
+
+
+
+

@@ -1,9 +1,9 @@
 ---
-id: LoginPhone
+id: phone
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/Login/phone';
+export const apiPath = ' /DneroArk/login/phone';
 export const method = 'POST';
 
 
@@ -28,7 +28,7 @@ Crea el OTP para poder iniciar sesión.
 | Key      | Value     |
 |-------------|----------|
 | `Content-Type` | application/json |
-| `Accept` | application/json |
+
 
 
 
@@ -52,33 +52,28 @@ Crea el OTP para poder iniciar sesión.
 
 ```
 
-### JSON Response Succes (200)
+### JSON Response: Succes (200)
 ```JSON
 null
 
 ```
 
-### JSON Response error
+### JSON Response: Error
 ```JSON
-Retorne un mensaje donde especifique que el número no existe dentro de los registros.
+Número de teléfono no existe en los registros.
 ```
 
 ```JSON
-
-
-```
-
-
-```JSON
-
+Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.
 
 ```
 
 
 ```JSON
-
+A intentado iniciar sesión demasiadas veces en poco tiempo.
 
 ```
+
 
 
 
