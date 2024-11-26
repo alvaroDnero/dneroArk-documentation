@@ -29,7 +29,7 @@ Este endpoint devuelve la lista de usuarios.
 |-------------|----------|
 | `Content-Type` | application/json |
 | `Accept` | application/json |
-| `accessToken` | Bearer key|
+| `Authorization` | Bearer key|
 | `refreshToken` | string |
 
 ### Parameter
@@ -52,32 +52,17 @@ Este endpoint devuelve la lista de usuarios.
 }
 
 ```
-
-### JSON Response: Succes (200)
+---
+### JSON Response: Success (200)
 ```JSON
-null
+
 
 ```
-
+---
 ### JSON Response: Error
-```JSON
-Retorne un mensaje donde especifique que el número no existe dentro de los registros.
-```
 
-```JSON
-
-
-```
 
 
 ```JSON
 
-
 ```
-
-
-```JSON
-
-
-```
-

@@ -1,0 +1,204 @@
+---
+id: TransactionsAll
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/transactions';
+export const method = 'GET';
+
+
+
+
+
+# Title 
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+Receives a list of transactions, starting from the most recent to the oldest, with pagination support.
+
+If no parameters are provided, it returns all notifications from the most recent to the oldest. If we want to use the paginator, we can include the parameters.
+
+Coin Statuses
+
+- 1 = Received, pending to be collected.
+- 2 = Sent, pending to be collected.
+- 3 = Received and collected.
+- 4 = Sent and collected.
+- 5 = Sent and expired.
+- 6 = Received and expired.
+
+
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Accept` | application/json |
+| `Authorization` | Bearer key|
+
+
+---
+### Parameter
+
+| Name       | Type      |  Description                                                                                   |
+|------------|-----------|-----------------------------------------------------------------------------------------------|
+| `statuses` | `int[]`   | An array of statuses to filter the transactions. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. |
+
+**Query parameters example**
+
+{apiPath}```?statuses=1,2&pageSize=10&page=1```
+
+
+
+
+
+| Name       | Type      |  Description                                                                                   |
+|------------|-----------|-----------------------------------------------------------------------------------------------|
+| `pageSize` | `int`     | The number of items to include in each page of the results. Required if using the paginator.  |
+| `page`     | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the paginator. |
+
+**Query parameters example**
+
+{apiPath}```?pageSize=10&page=2```
+
+| Name       | Type      |  Description                                                                                   |
+|------------|-----------|-----------------------------------------------------------------------------------------------|
+| `statuses` | `int[]`   | An array of statuses to filter the transactions. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. |
+| `pageSize` | `int`     | The number of items to include in each page of the results. Required if using the paginator.  |
+| `page`     | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the paginator. |
+
+
+**Query parameters example**
+
+**{apiPath}```?statuses=1,2&pageSize=10&page=3```**
+
+
+---
+
+### JSON Response: Success (200)
+| Name       | Type       |  Description                                                                                  |
+|------------|------------|----------------------------------------------------------------------------------------------|
+| `statuses` | `int`     | An array of statuses to filter the transactions. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. |
+| `pageSize` | `int`     |  The number of items to include in each page of the results.                                   |
+| `page`     | `int`     |  The page number to retrieve, starting from 1 for the first page.                              |
+| `id`       | `long`     |  Unique identifier of the transaction notification.                                           |
+| `type`     | `string`   |  Possible values: `sent` or `received`.                                                      |
+| `userName` | `string`   |  If `type` is `sent`, it’s the recipient's name; if `received`, it’s the sender's name.       |
+| `date`     | `DateTime` |  The date and time when the transaction was created.                                          |
+| `amount`   | `string`   |  The amount of money involved in the transaction.                                             |
+
+
+```JSON
+{
+  "currentPage": 2,
+  "totalPages": 5,
+  "pageSize": 10,
+  "totalTransactions": 45,
+  "transactions": [
+    {
+      "id": 123456789,
+      "type": "sent",
+      "userName": "Alice Smith",
+      "date": "2023-11-24T15:30:00Z",
+      "amount": "100.50"
+    },
+    {
+      "id": 987654321,
+      "type": "received",
+      "userName": "Bob Johnson",
+      "date": "2023-11-23T12:00:00Z",
+      "amount": "250.00"
+    }
+  ]
+}
+
+
+```
+---
+### JSON Response: Error
+
+
+- 400 Bad Request
+```JSON
+{
+  "code": "INVALID_STATUSES",
+  "message": "The provided statuses are invalid or malformed."
+}
+
+```
+
+
+```JSON
+{
+  "code": "MISSING_PAGINATION",
+  "message": "Both 'pageSize' and 'page' are required when using the paginator."
+}
+
+```
+
+- 401 Unauthorized
+```JSON
+{
+  "code": "UNAUTHORIZED",
+  "message": "You are not authorized to access this resource. Please provide a valid authentication token."
+}
+
+```
+
+- 403 Forbidden
+```JSON
+{
+  "code": "ACCESS_FORBIDDEN",
+  "message": "You do not have permission to access these transactions."
+}
+
+```
+
+- 404 Not Found
+```JSON
+{
+  "code": "TRANSACTIONS_NOT_FOUND",
+  "message": "No transactions were found for the given criteria."
+}
+
+```
+
+- 422 Unprocessable Entity
+
+```JSON
+{
+  "code": "INVALID_PAGE",
+  "message": "The page number must be a positive integer starting from 1."
+}
+
+```
+
+
+```JSON
+{
+  "code": "INVALID_PAGE_SIZE",
+  "message": "The page size must be a positive integer."
+}
+
+```
+
+- 500 Internal Server Error
+
+```JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while processing your request. Please try again later."
+}
+
+```
+
+
+
+

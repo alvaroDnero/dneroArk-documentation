@@ -6,6 +6,7 @@ const HttpMethodTag = ({ method }) => {
     GET: 'green',
     POST: 'blue',
     PUT: 'orange',
+    PATCH: 'orange',
     DELETE: 'red',
   };
 

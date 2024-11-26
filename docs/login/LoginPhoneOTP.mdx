@@ -3,7 +3,7 @@ id: phoneOTP
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/login/phone/otp';
+export const apiPath = ' /DneroArk/login/otp';
 export const method = 'POST';
  
 
@@ -21,7 +21,7 @@ export const method = 'POST';
 
 
 
-Confirma el OTP para poder iniciar sesión.
+Confirm the OTP to log in.
 
 ### Header
 
@@ -35,13 +35,12 @@ Confirma el OTP para poder iniciar sesión.
 
 
 ### JSON Body
-
-| Name      | Type     | Required | Description |
-|--------------|----------|---------------------|--------------------------------------|
-| `phone`      | `string` | :white_check_mark:  | Numero de telefono del usuario.
-| `countryCode`| `string` | :white_check_mark:  | Código de pais.     |     
-| `otp`| `string` | :white_check_mark:  | Código recibido por OTP.    | 
-| `deviceID`| `string` | :x:  | Id del dispositivo para evitar sesiones abiertas en dispositivos distintos.    |
+| Name         | Type     | Required           | Description                                                |
+|--------------|----------|--------------------|------------------------------------------------------------|
+| `phone`      | `string` | :white_check_mark: | User's phone number.                                       |
+| `countryCode`| `string` | :white_check_mark: | Country code.                                              |
+| `otp`        | `string` | :white_check_mark: | Code received via OTP.                                     |
+| `deviceID`   | `string` | :x:                | Device ID to prevent open sessions on multiple devices.    |
 
 
 
@@ -54,14 +53,13 @@ Confirma el OTP para poder iniciar sesión.
 }
 
 ```
+---
+### JSON Response: Success (200)
 
-### JSON Response: Succes (200)
-
-| Name      | Type     | Description |
-|--------------|----------|--------------------|
-| `userId`      | `int` |  Número de Identificación del usuario.|
-| `accessToken`| `string` |  Token de corta duración con información del usuario.    |     
-| `refreshToken`| `string` | Token de larga duración.    | 
+| Name           | Type     | Description                                    |
+|----------------|----------|-----------------------------------------------|
+| `accessToken`  | `string` | Short-lived token containing user information. |
+| `refreshToken` | `string` | Long-lived token.                             |
 
 
 ```JSON
@@ -73,28 +71,97 @@ Confirma el OTP para poder iniciar sesión.
 }
 
 ```
-
+---
 ### JSON Response: Error
+
+- 400 Bad Request
 ```JSON
-código incorrecto
+{
+  "code": "MISSING_FIELDS",
+  "message": "The fields 'phone', 'countryCode', 'otp', and 'deviceID' are required."
+}
 ```
 
 ```JSON
-Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.
-
+{
+  "code": "INVALID_PHONE",
+  "message": "The provided phone number is invalid."
+}
 ```
-
 
 ```JSON
-A intentado iniciar sesión demasiadas veces en poco tiempo.
-
+{
+  "code": "INVALID_COUNTRY_CODE",
+  "message": "The provided country code is invalid."
+}
 ```
-
 
 ```JSON
-Introdujo el condigo incorrecto muchas veces, espere durante 5 min para volver a intentar
+{
+  "code": "INVALID_OTP_FORMAT",
+  "message": "The OTP must be a numeric string of six digits."
+}
+```
+- 401 Unauthorized
+
+```JSON
+{
+  "code": "INVALID_OTP",
+  "message": "The OTP is incorrect. Please try again."
+}
+```
+
+```JSON
+{
+  "code": "EXPIRED_OTP",
+  "message": "The OTP has expired. Please request a new one."
+}
+```
+- 403 Forbidden
+
+```JSON
+{
+  "code": "PHONE_BLOCKED",
+  "message": "The phone number is blocked from performing this action."
+}
+```
+
+```JSON
+{
+  "code": "DEVICE_BLACKLISTED",
+  "message": "This device is blacklisted and cannot perform OTP verification."
+}
+```
+- 422 Unprocessable Entity
+
+```JSON
+{
+  "code": "UNSUPPORTED_COUNTRY_CODE",
+  "message": "The provided country code is not supported."
+}
 
 ```
 
+```JSON
+{
+  "code": "OTP_ALREADY_USED",
+  "message": "The OTP has already been used. Please request a new one."
+}
 
+```
+- 429 Too Many Requests
+```JSON
+{
+  "code": "TOO_MANY_REQUESTS",
+  "message": "You have attempted to validate the OTP too many times. Please wait 2 minutes before trying again."
+}
 
+```
+- 500 Internal Server Error
+```JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while validating the OTP. Please try again later."
+}
+
+```

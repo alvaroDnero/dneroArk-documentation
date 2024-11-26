@@ -3,7 +3,7 @@ id: phone
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/login/phone';
+export const apiPath = ' /DneroArk/login';
 export const method = 'POST';
 
 
@@ -21,7 +21,7 @@ export const method = 'POST';
 
 
 
-Crea el OTP para poder iniciar sesión.
+Generate the OTP to log in.
 
 ### Header
 
@@ -36,10 +36,11 @@ Crea el OTP para poder iniciar sesión.
 
 ### JSON Body
 
-| Name      | Type     | Required | Description                          |
-|--------------|----------|---------------------|--------------------------------------|
-| `phone`      | `string` | :white_check_mark:  | numero de telefono del usuario.
-| `countryCode`| `string` | :white_check_mark:  | codigo de pais.     |     |
+| Name         | Type     | Required           | Description                         |
+|--------------|----------|--------------------|-------------------------------------|
+| `phone`      | `string` | :white_check_mark: | User's phone number.                |
+| `countryCode`| `string` | :white_check_mark: | Country code.                       |
+
 
 
 
@@ -51,26 +52,112 @@ Crea el OTP para poder iniciar sesión.
 }
 
 ```
-
-### JSON Response: Succes (200)
+---
+### JSON Response: Success (200)
 ```JSON
-null
-
+{
+  "code": "REQUEST_SUCCESS",
+  "message": "The request was successfully processed."
+}
 ```
-
+---
 ### JSON Response: Error
+
+- 400 Bad Request
 ```JSON
-Número de teléfono no existe en los registros.
+
+{
+  "code": "MISSING_FIELDS",
+  "message": "The fields 'phone' and 'countryCode' are required."
+}
+
 ```
 
 ```JSON
-Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.
+
+{
+  "code": "INVALID_PHONE",
+  "message": "The provided phone number is invalid."
+}
+
+```
+
+```JSON
+{
+  "code": "INVALID_COUNTRY_CODE",
+  "message": "The provided country code is invalid."
+}
+```
+
+404 Not Found
+```JSON
+{
+  "code": "PHONE_NOT_FOUND",
+  "message": "The provided phone number does not exist in our records."
+}
+
+```
+
+
+- 409 Conflict
+
+```JSON
+{
+  "code": "SESSION_CONFLICT",
+  "message": "Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.",
+  "resolution": "Cierra sesión desde el otro dispositivo para continuar."
+}
+
+```
+- 403 Forbidden
+``` JSON
+{
+  "code": "SESSION_FORBIDDEN",
+  "message": "Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.",
+  "resolution": "Cierra sesión desde el otro dispositivo para continuar."
+}
+
+```
+- 422 Unprocessable Entity
+
+```JSON
+{
+  "code": "UNSUPPORTED_COUNTRY_CODE",
+  "message": "The provided country code is not supported."
+}
+
 
 ```
 
 
 ```JSON
-A intentado iniciar sesión demasiadas veces en poco tiempo.
+{
+  "code": "PHONE_BLACKLISTED",
+  "message": "The provided phone number is blacklisted."
+}
+
+
+```
+
+
+
+
+- 429 Too Many Requests
+```JSON
+{
+  "code": "TOO_MANY_REQUESTS",
+  "message": "You have made too many requests in a short period. Please wait before trying again."
+}
+```
+
+
+- 500 Internal Server Error
+
+```JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while processing your request. Please try again later."
+}
 
 ```
 

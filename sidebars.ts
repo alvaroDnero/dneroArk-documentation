@@ -53,7 +53,42 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
           
         },
       ],
-    }, // 
+      
+    }, 
+    {
+      type: 'category',
+      label: 'Home',
+      collapsible: true,
+      collapsed: false,
+      items: [  
+        {
+          type: 'doc',
+          id: 'home/profile', // This should match the id in the doc frontmatter
+          label: 'User',
+          customProps: {
+            method: 'GET',
+          },
+          
+        },
+       ],
+    }, 
+    {
+      type: 'category',
+      label: 'Transactions',
+      collapsible: true,
+      collapsed: false,
+      items: [  
+        {
+          type: 'doc',
+          id: 'transactions/TransactionsAll', // This should match the id in the doc frontmatter
+          label: 'Transactions All',
+          customProps: {
+            method: 'GET',
+          },
+          
+        },
+       ],
+    }, 
   ],
 };
 

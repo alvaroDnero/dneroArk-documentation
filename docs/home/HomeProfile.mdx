@@ -1,0 +1,108 @@
+---
+id: profile
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/home/user';
+export const method = 'GET';
+
+
+
+
+
+# Title 
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+Get user Information.
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Authorization` | Bearer `{{accessToken}}`|
+
+
+
+---
+
+### JSON Response: Success (200)
+
+| Name            | Type     | Required           | Description                                     |
+|-----------------|----------|--------------------|-------------------------------------------------|
+| `userId`        | `long`   | :white_check_mark: | Unique identifier of the user.                  |
+| `imgProfileUrl` | `string` | :white_check_mark: | URL where the profile image is hosted.          |
+| `firstName`     | `string` | :white_check_mark: | User's first name.                              |
+| `lastName`      | `string` | :white_check_mark: | User's last name.                               |
+| `phone`         | `string` | :white_check_mark: | User's phone number.                            |
+| `dolarCash`     | `double` | :white_check_mark: | Total dollar balance specific to ARK.           |
+| `cryptoBalance` | `double` | :white_check_mark: | Total cryptocurrency balance for ARK.           |
+| `pendingCoins`  | `int`    | :white_check_mark: | Number of pending Coins to collect.             |
+
+
+
+```JSON
+{
+  "userId": 123456789,
+  "imgProfileUrl": "https://example.com/profile-images/user123.jpg",
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "1234567890",
+  "dolarCash": 1500.75,
+  "cryptoBalance": 2.356
+}
+
+```
+---
+### JSON Response: Error
+
+- 400 Bad Request
+
+```JSON
+{
+  "code": "INVALID_REQUEST",
+  "message": "The authorization token is required."
+}
+
+```
+
+```JSON
+{
+  "code": "INVALID_USER_ID",
+  "message": "The provided user ID is invalid."
+}
+
+```
+
+- 401 Unauthorized
+```JSON
+{
+  "code": "UNAUTHORIZED",
+  "message": "The provided token is invalid or has expired. Please log in again."
+}
+
+```
+- 404 Not Found
+```JSON
+{
+  "code": "USER_NOT_FOUND",
+  "message": "The user with the provided ID does not exist."
+}
+
+```
+- 500 Internal Server Error
+```JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while processing your request. Please try again later."
+}
+
+```
+

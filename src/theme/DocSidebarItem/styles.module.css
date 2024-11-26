@@ -27,6 +27,11 @@
   color: white;
 }
 
+.method.patch {
+  background-color: #ffc107;
+  color: white;
+}
+
 .method.delete {
   background-color: #dc3545;
   color: white;

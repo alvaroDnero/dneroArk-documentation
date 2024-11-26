@@ -21,7 +21,7 @@ export const method = 'POST';
 
 
 
-Crea un nuevo `accessToken` y un nuevo `refreshToken` y elimina los antiguos
+Create a new accessToken and a new refreshToken, and delete the old ones.
 
 ### Header
 
@@ -35,13 +35,13 @@ Crea un nuevo `accessToken` y un nuevo `refreshToken` y elimina los antiguos
 
 
 
+---
+### JSON Response: Success (200)
 
-### JSON Response: Succes (200)
-
-| Name      | Type     | Description |
-|--------------|----------|--------------------|
-| `accessToken`| `string` |  Token de corta duración con información del usuario.     |     
-| `refreshToken`| `string` | Token de larga duración.    | 
+| Name           | Type     | Description                                    |
+|----------------|----------|-----------------------------------------------|
+| `accessToken`  | `string` | Short-lived token containing user information. |
+| `refreshToken` | `string` | Long-lived token.                             |
 
 ```JSON
 {
@@ -50,16 +50,56 @@ Crea un nuevo `accessToken` y un nuevo `refreshToken` y elimina los antiguos
 }
 
 ```
-
+---
 ### JSON Response: Error
+
+- 400 Bad Request
 ```JSON
-accessToken invalido
+{
+{
+  "code": "INVALID_REQUEST",
+  "message": "El refresh token es inválido o está mal formado."
+}
+}
 ```
 
+- 401 Unauthorized
 ```JSON
-refreshToken invalido
+{
+  "code": "TOKEN_EXPIRED",
+  "message": "El refresh token ha expirado. Por favor, inicia sesión nuevamente."
+}
 
 ```
+
+- 401 Unauthorized
+``` JSON
+{
+  "code": "TOKEN_EXPIRED",
+  "message": "El refresh token ha expirado. Por favor, inicia sesión nuevamente."
+}
+```
+
+- 429 Too Many Requests
+
+``` JSON
+{
+  "code": "TOO_MANY_REQUESTS",
+  "message": "Has intentado actualizar los tokens demasiadas veces en poco tiempo. Por favor, espera 2 minutos antes de intentarlo nuevamente."
+}
+```
+
+- 500 Internal Server Error
+
+``` JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while validating the OTP. Please try again later."
+}
+```
+
+
+
 
 
 
