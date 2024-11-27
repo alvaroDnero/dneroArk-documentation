@@ -1,10 +1,11 @@
 ---
-id: TransactionsAll
+id: TransactionsIndividual
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/transactions';
+export const apiPath = ' /DneroArk/transactions/';
 export const method = 'GET';
+export const id = '{int}';
 
 
 
@@ -14,16 +15,19 @@ export const method = 'GET';
 
 
 <div className="highlight-box">
-  <HttpMethodTag method={method} /> {apiPath}
+  <HttpMethodTag method={method} /> {apiPath} {id}
 </div>
 
 
 
+<div className="examples-style">  
+ **Enpoint example**
 
+  {apiPath}`444`
 
-Receives a list of transactions, starting from the most recent to the oldest.
+</div>
 
-If no parameters are provided, it returns all notifications from the most recent to the oldest.
+Retrieves a single transaction's details based on its unique identifier.
 
 Coin Statuses
 
@@ -44,24 +48,6 @@ Coin Statuses
 | `Accept` | application/json |
 | `Authorization` | Bearer key|
 
-
----
-### Parameter
-
-<div className="table-title">
-  Status parameters
-</div>
-
-| Name       | Type      |  Description                                                                                   |
-|------------|-----------|-----------------------------------------------------------------------------------------------|
-| `statuses` | `int[]`   | An array of statuses to filter the transactions. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. |
-
-<div className="examples-style">  
- **Query parameters example**
-
-  {apiPath}`?statuses=1,3`
-
-</div>
 
 
 ---
@@ -85,42 +71,19 @@ Coin Statuses
 | `capturedDate`        | `DateTime` |:x:                | Date when the coin was captured; if it has not been captured, it should be null.  |
 
 ```JSON
-[
-  {
-    "id": 123456789,
-    "type": "sent",
-    "userName": "Alice Smith",
-    "userImgUrl": "https://example.com/images/alice.jpg",
-    "date": "2023-11-24T15:30:00Z",
-    "amount": "150.75",
-    "coinStatus": 1,
-    "expirationDate": "2023-12-01T23:59:59Z",
-    "capturedDate": null
-  },
-  {
-    "id": 987654321,
-    "type": "received",
-    "userName": "Bob Johnson",
-    "userImgUrl": "https://example.com/images/bob.jpg",
-    "date": "2023-11-23T12:00:00Z",
-    "amount": "200.00",
-    "coinStatus": 2,
-    "expirationDate": null,
-    "capturedDate": "2023-11-24T10:00:00Z"
-  },
-  {
-    "id": 192837465,
-    "type": "sent",
-    "userName": "Charlie Brown",
-    "userImgUrl": "https://example.com/images/charlie.jpg",
-    "date": "2023-11-22T08:15:00Z",
-    "amount": "300.25",
-    "coinStatus": 3,
-    "expirationDate": "2023-12-05T23:59:59Z",
-    "capturedDate": "2023-11-24T10:00:00Z"
-  }
-]
 
+{
+  "id": 123456789,
+  "type": "sent",
+  "userName": "Alice Smith",
+  "userImgUrl": "https://example.com/images/alice.jpg",
+  "date": "2023-11-24T15:30:00Z",
+  "amount": "150.75",
+  "coinStatus": 1,
+  "expirationDate": "2023-12-01T23:59:59Z",
+  "capturedDate": null
+}
+ 
 ```
 
 
@@ -133,17 +96,16 @@ Coin Statuses
 - 400 Bad Request
 ```JSON
 {
-  "code": "INVALID_STATUSES",
-  "message": "The provided statuses are invalid or malformed."
+  "code": "INVALID_TRANSACTION_ID",
+  "message": "The provided transaction ID is invalid or malformed."
 }
-
 ```
 
-
+- 404 Not Found
 ```JSON
 {
-  "code": "MISSING_PAGINATION",
-  "message": "Both 'pageSize' and 'page' are required when using the paginator."
+  "code": "TRANSACTION_NOT_FOUND",
+  "message": "No transaction was found for the provided ID."
 }
 
 ```
@@ -152,50 +114,12 @@ Coin Statuses
 ```JSON
 {
   "code": "UNAUTHORIZED",
-  "message": "You are not authorized to access this resource. Please provide a valid authentication token."
-}
-
-```
-
-- 403 Forbidden
-```JSON
-{
-  "code": "ACCESS_FORBIDDEN",
-  "message": "You do not have permission to access these transactions."
-}
-
-```
-
-- 404 Not Found
-```JSON
-{
-  "code": "TRANSACTIONS_NOT_FOUND",
-  "message": "No transactions were found for the given criteria."
-}
-
-```
-
-- 422 Unprocessable Entity
-
-```JSON
-{
-  "code": "INVALID_PAGE",
-  "message": "The page number must be a positive integer starting from 1."
-}
-
-```
-
-
-```JSON
-{
-  "code": "INVALID_PAGE_SIZE",
-  "message": "The page size must be a positive integer."
+  "message": "You are not authorized to access this transaction. Please provide valid authentication."
 }
 
 ```
 
 - 500 Internal Server Error
-
 ```JSON
 {
   "code": "INTERNAL_SERVER_ERROR",
@@ -203,7 +127,5 @@ Coin Statuses
 }
 
 ```
-
-
 
 

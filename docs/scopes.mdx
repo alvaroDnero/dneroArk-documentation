@@ -1,0 +1,31 @@
+---
+id: scopes
+---
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+
+# Scopes
+Here is a list of the scopes you require to access the API Endpoints and Webhook Events.
+## Login
+
+<div className="endpoint-list">
+  <div className="highlight-box post">
+    <HttpMethodTag method={'POST'} /> **[/DneroArk/login](./login/phone)**
+  </div>
+  <div className="highlight-box post">
+    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/otp](./login/phoneOTP)**
+  </div>
+  <div className="highlight-box post">
+    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/updateToken](./login/accessToken)**
+  </div>
+  <div className="highlight-box post">
+    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/logout](./login/logout)**
+  </div>
+</div>
+
+## Home 
+
+<div className="endpoint-list">
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/home/user](./home/profile)**
+  </div> 
+</div>

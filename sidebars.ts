@@ -6,8 +6,14 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
   apiSidebar: [
     {
       type: 'doc',
-      id: 'intro', // This should match the id in the doc frontmatter
+      id: 'intro',
       label: 'Intro',      
+      
+    },
+    {
+      type: 'doc',
+      id: 'scopes', 
+      label: 'Scopes',      
       
     },
     {
@@ -18,7 +24,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       items: [        
         {
           type: 'doc',
-          id: 'login/phone', // This should match the id in the doc frontmatter
+          id: 'login/phone', 
           label: 'Phone',
           customProps: {
             method: 'POST',
@@ -27,7 +33,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'login/phoneOTP', // This should match the id in the doc frontmatter
+          id: 'login/phoneOTP', 
           label: 'Phone OTP',
           customProps: {
             method: 'POST',
@@ -36,7 +42,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'login/accessToken', // This should match the id in the doc frontmatter
+          id: 'login/accessToken', 
           label: 'Update Tokens',
           customProps: {
             method: 'POST',
@@ -45,7 +51,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'login/logout', // This should match the id in the doc frontmatter
+          id: 'login/logout', 
           label: 'Logout',
           customProps: {
             method: 'POST',
@@ -63,7 +69,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       items: [  
         {
           type: 'doc',
-          id: 'home/profile', // This should match the id in the doc frontmatter
+          id: 'home/profile', 
           label: 'User',
           customProps: {
             method: 'GET',
@@ -80,8 +86,26 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       items: [  
         {
           type: 'doc',
-          id: 'transactions/TransactionsAll', // This should match the id in the doc frontmatter
-          label: 'Transactions All',
+          id: 'transactions/TransactionsAll', 
+          label: 'Transactions',
+          customProps: {
+            method: 'GET',
+          },
+          
+        },
+        {
+          type: 'doc',
+          id: 'transactions/TransactionsAllPaginator', 
+          label: 'Transactions - Paginator',
+          customProps: {
+            method: 'GET',
+          },
+          
+        },
+        {
+          type: 'doc',
+          id: 'transactions/TransactionsIndividual', 
+          label: 'Transaction - individual',
           customProps: {
             method: 'GET',
           },
