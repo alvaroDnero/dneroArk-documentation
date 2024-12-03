@@ -13,8 +13,8 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 | Name           | Type      |  Description                                                                                   |
 |----------------|-----------|-----------------------------------------------------------------------------------------------|
 | `statuses`     | `int[]`   | An array of statuses to filter the information. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. For detailed information, see the <a href={`./${Paths.scopes}`}>**Status Codes page.**</a> |
-| `pageSize`     | `int`     | The number of items to include in each page of the results. Required if using the paginator.  |
-| `page`         | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the paginator. |
+| `pageSize`     | `int`     | The number of items to include in each page of the results. Required if using the <a href={`./${Paths.paginator}`}>**paginator**</a>.  | 
+| `page`         | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the <a href={`./${Paths.paginator}`}>**paginator**</a>. |
 | `reverseOrder` | `boolean` | Determines the sorting order. If `false`, Information is sorted from the most recent to the oldest. If `true`, the order is reversed. |
 | `verbose`      | `boolean` | If `true`, returns additional details about each object. If `false`, only returns essential information. |
 

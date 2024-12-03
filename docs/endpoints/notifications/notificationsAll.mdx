@@ -1,18 +1,18 @@
 ---
-id: NotificationsIndividual
+id: NotificationsAll
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Paths } from '@site/src/constants/paths';
 import { Endpoint } from '@site/src/constants/endpointPath';
-export const apiPath = Endpoint.notificationsIndividual;
+export const apiPath = Endpoint.notificationsAll;
 export const method = 'GET';
-export const id = '{int}';
 
 
 
 
 
-# Notification
+# Notifications
 
 
 <div className="highlight-box">
@@ -22,13 +22,6 @@ export const id = '{int}';
 
 
 
-
-<details className='details-custom'>
-  <summary>Enpoint example</summary>
-    <div className="examples-style"> 
-      {apiPath.replace('{int}','')}`444`
-    </div>
-</details>
 
 
 
@@ -43,13 +36,12 @@ export const id = '{int}';
 ---
 ### Parameter
 
-| Name           | Type      |  Description                                                                                   |
-|----------------|-----------|-----------------------------------------------------------------------------------------------|
-| `pageSize`     | `int`     | The number of items to include in each page of the results. Required if using the paginator.  |
-| `page`         | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the paginator. |
-| `reverseOrder` | `boolean` | Determines the sorting order. If `false`, notifications are sorted from the most recent to the oldest. If `true`, the order is reversed. |
+ <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
 
-
+ 
+ - pageSize
+  - page
+  - reverseOrder
 
 <details className='details-custom'>
   <summary>Query parameters example: Only Paginator</summary>
@@ -75,20 +67,9 @@ export const id = '{int}';
 
 ### JSON Response: Success
 
-<div className="table-title">
-  Paginator values
-</div>
-
-| Name                  | Type       |   Description                                                                                  |
-|-----------------------|------------|-----------------------------------------------------------------------------------------------|
-| `currentPage`         | `int`      | The current page number being returned (starting from 1 for the first page).                |
-| `totalPages`          | `int`      | The total number of pages available based on the `pageSize` and total records.              |
-| `pageSize`            | `int`      | The number of items per page in the paginated results.                                       |
-| `totalNotifications`  | `long`     | The total number of transactions available based on the provided filters.                   |
-| `notifications`       | `Array`    | A list containing all the notifications for the requested page.                              |
 
 <div className="table-title">
-  Notifications values
+  Transactions values
 </div>
 
 | Name              | Type     | Description                                                                                     |

@@ -29,146 +29,171 @@ import { Paths } from './src/constants/paths';
       label: 'Coin Statuses',      
       
     },
-    {
+    /*{
       type: 'doc',
       id: Paths.scopes, 
       label: 'Scopes',      
       
-    },
+    },*/
     {
-      type: 'category',
-      label: 'Login & Logout',
+      type: 'category',  
+          
+      label: 'Scopes',     
       collapsible: true,
       collapsed: true,
-      items: [        
-        
+      link: {
+        type: 'doc',
+        id: 'scopes', // Replace 'scopes' with the ID of the page you want to link
+      },
+      items: [
         {
-          type: 'doc',
-          id: 'login/phoneOTP', 
-          label: Paths.otp,
-          customProps: {
-            method: 'POST',
-          },
+          type: 'category',
+          label: 'Login & Logout',
+          collapsible: true,
+          collapsed: true,
+          items: [        
+            
+            {
+              type: 'doc',
+              id: Paths.otp, 
+              label: 'OTP',
+              customProps: {
+                method: 'POST',
+              },
+              
+            },
+            {
+              type: 'doc',
+              id: Paths.phone, 
+              label: 'login',
+              customProps: {
+                method: 'POST',
+              },
+              
+            },
+            {
+              type: 'doc',
+              id: Paths.updateToken, 
+              label: 'Update Tokens',
+              customProps: {
+                method: 'POST',
+              },
+              
+            },
+            {
+              type: 'doc',
+              id: Paths.logout, 
+              label: 'Logout',
+              customProps: {
+                method: 'POST',
+              },
+              
+            },
+          ],
           
-        },
+        }, 
         {
-          type: 'doc',
-          id: Paths.phone, 
-          label: 'login',
-          customProps: {
-            method: 'POST',
-          },
-          
-        },
-        {
-          type: 'doc',
-          id: Paths.updateToken, 
-          label: 'Update Tokens',
-          customProps: {
-            method: 'POST',
-          },
-          
-        },
-        {
-          type: 'doc',
-          id: Paths.logout, 
-          label: 'Logout',
-          customProps: {
-            method: 'POST',
-          },
-          
-        },
-      ],
-      
-    }, 
-    {
-      type: 'category',
-      label: 'User',
-      collapsible: true,
-      collapsed: true,
-      items: [  
-        {
-          type: 'doc',
-          id: Paths.user, 
+          type: 'category',
           label: 'User',
-          customProps: {
-            method: 'GET',
-          },
-          
-        },
-       ],
-    }, 
-    {
-      type: 'category',
-      label: 'Transactions',
-      collapsible: true,
-      collapsed: true,
-      items: [  
+          collapsible: true,
+          collapsed: true,
+          items: [  
+            {
+              type: 'doc',
+              id: Paths.user, 
+              label: 'User',
+              customProps: {
+                method: 'GET',
+              },
+              
+            },
+           ],
+        }, 
         {
-          type: 'doc',
-          id: Paths.transactionsAll, 
+          type: 'category',
           label: 'Transactions',
-          customProps: {
-            method: 'GET',
-          },
-          
-        },
-        
+          collapsible: true,
+          collapsed: true,
+          items: [  
+            {
+              type: 'doc',
+              id: Paths.transactionsAll, 
+              label: 'Transactions',
+              customProps: {
+                method: 'GET',
+              },
+              
+            },
+            
+            {
+              type: 'doc',
+              id: Paths.transactionIndividual, 
+              label: 'Transaction',
+              customProps: {
+                method: 'GET',
+              },
+              
+            },
+           ],
+        }, 
         {
-          type: 'doc',
-          id: Paths.transactionIndividual, 
-          label: 'Transaction',
-          customProps: {
-            method: 'GET',
-          },
-          
-        },
-       ],
-    }, 
-    {
-      type: 'category',
-      label: 'Notifications',
-      collapsible: true,
-      collapsed: true,
-      items: [  
-        {
-          type: 'doc',
-          id: Paths.notificationsAll, 
+          type: 'category',
           label: 'Notifications',
-          customProps: {
-            method: 'GET',
-          },
-          
-        },
+          collapsible: true,
+          collapsed: true,
+          items: [  
+            {
+              type: 'doc',
+              id: Paths.notificationsAll, 
+              label: 'Notifications',
+              customProps: {
+                method: 'GET',
+              },
+              
+            },
+            {
+              type: 'doc',
+              id: Paths.notificationsIndividual, 
+              label: 'Notification',
+              customProps: {
+                method: 'GET',
+              },
+              
+            }
+           ],
+        }, 
+    
         {
-          type: 'doc',
-          id: Paths.notificationsIndividual, 
-          label: 'Notification',
-          customProps: {
-            method: 'GET',
-          },
-          
+          type: 'category',
+          label: 'Coins',
+          collapsible: true,
+          collapsed: true,
+          items: [  
+            {
+              type: 'doc',
+              id: Paths.coinsAll, 
+              label: 'Coins',
+              customProps: {
+                method: 'GET',
+              },
+              
+            },  
+            {
+              type: 'doc',
+              id: Paths.coinsIndividual, 
+              label: 'Coin',
+              customProps: {
+                method: 'GET',
+              },
+              
+            },          
+           ],
         }
-       ],
-    }, 
 
-    {
-      type: 'category',
-      label: 'Coins',
-      collapsible: true,
-      collapsed: true,
-      items: [  
-        {
-          type: 'doc',
-          id: Paths.coinsAll, 
-          label: 'coins',
-          customProps: {
-            method: 'GET',
-          },
-          
-        },        
-       ],
-    }, 
+      ], 
+      
+    },
+   , 
   ],
 };
 

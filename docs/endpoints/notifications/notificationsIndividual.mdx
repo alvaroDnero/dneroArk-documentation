@@ -1,18 +1,18 @@
 ---
-id: NotificationsAll
+id: NotificationsIndividual
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-import { Paths } from '@site/src/constants/paths';
 import { Endpoint } from '@site/src/constants/endpointPath';
-export const apiPath = Endpoint.notificationsAll;
+export const apiPath = Endpoint.notificationsIndividual;
 export const method = 'GET';
+export const id = '{int}';
 
 
 
 
 
-# Notifications
+# Notification
 
 
 <div className="highlight-box">
@@ -22,6 +22,13 @@ export const method = 'GET';
 
 
 
+
+<details className='details-custom'>
+  <summary>Enpoint example</summary>
+    <div className="examples-style"> 
+      {apiPath.replace('{int}','')}`444`
+    </div>
+</details>
 
 
 
@@ -33,49 +40,12 @@ export const method = 'GET';
 | `Authorization` | Bearer key|
 
 
----
-### Parameter
 
- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
-
- 
- - pageSize
-  - page
-  - reverseOrder
-
-<details className='details-custom'>
-  <summary>Query parameters example: Only Paginator</summary>
-    <div className="examples-style"> 
-      {apiPath}`?pageSize=10&page=2`
-    </div>
-</details>
-
-<details className='details-custom'>
-  <summary>Query parameters example: Only Reverse Order</summary>
-    <div className="examples-style"> 
-      {apiPath}`?reverseOrder=false`
-    </div>
-</details>
-
-<details className='details-custom'>
-  <summary>Query parameters example: Paginator & Reverse Order</summary>
-    <div className="examples-style"> 
-      {apiPath}`?pageSize=10&page=2&reverseOrder=false`
-    </div>
-</details>
 ---
 
 ### JSON Response: Success
 
-<div className="table-title">
-  Paginator values
-</div>
 
-
-
-<div className="table-title">
-  Transactions values
-</div>
 
 | Name              | Type     | Description                                                                                     |
 |-------------------|----------|-------------------------------------------------------------------------------------------------|
@@ -88,11 +58,10 @@ export const method = 'GET';
 | `longitude`       | `double` | If `interactionType` is `2`, the longitude where the coin was thrown; otherwise, its value should be `0.0`. |
 
 
-                                         |
+
 <details className='details-custom'>
-  <summary>200 OK: No paginator</summary>
+  <summary>200 OK</summary>
 ```JSON
-[
   {
     "notificationId": 123456,
     "interactionType": 1,
@@ -102,57 +71,12 @@ export const method = 'GET';
     "latitude": 0.0,
     "longitude": 0.0
   },
-  {
-    "notificationId": 789012,
-    "interactionType": 2,
-    "userName": "Bob Johnson",
-    "userImgUrl": "https://example.com/images/bob.jpg",
-    "date": 1680624000.0,
-    "latitude": 37.7749,
-    "longitude": -122.4194
-  }
-]
-
+  
 ```
 
 </details>
 
 
-<details className='details-custom'>
-  <summary className='details-custom'>200 OK: Paginator</summary>
-```JSON
-{
-  "currentPage": 2,
-  "totalPages": 5,
-  "pageSize": 10,
-  "totalTransactions": 45,
-  "notifications": [
-    {
-        "notificationId": 123456,
-        "interactionType": 1,
-        "userName": "Alice Smith",
-        "userImgUrl": "https://example.com/images/alice.jpg",
-        "date": 1680537600.0,
-        "latitude": 0.0,
-        "longitude": 0.0
-    },
-    {
-        "notificationId": 789012,
-        "interactionType": 2,
-        "userName": "Bob Johnson",
-        "userImgUrl": "https://example.com/images/bob.jpg",
-        "date": 1680624000.0,
-        "latitude": 37.7749,
-        "longitude": -122.4194
-    }
-
-
-    ]
-}
-
-```
-
-</details>
 
 
 ### JSON Response: Error

@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import { Paths } from '@site/src/constants/paths';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
@@ -20,7 +21,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/Overview">
-            Docusaurus Tutorial - 5min ⏱️
+            Read Overview
           </Link>
         </div>
       </div>
