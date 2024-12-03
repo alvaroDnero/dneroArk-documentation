@@ -11,7 +11,7 @@ export const id = '{int}';
 
 
 
-# Title 
+# Transaction
 
 
 <div className="highlight-box">
@@ -20,24 +20,19 @@ export const id = '{int}';
 
 
 
-<div className="examples-style">  
- **Enpoint example**
+<details className='details-custom'>
+  <summary>Enpoint example</summary>
+    <div className="examples-style"> 
+      {apiPath}`444`
+    </div>
+</details>
 
-  {apiPath}`444`
 
-</div>
 
 Retrieves a single transaction's details based on its unique identifier.
 
 Coin Statuses
 
-- 0 = All statuses.
-- 1 = Received, pending to be collected.
-- 2 = Sent, pending to be collected.
-- 3 = Received and collected.
-- 4 = Sent and collected.
-- 5 = Received and expired.
-- 6 = sent and expired.
 
 
 
@@ -52,24 +47,27 @@ Coin Statuses
 
 ---
 
-### JSON Response: Success (200)
+### JSON Response: Success 
 
 <div className="table-title">
   A list of
 </div>
 
-| Name                  | Type       |Required           |   Description                                                                                  |
-|-----------------------|------------|-------------------|-----------------------------------------------------------------------------------------------|
-| `id`                  | `long`     |:white_check_mark: | Unique identifier of the transaction notification.                                           |
-| `type`                | `string`   |:white_check_mark: | Possible values: `sent` or `received`.                                                      |
-| `userName`            | `string`   |:white_check_mark: | If `type` is `sent`, it’s the recipient's name; if `received`, it’s the sender's name.       |
-| `userImgUrl`          | `string`   |:white_check_mark: | If `type` is `sent`, it’s the recipient's image Url; if `received`, it’s the sender's image Url.       |
-| `date`                | `DateTime` |:white_check_mark: | The date and time when the transaction was created.                                          |
-| `amount`              | `string`   |:white_check_mark: | The amount of money involved in the transaction.                                             |
-| `coinStatus`          | `int`      |:white_check_mark: | Coin status, can't be 0.                                            |
-| `expirationDate`      | `DateTime` |:x:                | Expiration date of the coin; if it does not expire, it should be null.  |
-| `capturedDate`        | `DateTime` |:x:                | Date when the coin was captured; if it has not been captured, it should be null.  |
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|-----------------------------------------------------------------------------------------------|
+| `id`                  | `long`     | Unique identifier of the transaction notification.                                           |
+| `type`                | `string`   | Possible values: `sent` or `received`.                                                      |
+| `userName`            | `string`   | If `type` is `sent`, it’s the recipient's name; if `received`, it’s the sender's name.       |
+| `userImgUrl`          | `string`   | If `type` is `sent`, it’s the recipient's image Url; if `received`, it’s the sender's image Url.       |
+| `date`                | `DateTime` | The date and time when the transaction was created.                                          |
+| `amount`              | `string`   | The amount of money involved in the transaction.                                             |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|                                           |
+| `expirationDate`      | `DateTime` | Expiration date of the coin. |
+| `capturedDate`        | `DateTime` | Date when the coin was captured. |
 
+
+<details className='details-custom'>
+<summary>200 ok</summary>
 ```JSON
 
 {
@@ -85,7 +83,7 @@ Coin Statuses
 }
  
 ```
-
+</details>
 
 
 
@@ -93,15 +91,19 @@ Coin Statuses
 ### JSON Response: Error
 
 
-- 400 Bad Request
+<details className='details-custom'>
+<summary>400 Bad Request</summary>
+
 ```JSON
 {
   "code": "INVALID_TRANSACTION_ID",
   "message": "The provided transaction ID is invalid or malformed."
 }
 ```
+</details>
 
-- 404 Not Found
+<details className='details-custom'>
+<summary>404 Not Found</summary>
 ```JSON
 {
   "code": "TRANSACTION_NOT_FOUND",
@@ -109,8 +111,11 @@ Coin Statuses
 }
 
 ```
+</details>
 
-- 401 Unauthorized
+<details className='details-custom'>
+<summary>401 Unauthorized</summary>
+
 ```JSON
 {
   "code": "UNAUTHORIZED",
@@ -118,14 +123,20 @@ Coin Statuses
 }
 
 ```
+</details>
 
-- 500 Internal Server Error
-```JSON
+<details className='details-custom'>
+<summary> 500 Internal Server Error</summary>
+
+
+``` JSON
 {
   "code": "INTERNAL_SERVER_ERROR",
-  "message": "An unexpected error occurred while processing your request. Please try again later."
+  "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
-
 ```
+
+</details>
+
 
 

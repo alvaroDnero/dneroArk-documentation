@@ -1,0 +1,416 @@
+---
+id: coinsAll
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/coins';
+export const method = 'GET';
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath} 
+</div>
+
+
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Accept` | application/json |
+| `Authorization` | Bearer key|
+
+
+### Parameter
+
+ **[Definition for this parameters](/docs/parameters)**
+
+
+  - statuses
+  - pageSize
+  - page
+  - reverseOrder
+  - verbose
+
+<details className='details-custom'>
+  <summary>Query parameters example: Only Status</summary>
+    <div className="examples-style"> 
+      {apiPath}`?statuses=1,3`
+    </div>
+</details>
+
+
+<details className='details-custom'>
+  <summary>Query parameters example: Only Paginator</summary>
+    <div className="examples-style"> 
+      {apiPath}`?pageSize=10&page=2`
+    </div>
+</details>
+
+<details className='details-custom'>
+  <summary>Query parameters example: Only Reverse Order</summary>
+    <div className="examples-style"> 
+      {apiPath}`?reverseOrder=false`
+    </div>
+</details>
+
+<details className='details-custom'> 
+    <summary>Query parameters example: Only Verbose</summary> 
+    <div className="examples-style"> 
+        {apiPath}`?verbose=true`
+     </div> 
+</details>
+
+<details className='details-custom'>
+  <summary>Query parameters example: Status, Paginator, Reverse Order, Verbose</summary>
+    <div className="examples-style"> 
+      {apiPath}`?statuses=1&pageSize=10&page=2&reverseOrder=false&verbose=true`
+    </div>
+</details>
+---
+
+
+### JSON Response: Success
+
+   
+
+
+
+
+
+<div className="table-title">
+  Simple Coin Informations
+</div>
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)  |
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
+| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `senderName`          | `string`   | Name of the person who sent the coin.      
+
+<details className='details-custom'>
+  <summary>200 OK: No paginator</summary>
+```JSON
+[
+  {
+    "coinId": 123456789,
+    "coinStatus": 1,
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "message": "Happy Birthday!",
+    "dollarAmount": 50.25,
+    "senderName": "Alice Smith"
+  },
+  {
+    "coinId": 987654321,
+    "coinStatus": 2,
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "message": "Thank you for your help!",
+    "dollarAmount": 100.00,
+    "senderName": "Charlie Brown"
+  }
+]
+
+
+```
+</details>      
+
+
+<details className='details-custom'>
+  <summary>200 OK: Paginator</summary>
+```JSON
+{
+  "currentPage": 1,
+  "totalPages": 5,
+  "pageSize": 2,
+  "totalCoins": 10,
+  "coins": [
+    {
+      "coinId": 123456789,
+      "coinStatus": 1,
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "message": "Happy Birthday!",
+      "dollarAmount": 50.25,
+      "senderName": "Alice Smith"
+    },
+    {
+      "coinId": 987654321,
+      "coinStatus": 2,
+      "latitude": 40.7128,
+      "longitude": -74.0060,
+      "message": "Thank you for your help!",
+      "dollarAmount": 100.00,
+      "senderName": "Charlie Brown"
+    }
+  ]
+}
+
+
+```
+</details>  
+
+
+
+<div className="table-title">
+  Coin Verbose Information
+</div>
+
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status](/docs/coinsStatuses) Codes page.|  |
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
+| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
+| `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
+| `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
+| `userSender`          | `Object`   | Information about the user who sent the coin.                                               |
+| `userReciver`         | `Object`   | Information about the user who received the coin.                                           |
+
+
+<div className="table-title">
+  User Information
+</div>
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `userId`              | `string`   | Unique identifier of the user.                                                              |
+| `userName`            | `string`   | Name of the user.                                                                           |
+| `userImgUrl`          | `string`   | URL of the user's profile image.                                                            |
+| `userIdReciver`       | `Object`   | Information about the recipient's user ID.                                                  |
+
+
+<details className='details-custom'>
+  <summary>200 OK: Verbose without paginator</summary>
+
+  ```JSON
+  [
+  {
+    "coinId": 123456789,
+    "coinStatus": 1,
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "message": "Happy Birthday!",
+    "dollarAmount": 50.25,
+    "creationDate": "2023-11-24T10:00:00Z",
+    "expirationDate": "2023-12-01T23:59:59Z",
+    "redeemedDate": null,
+    "userSender": {
+      "userId": "12345",
+      "userName": "Alice Smith",
+      "userImgUrl": "https://example.com/images/alice.jpg"
+    },
+    "userReciver": {
+      "userId": "67890",
+      "userName": "Bob Johnson",
+      "userImgUrl": "https://example.com/images/bob.jpg"
+    }
+  },
+  {
+    "coinId": 987654321,
+    "coinStatus": 2,
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "message": "Thank you for your help!",
+    "dollarAmount": 100.00,
+    "creationDate": "2023-11-22T14:30:00Z",
+    "expirationDate": null,
+    "redeemedDate": "2023-11-23T16:00:00Z",
+    "userSender": {
+      "userId": "54321",
+      "userName": "Charlie Brown",
+      "userImgUrl": "https://example.com/images/charlie.jpg"
+    },
+    "userReciver": {
+      "userId": "09876",
+      "userName": "Dana White",
+      "userImgUrl": "https://example.com/images/dana.jpg"
+    }
+  }
+]
+
+
+  ```
+
+</details>
+
+
+<details className='details-custom'>
+  <summary>200 OK: Verbose without paginator</summary>
+
+
+```JSON
+{
+  "currentPage": 1,
+  "totalPages": 5,
+  "pageSize": 2,
+  "totalCoins": 10,
+  "coins": [
+    {
+      "coinId": 123456789,
+      "coinStatus": 1,
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "message": "Happy Birthday!",
+      "dollarAmount": 50.25,
+      "creationDate": "2023-11-24T10:00:00Z",
+      "expirationDate": "2023-12-01T23:59:59Z",
+      "redeemedDate": null,
+      "userSender": {
+        "userId": "12345",
+        "userName": "Alice Smith",
+        "userImgUrl": "https://example.com/images/alice.jpg"
+      },
+      "userReciver": {
+        "userId": "67890",
+        "userName": "Bob Johnson",
+        "userImgUrl": "https://example.com/images/bob.jpg"
+      }
+    },
+    {
+      "coinId": 987654321,
+      "coinStatus": 2,
+      "latitude": 40.7128,
+      "longitude": -74.0060,
+      "message": "Thank you for your help!",
+      "dollarAmount": 100.00,
+      "creationDate": "2023-11-22T14:30:00Z",
+      "expirationDate": null,
+      "redeemedDate": "2023-11-23T16:00:00Z",
+      "userSender": {
+        "userId": "54321",
+        "userName": "Charlie Brown",
+        "userImgUrl": "https://example.com/images/charlie.jpg"
+      },
+      "userReciver": {
+        "userId": "09876",
+        "userName": "Dana White",
+        "userImgUrl": "https://example.com/images/dana.jpg"
+      }
+    }
+  ]
+}
+
+```
+
+
+</details>
+
+
+### JSON Response: Error
+
+
+<details className='details-custom'> 
+<summary>400 Bad Request</summary>
+
+```json
+{
+  "code": "INVALID_PARAMETERS",
+  "message": "One or more query parameters are invalid or malformed."
+}
+```
+
+</details> 
+
+<details className='details-custom'> 
+<summary>401 Unauthorized</summary>
+```JSON
+{
+  "code": "UNAUTHORIZED",
+  "message": "Authentication failed. Please provide a valid Bearer token."
+}
+
+```
+</details> 
+
+<details className='details-custom'> 
+<summary>403 Forbidden</summary>
+
+
+```JSON
+{
+  "code": "ACCESS_FORBIDDEN",
+  "message": "You do not have permission to access this resource."
+}
+
+```
+
+</details> 
+<details className='details-custom'>
+ <summary>404 Not Found</summary>
+
+
+```JSON
+{
+  "code": "RESOURCE_NOT_FOUND",
+  "message": "No coins were found for the provided filters."
+}
+
+```
+
+</details> 
+<details className='details-custom'> 
+<summary>422 Unprocessable Entity</summary>
+
+```JSON
+{
+  "code": "UNPROCESSABLE_ENTITY",
+  "message": "The provided pagination values (page or pageSize) are invalid."
+}
+
+```
+</details> 
+<details className='details-custom'> 
+<summary>429 Too Many Requests</summary>
+
+
+
+```JSON
+{
+  "code": "TOO_MANY_REQUESTS",
+  "message": "You have exceeded the rate limit. Please wait and try again later."
+}
+
+```
+</details> 
+<details className='details-custom'> 
+<summary>500 Internal Server Error</summary>
+
+
+
+```JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while processing the request. Please try again later."
+}
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

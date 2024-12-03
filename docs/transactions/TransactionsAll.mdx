@@ -10,7 +10,7 @@ export const method = 'GET';
 
 
 
-# Title 
+# Transactions
 
 
 <div className="highlight-box">
@@ -23,18 +23,7 @@ export const method = 'GET';
 
 Receives a list of transactions, starting from the most recent to the oldest.
 
-If no parameters are provided, it returns all notifications from the most recent to the oldest.
-
-Coin Statuses
-
-- 0 = All statuses.
-- 1 = Received, pending to be collected.
-- 2 = Sent, pending to be collected.
-- 3 = Received and collected.
-- 4 = Sent and collected.
-- 5 = Received and expired.
-- 6 = sent and expired.
-
+If no parameters are provided, it returns all notifications from the most recent to the oldest by defaul.
 
 
 ### Header
@@ -48,45 +37,118 @@ Coin Statuses
 ---
 ### Parameter
 
-<div className="table-title">
-  Status parameters
-</div>
+ **[Definition for this parameters](/docs/parameters)**
 
-| Name       | Type      |  Description                                                                                   |
-|------------|-----------|-----------------------------------------------------------------------------------------------|
-| `statuses` | `int[]`   | An array of statuses to filter the transactions. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. |
+  - statuses
+  - pageSize
+  - page
+  - reverseOrder
 
-<div className="examples-style">  
- **Query parameters example**
+<details className='details-custom'>
+  <summary>Query parameters example: Only Status</summary>
+    <div className="examples-style"> 
+      {apiPath}`?statuses=1,3`
+    </div>
+</details>
 
-  {apiPath}`?statuses=1,3`
 
-</div>
+<details className='details-custom'>
+  <summary>Query parameters example: Only Paginator</summary>
+    <div className="examples-style"> 
+      {apiPath}`?pageSize=10&page=2`
+    </div>
+</details>
 
+<details className='details-custom'>
+  <summary>Query parameters example: Only Reverse Order</summary>
+    <div className="examples-style"> 
+      {apiPath}`?reverseOrder=false`
+    </div>
+</details>
 
+<details className='details-custom'>
+  <summary>Query parameters example: Status & Paginator & Reverse Order</summary>
+    <div className="examples-style"> 
+      {apiPath}`statuses=1,2&pageSize=10&page=2&reverseOrder=false`
+    </div>
+</details>
 ---
 
-### JSON Response: Success (200)
+### JSON Response: Success
+
 
 <div className="table-title">
-  A list of
+  Transactions values
 </div>
 
-| Name                  | Type       |Required           |   Description                                                                                  |
-|-----------------------|------------|-------------------|-----------------------------------------------------------------------------------------------|
-| `id`                  | `long`     |:white_check_mark: | Unique identifier of the transaction notification.                                           |
-| `type`                | `string`   |:white_check_mark: | Possible values: `sent` or `received`.                                                      |
-| `userName`            | `string`   |:white_check_mark: | If `type` is `sent`, it’s the recipient's name; if `received`, it’s the sender's name.       |
-| `userImgUrl`          | `string`   |:white_check_mark: | If `type` is `sent`, it’s the recipient's image Url; if `received`, it’s the sender's image Url.       |
-| `date`                | `DateTime` |:white_check_mark: | The date and time when the transaction was created.                                          |
-| `amount`              | `string`   |:white_check_mark: | The amount of money involved in the transaction.                                             |
-| `coinStatus`          | `int`      |:white_check_mark: | Coin status, can't be 0.                                            |
-| `expirationDate`      | `DateTime` |:x:                | Expiration date of the coin; if it does not expire, it should be null.  |
-| `capturedDate`        | `DateTime` |:x:                | Date when the coin was captured; if it has not been captured, it should be null.  |
+| Name                  | Type       |   Description                                                                                  |
+|-----------------------|------------|-----------------------------------------------------------------------------------------------|
+| `transactionId`                  | `long`     | Unique identifier of the transaction notification.                                           |
+| `type`                | `string`   | Possible values: `sent` or `received`.                                                      |
+| `userName`            | `string`   | If `type` is `sent`, it’s the recipient's name; if `received`, it’s the sender's name.       |
+| `userImgUrl`          | `string`   | If `type` is `sent`, it’s the recipient's image Url; if `received`, it’s the sender's image Url.       |
+| `date`                | `DateTime` | The date and time when the transaction was created.                                          |
+| `amount`              | `string`   | The amount of money involved in the transaction.                                             |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
+| `expirationDate`      | `DateTime` | Expiration date of the coin. |
+| `capturedDate`        | `DateTime` | Date when the coin was captured. |
 
+<details className='details-custom'>
+  <summary>200 OK: No paginator</summary>
 ```JSON
 [
   {
+    "transactionId": 123456789,
+    "type": "sent",
+    "userName": "Alice Smith",
+    "userImgUrl": "https://example.com/images/alice.jpg",
+    "date": "2023-11-24T15:30:00Z",
+    "amount": "150.75",
+    "coinStatus": 1,
+    "expirationDate": "2023-12-01T23:59:59Z",
+    "capturedDate": null
+  },
+  {
+    "transactionId": 987654321,
+    "type": "received",
+    "userName": "Bob Johnson",
+    "userImgUrl": "https://example.com/images/bob.jpg",
+    "date": "2023-11-23T12:00:00Z",
+    "amount": "200.00",
+    "coinStatus": 2,
+    "expirationDate": null,
+    "capturedDate": "2023-11-24T10:00:00Z"
+  },
+  {
+    "transactionId": 192837465,
+    "type": "sent",
+    "userName": "Charlie Brown",
+    "userImgUrl": "https://example.com/images/charlie.jpg",
+    "date": "2023-11-22T08:15:00Z",
+    "amount": "300.25",
+    "coinStatus": 3,
+    "expirationDate": "2023-12-05T23:59:59Z",
+    "capturedDate": "2023-11-24T10:00:00Z"
+  }
+]
+
+```
+</details>
+
+
+
+
+<details className='details-custom'>
+  <summary>200 OK: Paginator</summary>
+```JSON
+
+{
+  "currentPage": 2,
+  "totalPages": 5,
+  "pageSize": 10,
+  "totalTransactions": 45,
+  "transactions": [
+    {
     "id": 123456789,
     "type": "sent",
     "userName": "Alice Smith",
@@ -119,18 +181,19 @@ Coin Statuses
     "expirationDate": "2023-12-05T23:59:59Z",
     "capturedDate": "2023-11-24T10:00:00Z"
   }
-]
-
+  ]
+}
 ```
-
+</details>
 
 
 
 ---
 ### JSON Response: Error
 
+<details className='details-custom'>
+ <summary>400 Bad Request</summary>
 
-- 400 Bad Request
 ```JSON
 {
   "code": "INVALID_STATUSES",
@@ -147,17 +210,25 @@ Coin Statuses
 }
 
 ```
+</details>
 
-- 401 Unauthorized
+<details className='details-custom'>
+ <summary>401 Unauthorized</summary>
+
+
 ```JSON
 {
   "code": "UNAUTHORIZED",
-  "message": "You are not authorized to access this resource. Please provide a valid authentication token."
+  "message": "Authentication failed. Please provide a valid Bearer token."
 }
 
-```
 
-- 403 Forbidden
+```
+</details>
+
+<details className='details-custom'>
+ <summary>403 Forbidden</summary>
+
 ```JSON
 {
   "code": "ACCESS_FORBIDDEN",
@@ -165,8 +236,11 @@ Coin Statuses
 }
 
 ```
+</details>
 
-- 404 Not Found
+<details className='details-custom'>
+ <summary>404 Not Found</summary>
+
 ```JSON
 {
   "code": "TRANSACTIONS_NOT_FOUND",
@@ -174,8 +248,12 @@ Coin Statuses
 }
 
 ```
+</details>
 
-- 422 Unprocessable Entity
+
+<details className='details-custom'>
+ <summary>422 Unprocessable Entity</summary>
+
 
 ```JSON
 {
@@ -193,16 +271,19 @@ Coin Statuses
 }
 
 ```
+</details>
+<details className='details-custom'>
+<summary> 500 Internal Server Error</summary>
 
-- 500 Internal Server Error
 
-```JSON
+``` JSON
 {
   "code": "INTERNAL_SERVER_ERROR",
-  "message": "An unexpected error occurred while processing your request. Please try again later."
+  "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
-
 ```
+
+</details>
 
 
 

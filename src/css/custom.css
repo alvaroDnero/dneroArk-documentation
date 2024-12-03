@@ -105,3 +105,29 @@
   text-decoration: underline; /* Add underline on hover */
 }
 
+/*.details-custom{
+  background-color: rgba(102, 102, 102, 0.1); 
+  border: 1px solid rgba(102, 102, 102, 0.5); 
+  
+}*/
+
+
+/* Idle (default) state */
+.details-custom {
+  background-color: rgba(102, 102, 102, 0.1); /* Light gray background */
+  border: 1px solid rgba(102, 102, 102, 0.5); /* Gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px;
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover state */
+.details-custom:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Open state */
+.details-custom[open] {
+  /*background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Green border */
+}

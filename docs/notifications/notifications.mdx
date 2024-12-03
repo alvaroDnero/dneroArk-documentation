@@ -1,0 +1,240 @@
+---
+id: Notifications
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+export const apiPath = ' /DneroArk/notifications';
+export const method = 'GET';
+
+
+
+
+
+# Notifications
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+
+
+### Header
+
+| Key             | Value    |
+|-----------------|----------|
+| `Accept`        | application/json |
+| `Authorization` | Bearer key|
+
+
+---
+### Parameter
+
+ **[Definition for this parameters](/docs/parameters)**
+ 
+ - pageSize
+  - page
+  - reverseOrder
+
+<details className='details-custom'>
+  <summary>Query parameters example: Only Paginator</summary>
+    <div className="examples-style"> 
+      {apiPath}`?pageSize=10&page=2`
+    </div>
+</details>
+
+<details className='details-custom'>
+  <summary>Query parameters example: Only Reverse Order</summary>
+    <div className="examples-style"> 
+      {apiPath}`?reverseOrder=false`
+    </div>
+</details>
+
+<details className='details-custom'>
+  <summary>Query parameters example: Paginator & Reverse Order</summary>
+    <div className="examples-style"> 
+      {apiPath}`?pageSize=10&page=2&reverseOrder=false`
+    </div>
+</details>
+---
+
+### JSON Response: Success
+
+<div className="table-title">
+  Paginator values
+</div>
+
+
+
+<div className="table-title">
+  Transactions values
+</div>
+
+| Name              | Type     | Description                                                                                     |
+|-------------------|----------|-------------------------------------------------------------------------------------------------|
+| `notificationId`  | `long`   | Notification identification number.                                                            |
+| `interactionType` | `int`    | If `1`, `userName` captured the coin; if `2`, `userName` threw the coin; if `0`, it results in a request error. |
+| `userName`        | `string` | Name of the person with whom the interaction occurred.                                          |
+| `userImgUrl`      | `string` | The user's image URL.                                                                           |
+| `date`            | `double` | If `interactionType` is `1`, the date when `userName` captured the coin; if `2`, the date when the coin was thrown by `userName`. |
+| `latitude`        | `double` | If `interactionType` is `2`, the latitude where the coin was thrown; otherwise, its value should be `0.0`. |
+| `longitude`       | `double` | If `interactionType` is `2`, the longitude where the coin was thrown; otherwise, its value should be `0.0`. |
+
+
+                                         |
+<details className='details-custom'>
+  <summary>200 OK: No paginator</summary>
+```JSON
+[
+  {
+    "notificationId": 123456,
+    "interactionType": 1,
+    "userName": "Alice Smith",
+    "userImgUrl": "https://example.com/images/alice.jpg",
+    "date": 1680537600.0,
+    "latitude": 0.0,
+    "longitude": 0.0
+  },
+  {
+    "notificationId": 789012,
+    "interactionType": 2,
+    "userName": "Bob Johnson",
+    "userImgUrl": "https://example.com/images/bob.jpg",
+    "date": 1680624000.0,
+    "latitude": 37.7749,
+    "longitude": -122.4194
+  }
+]
+
+```
+
+</details>
+
+
+<details className='details-custom'>
+  <summary className='details-custom'>200 OK: Paginator</summary>
+```JSON
+{
+  "currentPage": 2,
+  "totalPages": 5,
+  "pageSize": 10,
+  "totalTransactions": 45,
+  "notifications": [
+    {
+        "notificationId": 123456,
+        "interactionType": 1,
+        "userName": "Alice Smith",
+        "userImgUrl": "https://example.com/images/alice.jpg",
+        "date": 1680537600.0,
+        "latitude": 0.0,
+        "longitude": 0.0
+    },
+    {
+        "notificationId": 789012,
+        "interactionType": 2,
+        "userName": "Bob Johnson",
+        "userImgUrl": "https://example.com/images/bob.jpg",
+        "date": 1680624000.0,
+        "latitude": 37.7749,
+        "longitude": -122.4194
+    }
+
+
+    ]
+}
+
+```
+
+</details>
+
+
+### JSON Response: Error
+
+<details className='details-custom'> 
+    <summary>400 Bad Request</summary>
+```JSON
+{
+  "code": "INVALID_REQUEST",
+  "message": "The provided parameters are invalid or malformed."
+}
+```
+
+```JSON
+{
+  "code": "MISSING_PAGINATION",
+  "message": "Both 'pageSize' and 'page' are required when using the paginator."
+}
+
+```
+</details> 
+
+<details className='details-custom'> 
+    <summary>401 Unauthorized</summary>
+
+```JSON
+{
+  "code": "UNAUTHORIZED",
+  "message": "Authentication failed. Please provide a valid Bearer token."
+}
+
+```
+
+</details> 
+    
+<details className='details-custom'> 
+    <summary>403 Forbidden</summary>
+
+
+```JSON
+{
+  "code": "ACCESS_FORBIDDEN",
+  "message": "You do not have permission to access these notifications."
+}
+
+```
+
+</details> 
+
+ <details className='details-custom'>
+    <summary>404 Not Found</summary>
+    
+```JSON
+{
+  "code": "NOTIFICATIONS_NOT_FOUND",
+  "message": "No notifications were found for the provided parameters."
+}
+
+```
+
+</details> 
+
+<details className='details-custom'>
+    <summary>422 Unprocessable Entity</summary>
+
+```JSON
+{
+  "code": "INVALID_PAGINATOR",
+  "message": "The page number or page size is invalid. Please provide valid pagination parameters."
+}
+
+```
+</details> 
+
+
+
+<details className='details-custom'>
+<summary> 500 Internal Server Error</summary>
+
+
+``` JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while validating the OTP. Please try again later."
+}
+```
+
+</details>

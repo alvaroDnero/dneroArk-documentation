@@ -25,15 +25,6 @@ Receives a list of transactions, starting from the most recent to the oldest, wi
 
 If no parameters are provided, it returns all notifications from the most recent to the oldest. If we want to use the paginator, we can include the parameters.
 
-Coin Statuses
-
-- 0 = All statuses.
-- 1 = Received, pending to be collected.
-- 2 = Sent, pending to be collected.
-- 3 = Received and collected.
-- 4 = Sent and collected.
-- 5 = Received and expired.
-- 6 = sent and expired.
 
 
 
@@ -103,7 +94,7 @@ Coin Statuses
 | `userImgUrl`          | `string`   | :white_check_mark: | If `type` is `sent`, it’s the recipient's image Url; if `received`, it’s the sender's image Url.       |
 | `date`                | `DateTime` | :white_check_mark: | The date and time when the transaction was created.                                          |
 | `amount`              | `string`   | :white_check_mark: | The amount of money involved in the transaction.                                             |
-| `coinStatus`          | `int`      | :white_check_mark: | Coin status, can't be 0.                                            |
+| `coinStatus`          | `int`      | :white_check_mark: | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|                                          |
 | `expirationDate`      | `DateTime` | :x:                | Expiration date of the coin; if it does not expire, it should be null.  |
 | `capturedDate`        | `DateTime` | :x:                | Date when the coin was captured; if it has not been captured, it should be null.  |
 

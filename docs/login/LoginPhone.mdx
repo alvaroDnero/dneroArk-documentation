@@ -3,9 +3,9 @@ id: phone
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/login';
+export const apiPath = ' /DneroArk/login/';
 export const method = 'POST';
-
+ 
 
 
 
@@ -21,65 +21,77 @@ export const method = 'POST';
 
 
 
-Generate the OTP to log in.
+Confirm the OTP to log in.
 
 ### Header
 
 | Key      | Value     |
 |-------------|----------|
 | `Content-Type` | application/json |
-
+| `Accept` | application/json |
 
 
 
 
 
 ### JSON Body
+| Name         | Type     | Required           | Description                                                |
+|--------------|----------|--------------------|------------------------------------------------------------|
+| `phone`      | `string` | :white_check_mark: | User's phone number.                                       |
+| `countryCode`| `string` | :white_check_mark: | Country code.                                              |
+| `otp`        | `string` | :white_check_mark: | Code received via OTP.                                     |
+| `deviceID`   | `string` | :x:                | Device ID to prevent open sessions on multiple devices.    |
 
-| Name         | Type     | Required           | Description                         |
-|--------------|----------|--------------------|-------------------------------------|
-| `phone`      | `string` | :white_check_mark: | User's phone number.                |
-| `countryCode`| `string` | :white_check_mark: | Country code.                       |
-
-
-
-
+<details className='details-custom'>
+ <summary>Body example</summary>
 
 ```JSON
 {
   "phone": "7149816149",
-  "countryCode": "1"
+  "countryCode": "1",
+  "otp": "999999",
+  "deviceID": "192.168.0.0"
 }
 
 ```
+</details>
 ---
-### JSON Response: Success (200)
+### JSON Response: Success
+
+| Name           | Type     | Description                                    |
+|----------------|----------|-----------------------------------------------|
+| `accessToken`  | `string` | Short-lived token containing user information. |
+| `refreshToken` | `string` | Long-lived token.                             |
+
+<details className='details-custom'>
+ <summary>200 OK</summary>
 ```JSON
 {
-  "code": "REQUEST_SUCCESS",
-  "message": "The request was successfully processed."
+    "userId": 55555,
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBNb2JpbGVSZWZyZXNoVG9rZW4iOiIxNmFhNmIzMzEyZjg0NDVmODE4MjJmZjM1ZWIzNTMwZiIsIkFwcE1vYmlsZVRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SlZjMlZ5UVdOamIzVnVkRWxrSWpvaU5Ua3hNU0lzSWxWelpYSlFjbTltYVd4bFNXUWlPaUkxT1RFeElpd2lRWEJ3VG1GdFpTSTZJa1J1WlhKdlFYQndJaXdpUlc1MmFYSnZibTFsYm5RaU9pSlFjbTlrZFdOMGFXOXVJaXdpYm1KbUlqb3hOekk0TkRFNE9EQTJMQ0psZUhBaU9qRTNNamcxTURnNE1EWXNJbUYxWkNJNklrUnVaWEp2VW1WemRFRndhU0o5LmVhVGVxckNISW1mcVRMS3V5cFR2QkRUS1pMTEpkTEJFQnlzU3J5Y0Z0WTAiLCJVc2VyQWNjb3VudElkIjoiNTkxMSIsIlVzZXJQcm9maWxlSWQiOiI1OTExIiwiQXBwTmFtZSI6IkRuZXJvQVJLIiwiRW52aXJvbm1lbnQiOiJQcm9kdWN0aW9uIiwibmJmIjoxNzI4NDE4ODA2LCJleHAiOjE3Mjg1MDg4MDYsImF1ZCI6IkFSS1Jlc3RBcGkifQ.6LAi38NlECH-EOOM4N7a8efogIH-byOQ6VdYqRT4Vx0",
+    "refreshToken": "c9c3cf26afbb436d93d40ae2ed77fab3",
+
 }
+
 ```
+</details>
 ---
 ### JSON Response: Error
 
-- 400 Bad Request
+<details className='details-custom'>
+ <summary>400 Bad Request</summary>
 ```JSON
-
 {
   "code": "MISSING_FIELDS",
-  "message": "The fields 'phone' and 'countryCode' are required."
+  "message": "The fields 'phone', 'countryCode', 'otp', and 'deviceID' are required."
 }
-
 ```
 
 ```JSON
-
 {
   "code": "INVALID_PHONE",
   "message": "The provided phone number is invalid."
 }
-
 ```
 
 ```JSON
@@ -89,36 +101,60 @@ Generate the OTP to log in.
 }
 ```
 
-404 Not Found
 ```JSON
 {
-  "code": "PHONE_NOT_FOUND",
-  "message": "The provided phone number does not exist in our records."
+  "code": "INVALID_OTP_FORMAT",
+  "message": "The OTP must be a numeric string of six digits."
 }
-
 ```
+</details>
 
+<details className='details-custom'>
+<summary>401 Unauthorized</summary>
 
-- 409 Conflict
+- 401 Unauthorized
 
 ```JSON
 {
-  "code": "SESSION_CONFLICT",
-  "message": "Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.",
-  "resolution": "Cierra sesión desde el otro dispositivo para continuar."
+  "code": "INVALID_OTP",
+  "message": "The OTP is incorrect. Please try again."
 }
-
 ```
-- 403 Forbidden
-``` JSON
+
+```JSON
 {
-  "code": "SESSION_FORBIDDEN",
-  "message": "Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.",
-  "resolution": "Cierra sesión desde el otro dispositivo para continuar."
+  "code": "EXPIRED_OTP",
+  "message": "The OTP has expired. Please request a new one."
 }
-
 ```
-- 422 Unprocessable Entity
+
+</details>
+
+
+<details className='details-custom'>
+<summary>403 Forbidden</summary>
+
+
+```JSON
+{
+  "code": "PHONE_BLOCKED",
+  "message": "The phone number is blocked from performing this action."
+}
+```
+
+```JSON
+{
+  "code": "DEVICE_BLACKLISTED",
+  "message": "This device is blacklisted and cannot perform OTP verification."
+}
+```
+
+</details>
+
+
+<details className='details-custom'>
+<summary> 422 Unprocessable Entity</summary>
+
 
 ```JSON
 {
@@ -126,41 +162,39 @@ Generate the OTP to log in.
   "message": "The provided country code is not supported."
 }
 
-
 ```
-
 
 ```JSON
 {
-  "code": "PHONE_BLACKLISTED",
-  "message": "The provided phone number is blacklisted."
+  "code": "OTP_ALREADY_USED",
+  "message": "The OTP has already been used. Please request a new one."
 }
-
 
 ```
 
+</details>
 
 
+<details className='details-custom'>
+<summary> 429 Too Many Requests</summary>
 
-- 429 Too Many Requests
 ```JSON
 {
   "code": "TOO_MANY_REQUESTS",
-  "message": "You have made too many requests in a short period. Please wait before trying again."
+  "message": "You have attempted to validate the OTP too many times. Please wait 2 minutes before trying again."
 }
+
 ```
 
+</details>
 
-- 500 Internal Server Error
-
+<details className='details-custom'>
+<summary> 500 Internal Server Error</summary>
 ```JSON
 {
   "code": "INTERNAL_SERVER_ERROR",
-  "message": "An unexpected error occurred while processing your request. Please try again later."
+  "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 
 ```
-
-
-
-
+</details>

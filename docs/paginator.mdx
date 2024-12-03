@@ -1,0 +1,108 @@
+---
+id: paginator
+---
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+
+
+# Paginator
+## Common properties in the paginator
+
+| Name                  | Type       |   Description                                                                                  |
+|-----------------------|------------|-----------------------------------------------------------------------------------------------|
+| `currentPage`         | `int`      | The current page number being returned (starting from 1 for the first page).                |
+| `totalPages`          | `int`      | The total number of pages available based on the `pageSize` and total records.              |
+| `pageSize`            | `int`      | The number of items per page in the paginated results.                                       |
+
+
+
+
+## Specific properties in the paginator: 
+
+
+### Transactions
+| Name                  | Type       |   Description                                                                                  |
+|-----------------------|------------|-----------------------------------------------------------------------------------------------|
+| `totalTransactions`   | `long`     | The total number of transactions available based on the provided filters.                   |
+| `transactions`        | `Array`    | A list containing all the transactions for the requested page.                              |
+
+
+<details className='details-custom'>
+  <summary>Transactions Example</summary>
+```JSON
+
+{
+  "currentPage": 2,
+  "totalPages": 5,
+  "pageSize": 10,
+  "totalTransactions": 45,
+  "transactions": [
+    
+  ]
+}
+
+
+```
+
+**Full Example**
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions/Transactions](./transactions/TransactionsAll)**
+  </div>
+</details>
+
+
+### Notification
+
+| Name                  | Type       |   Description                                                                                  |
+|-----------------------|------------|-----------------------------------------------------------------------------------------------|
+| `totalNotifications`  | `long`     | The total number of transactions available based on the provided filters.                   |
+| `notifications`       | `Array`    | A list containing all the notifications for the requested page.                              |
+
+
+<details className='details-custom'>
+  <summary className='details-custom'>Notfications Example</summary>
+```JSON
+{
+  "currentPage": 2,
+  "totalPages": 5,
+  "pageSize": 10,
+  "totalTransactions": 45,
+  "notifications": [    
+
+    ]
+}
+
+```
+**Full Example**
+
+ <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/notifications](./notifications/Notifications)**
+  </div>
+</details>
+
+### Coins Scope
+
+| Name                  | Type       |   Description                                                                                  |
+|-----------------------|------------|-----------------------------------------------------------------------------------------------|
+| `totalCoins`          | `long`     | The total number of Coins available based on the provided filters.                   |
+| `coins`               | `Array`    | A list containing all the Coins for the requested page.                              |
+
+<details className='details-custom'>
+  <summary>Coins Example</summary>
+```JSON
+{
+  "currentPage": 1,
+  "totalPages": 5,
+  "pageSize": 2,
+  "totalCoins": 10,
+  "coins": [    
+  ]
+}
+
+```
+
+**Full Example**
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/coins](./Coins/coinsAll)**
+  </div>
+
+</details>  

@@ -9,17 +9,21 @@ Here is a list of the scopes you require to access the API Endpoints and Webhook
 
 <div className="endpoint-list">
   <div className="highlight-box post">
-    <HttpMethodTag method={'POST'} /> **[/DneroArk/login](./login/phone)**
+    <HttpMethodTag method={'POST'} /> **[/DneroArk/login](./login/phoneOTP)**
   </div>
+
   <div className="highlight-box post">
-    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/otp](./login/phoneOTP)**
+    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/otp](./login/phone)**
   </div>
+
   <div className="highlight-box post">
     <HttpMethodTag method={'POST'} /> **[/DneroArk/login/updateToken](./login/accessToken)**
   </div>
+
   <div className="highlight-box post">
     <HttpMethodTag method={'POST'} /> **[/DneroArk/login/logout](./login/logout)**
   </div>
+
 </div>
 
 ## Home 
@@ -29,3 +33,51 @@ Here is a list of the scopes you require to access the API Endpoints and Webhook
     <HttpMethodTag method={'GET'} /> **[/home/user](./home/profile)**
   </div> 
 </div>
+
+## Transactions
+<div className="endpoint-list">
+
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions](./transactions/TransactionsAll)**
+  </div>
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions/`{int}`](./transactions/TransactionsIndividual)**
+  </div>
+
+</div>
+
+## Notifications
+<div className="endpoint-list">
+
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/notifications](./notifications/Notifications)**
+  </div>
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/notifications/`{int}`](./notifications/NotificationsIndividual)**
+  </div>
+
+</div>
+
+## Coins
+
+<div className="endpoint-list">
+
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/coins](./Coins/coinsAll)**
+  </div>
+ 
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

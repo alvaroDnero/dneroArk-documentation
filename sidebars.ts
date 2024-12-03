@@ -6,8 +6,26 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
   apiSidebar: [
     {
       type: 'doc',
-      id: 'intro',
-      label: 'Intro',      
+      id: 'Overview',
+      label: 'Overview',      
+      
+    },
+    {
+      type: 'doc',
+      id: 'parameters',
+      label: 'parameters',      
+      
+    },
+    {
+      type: 'doc',
+      id: 'paginator',
+      label: 'Paginator',      
+      
+    },
+    {
+      type: 'doc',
+      id: 'coinsStatuses',
+      label: 'Coin Statuses',      
       
     },
     {
@@ -18,14 +36,15 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
     },
     {
       type: 'category',
-      label: 'Login',
+      label: 'Login & Logout',
       collapsible: true,
       collapsed: false,
       items: [        
+        
         {
           type: 'doc',
-          id: 'login/phone', 
-          label: 'Phone',
+          id: 'login/phoneOTP', 
+          label: 'OTP',
           customProps: {
             method: 'POST',
           },
@@ -33,8 +52,8 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'login/phoneOTP', 
-          label: 'Phone OTP',
+          id: 'login/phone', 
+          label: 'login',
           customProps: {
             method: 'POST',
           },
@@ -93,24 +112,60 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
           },
           
         },
-        {
-          type: 'doc',
-          id: 'transactions/TransactionsAllPaginator', 
-          label: 'Transactions - Paginator',
-          customProps: {
-            method: 'GET',
-          },
-          
-        },
+        
         {
           type: 'doc',
           id: 'transactions/TransactionsIndividual', 
-          label: 'Transaction - individual',
+          label: 'Transaction',
           customProps: {
             method: 'GET',
           },
           
         },
+       ],
+    }, 
+    {
+      type: 'category',
+      label: 'Notifications',
+      collapsible: true,
+      collapsed: false,
+      items: [  
+        {
+          type: 'doc',
+          id: 'notifications/Notifications', 
+          label: 'Notifications',
+          customProps: {
+            method: 'GET',
+          },
+          
+        },
+        {
+          type: 'doc',
+          id: 'notifications/NotificationsIndividual', 
+          label: 'Notification',
+          customProps: {
+            method: 'GET',
+          },
+          
+        }
+       ],
+    }, 
+
+    {
+      type: 'category',
+      label: 'Coins',
+      collapsible: true,
+      collapsed: false,
+      items: [  
+        {
+          type: 'doc',
+          id: 'Coins/coinsAll', 
+          label: 'coins',
+          customProps: {
+            method: 'GET',
+          },
+          
+        },        
        ],
     }, 
   ],

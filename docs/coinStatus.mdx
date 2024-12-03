@@ -1,0 +1,45 @@
+---
+id: coinsStatuses
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+
+# Coin Statuses
+
+
+| **Status Code** | **Description**                                                                 |
+|:---------------:|---------------------------------------------------------------------------------|
+| `0`             | Status zero does not exist, but if used as a parameter, it will return coins from all statuses. |
+| `1`             | Received, pending to be collected.                                             |
+| `2`             | Sent, pending to be collected.                                                 |
+| `3`             | Received and collected.                                                        |
+| `4`             | Sent and collected.                                                            |
+| `5`             | Received and expired.                                                          |
+| `6`             | Sent and expired.                                                              |
+
+
+## It is used in the following endpoints.
+
+- ### Transactions
+
+<div className="endpoint-list">
+
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions](./transactions/TransactionsAll)**
+  </div>
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions/`{int}`](./transactions/TransactionsIndividual)**
+  </div>
+
+</div>
+
+- ### Coins
+
+<div className="endpoint-list">
+
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/coins](./Coins/coinsAll)**
+  </div>
+ 
+
+</div>

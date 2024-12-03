@@ -10,7 +10,7 @@ export const method = 'POST';
 
 
 
-# Login 
+# Update Token
 
 
 <div className="highlight-box">
@@ -36,13 +36,15 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 
 
 ---
-### JSON Response: Success (200)
+### JSON Response: Success 
 
 | Name           | Type     | Description                                    |
 |----------------|----------|-----------------------------------------------|
 | `accessToken`  | `string` | Short-lived token containing user information. |
 | `refreshToken` | `string` | Long-lived token.                             |
 
+<details className='details-custom'>
+ <summary>200 OK</summary>
 ```JSON
 {
   "accessToken": "newAccessToken123",
@@ -50,10 +52,12 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 }
 
 ```
+</details>
 ---
 ### JSON Response: Error
 
-- 400 Bad Request
+<details className='details-custom'>
+ <summary>400 Bad Request</summary>
 ```JSON
 {
 {
@@ -62,25 +66,24 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 }
 }
 ```
+</details>
 
-- 401 Unauthorized
-```JSON
-{
-  "code": "TOKEN_EXPIRED",
-  "message": "El refresh token ha expirado. Por favor, inicia sesión nuevamente."
-}
 
-```
+<details className='details-custom'>
+<summary>401 Unauthorized</summary>
 
-- 401 Unauthorized
+
 ``` JSON
 {
   "code": "TOKEN_EXPIRED",
   "message": "El refresh token ha expirado. Por favor, inicia sesión nuevamente."
 }
 ```
+</details>
 
-- 429 Too Many Requests
+<details className='details-custom'>
+<summary> 429 Too Many Requests</summary>
+
 
 ``` JSON
 {
@@ -88,8 +91,11 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
   "message": "Has intentado actualizar los tokens demasiadas veces en poco tiempo. Por favor, espera 2 minutos antes de intentarlo nuevamente."
 }
 ```
+</details>
 
-- 500 Internal Server Error
+<details className='details-custom'>
+<summary> 500 Internal Server Error</summary>
+
 
 ``` JSON
 {
@@ -97,6 +103,8 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
   "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 ```
+
+</details>
 
 
 

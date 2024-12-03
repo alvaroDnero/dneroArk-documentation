@@ -10,7 +10,7 @@ export const method = 'GET';
 
 
 
-# Title 
+# User
 
 
 <div className="highlight-box">
@@ -33,20 +33,21 @@ Get user Information.
 
 ---
 
-### JSON Response: Success (200)
+### JSON Response: Success
 
-| Name            | Type     | Required           | Description                                     |
-|-----------------|----------|--------------------|-------------------------------------------------|
-| `userId`        | `long`   | :white_check_mark: | Unique identifier of the user.                  |
-| `imgProfileUrl` | `string` | :white_check_mark: | URL where the profile image is hosted.          |
-| `firstName`     | `string` | :white_check_mark: | User's first name.                              |
-| `lastName`      | `string` | :white_check_mark: | User's last name.                               |
-| `phone`         | `string` | :white_check_mark: | User's phone number.                            |
-| `dolarCash`     | `double` | :white_check_mark: | Total dollar balance specific to ARK.           |
-| `cryptoBalance` | `double` | :white_check_mark: | Total cryptocurrency balance for ARK.           |
-| `pendingCoins`  | `int`    | :white_check_mark: | Number of pending Coins to collect.             |
+| Name            | Type     | Description                                     |
+|-----------------|----------|-------------------------------------------------|
+| `userId`        | `long`   | Unique identifier of the user.                  |
+| `imgProfileUrl` | `string` | URL where the profile image is hosted.          |
+| `firstName`     | `string` | User's first name.                              |
+| `lastName`      | `string` | User's last name.                               |
+| `phone`         | `string` | User's phone number.                            |
+| `dolarBalance`  | `double` | Total dollar balance specific to ARK.           |
+| `cryptoBalance` | `double` | Total cryptocurrency balance for ARK.           |
+| `pendingCoins`  | `int`    | Number of pending Coins to collect.             |
 
-
+<details className='details-custom'>
+ <summary>200 OK</summary>
 
 ```JSON
 {
@@ -60,10 +61,14 @@ Get user Information.
 }
 
 ```
+</details>
 ---
 ### JSON Response: Error
 
-- 400 Bad Request
+
+<details className='details-custom'>
+ <summary>400 Bad Request</summary>
+
 
 ```JSON
 {
@@ -80,8 +85,11 @@ Get user Information.
 }
 
 ```
+</details>
 
-- 401 Unauthorized
+<details className='details-custom'>
+ <summary>401 Unauthorized</summary>
+
 ```JSON
 {
   "code": "UNAUTHORIZED",
@@ -89,7 +97,12 @@ Get user Information.
 }
 
 ```
-- 404 Not Found
+
+</details>
+
+<details className='details-custom'>
+ <summary>404 Not Found</summary>
+
 ```JSON
 {
   "code": "USER_NOT_FOUND",
@@ -97,12 +110,19 @@ Get user Information.
 }
 
 ```
-- 500 Internal Server Error
-```JSON
+
+</details>
+<details className='details-custom'>
+<summary> 500 Internal Server Error</summary>
+
+
+``` JSON
 {
   "code": "INTERNAL_SERVER_ERROR",
-  "message": "An unexpected error occurred while processing your request. Please try again later."
+  "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
-
 ```
+
+</details>
+
 

@@ -1,0 +1,63 @@
+---
+id: parameters
+---
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+
+
+# Parameters
+
+**Not all endpoints need all parameters**
+
+| Name           | Type      |  Description                                                                                   |
+|----------------|-----------|-----------------------------------------------------------------------------------------------|
+| `statuses`     | `int[]`   | An array of statuses to filter the information. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. |
+| `pageSize`     | `int`     | The number of items to include in each page of the results. Required if using the paginator.  |
+| `page`         | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the paginator. |
+| `reverseOrder` | `boolean` | Determines the sorting order. If `false`, Information is sorted from the most recent to the oldest. If `true`, the order is reversed. |
+| `verbose`      | `boolean` | If `true`, returns additional details about each object. If `false`, only returns essential information. |
+
+
+<details className='details-custom'>
+  <summary>Parameters for transactions</summary>
+  - statuses
+  - pageSize
+  - page
+  - reverseOrder
+
+<div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions/Transactions](./transactions/TransactionsAll)**
+</div>
+ 
+</details>
+
+
+<details className='details-custom'>
+  <summary>Parameters for notifications</summary>
+  - pageSize
+  - page
+  - reverseOrder
+
+ <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/notifications](./notifications/Notifications)**
+ </div>
+ 
+</details>
+
+
+<details className='details-custom'>
+  <summary>Parameters for coins</summary>
+  - statuses
+  - pageSize
+  - page
+  - reverseOrder
+  - verbose
+
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> **[/DneroArk/coins](./Coins/coinsAll)**
+  </div>
+</details>
+
+
+
+
+

@@ -3,20 +3,19 @@ id: logout
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/login/logout';
+export const apiPath = ' /DneroArk/logout';
 export const method = 'POST';
 
 
 
 
 
-# Title 
+# Logout
 
 
 <div className="highlight-box">
   <HttpMethodTag method={method} /> {apiPath}
 </div>
-
 
 
 
@@ -35,25 +34,33 @@ Delete the tokens and log the logout activity on the device.
 
 
 ---
-### JSON Response: Success (200)
+### JSON Response: Success 
+<details className='details-custom'>
+ <summary>200 OK</summary>
 ```JSON
 {
   "code": "LOGOUT_SUCCESS",
   "message": "The session was successfully terminated."
 }
 ```
+</details>
 ---
 ### JSON Response: Error
 
-- 400 Bad Request
+<details className='details-custom'>
+ <summary>400 Bad Request</summary>
+
 ```JSON
 {
   "code": "INVALID_REQUEST",
   "message": "The authorization token is required."
 }
 ```
+</details>
 
-- 401 Unauthorized
+
+<details className='details-custom'>
+<summary>401 Unauthorized</summary>
 
 ```JSON
 {
@@ -62,9 +69,10 @@ Delete the tokens and log the logout activity on the device.
 }
 ```
 
+</details>
+<details className='details-custom'>
 
-- 403 Forbidden
-
+<summary> 403 Forbidden</summary>
 ```JSON
 {
   "code": "TOKEN_FORBIDDEN",
@@ -72,10 +80,10 @@ Delete the tokens and log the logout activity on the device.
 }
 
 ```
+</details>
+<details className='details-custom'>
 
-
-- 500 Internal Server Error
-
+<summary> 500 Internal Server Error</summary>
 ```JSON
 {
   "code": "INTERNAL_SERVER_ERROR",
@@ -83,4 +91,4 @@ Delete the tokens and log the logout activity on the device.
 }
 
 ```
-
+</details>
