@@ -3,6 +3,8 @@ id: coinsStatuses
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Paths } from '@site/src/constants/paths';
+import { Endpoint } from '@site/src/constants/endpointPath';
 
 # Coin Statuses
 
@@ -24,11 +26,11 @@ import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
 
 <div className="endpoint-list">
 
-  <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions](./transactions/TransactionsAll)**
+   <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionsAll}`}>**{Endpoint.transactionsAll}**</a>
   </div>
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions/`{int}`](./transactions/TransactionsIndividual)**
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionIndividual}`}>**{Endpoint.transactionIndividual}**</a>
   </div>
 
 </div>
@@ -37,8 +39,8 @@ import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
 
 <div className="endpoint-list">
 
-  <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/coins](./Coins/coinsAll)**
+ <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.coinsAll}`}>**{Endpoint.coinsAll}**</a>
   </div>
  
 

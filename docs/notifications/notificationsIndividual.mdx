@@ -3,7 +3,8 @@ id: NotificationsIndividual
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/notifications/';
+import { Endpoint } from '@site/src/constants/endpointPath';
+export const apiPath = Endpoint.notificationsIndividual;
 export const method = 'GET';
 export const id = '{int}';
 
@@ -15,7 +16,7 @@ export const id = '{int}';
 
 
 <div className="highlight-box">
-  <HttpMethodTag method={method} /> {apiPath} {id}
+  <HttpMethodTag method={method} /> {apiPath}
 </div>
 
 
@@ -25,7 +26,7 @@ export const id = '{int}';
 <details className='details-custom'>
   <summary>Enpoint example</summary>
     <div className="examples-style"> 
-      {apiPath}`444`
+      {apiPath.replace('{int}','')}`444`
     </div>
 </details>
 

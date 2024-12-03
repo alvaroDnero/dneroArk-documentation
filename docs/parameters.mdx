@@ -2,6 +2,8 @@
 id: parameters
 ---
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Paths } from '@site/src/constants/paths';
+import { Endpoint } from '@site/src/constants/endpointPath';
 
 
 # Parameters
@@ -10,7 +12,7 @@ import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
 
 | Name           | Type      |  Description                                                                                   |
 |----------------|-----------|-----------------------------------------------------------------------------------------------|
-| `statuses`     | `int[]`   | An array of statuses to filter the information. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. |
+| `statuses`     | `int[]`   | An array of statuses to filter the information. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. For detailed information, see the <a href={`./${Paths.scopes}`}>**Status Codes page.**</a> |
 | `pageSize`     | `int`     | The number of items to include in each page of the results. Required if using the paginator.  |
 | `page`         | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the paginator. |
 | `reverseOrder` | `boolean` | Determines the sorting order. If `false`, Information is sorted from the most recent to the oldest. If `true`, the order is reversed. |
@@ -24,9 +26,9 @@ import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
   - page
   - reverseOrder
 
-<div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions/Transactions](./transactions/TransactionsAll)**
-</div>
+ <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionsAll}`}>**{Endpoint.transactionsAll}**</a>
+  </div>
  
 </details>
 
@@ -37,9 +39,9 @@ import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
   - page
   - reverseOrder
 
- <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/notifications](./notifications/NotificationsAll)**
- </div>
+<div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsAll}`}>**{Endpoint.notificationsAll}**</a>
+  </div>
  
 </details>
 
@@ -53,7 +55,7 @@ import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
   - verbose
 
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/coins](./Coins/coinsAll)**
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.coinsAll}`}>**{Endpoint.coinsAll}**</a>
   </div>
 </details>
 

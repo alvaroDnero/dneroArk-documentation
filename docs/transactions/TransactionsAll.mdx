@@ -3,7 +3,9 @@ id: TransactionsAll
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/transactions';
+import { Paths } from '@site/src/constants/paths';
+import { Endpoint } from '@site/src/constants/endpointPath';
+export const apiPath = Endpoint.transactionsAll;
 export const method = 'GET';
 
 
@@ -37,7 +39,8 @@ If no parameters are provided, it returns all notifications from the most recent
 ---
 ### Parameter
 
- **[Definition for this parameters](/docs/parameters)**
+
+ <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
 
   - statuses
   - pageSize

@@ -3,7 +3,8 @@ id: profile
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/home/user';
+import { Endpoint } from '@site/src/constants/endpointPath';
+export const apiPath = Endpoint.user;
 export const method = 'GET';
 
 
@@ -21,7 +22,7 @@ export const method = 'GET';
 
 
 
-Get user Information.
+Get user profile information.
 
 ### Header
 

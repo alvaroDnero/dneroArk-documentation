@@ -3,9 +3,12 @@ id: coinsAll
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/coins';
+import { Endpoint } from '@site/src/constants/endpointPath';
+import { Paths } from '@site/src/constants/paths';
+export const apiPath = Endpoint.coinsAll;
 export const method = 'GET';
 
+# Coins
 
 <div className="highlight-box">
   <HttpMethodTag method={method} /> {apiPath} 
@@ -23,8 +26,7 @@ export const method = 'GET';
 
 ### Parameter
 
- **[Definition for this parameters](/docs/parameters)**
-
+ <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
 
   - statuses
   - pageSize

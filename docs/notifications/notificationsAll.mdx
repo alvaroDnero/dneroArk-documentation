@@ -3,7 +3,9 @@ id: NotificationsAll
 ---
 
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
-export const apiPath = ' /DneroArk/notifications';
+import { Paths } from '@site/src/constants/paths';
+import { Endpoint } from '@site/src/constants/endpointPath';
+export const apiPath = Endpoint.notificationsAll;
 export const method = 'GET';
 
 
@@ -34,7 +36,8 @@ export const method = 'GET';
 ---
 ### Parameter
 
- **[Definition for this parameters](/docs/parameters)**
+ <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
+
  
  - pageSize
   - page

@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { Paths } from './src/constants/paths';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -104,7 +105,7 @@ const config: Config = {
           items: [
             {
               label: 'Api Documentation',
-              to: '/docs/Overview',
+              to: '/docs/'+ Paths.overview,
             },
           ],
         },

@@ -1,4 +1,5 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import { Paths } from './src/constants/paths';
 
 
  const sidebars: SidebarsConfig = {
@@ -6,31 +7,31 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
   apiSidebar: [
     {
       type: 'doc',
-      id: 'Overview',
+      id: Paths.overview,
       label: 'Overview',      
-      
+       
     },
     {
       type: 'doc',
-      id: 'parameters',
+      id: Paths.parameters,
       label: 'parameters',      
       
     },
     {
       type: 'doc',
-      id: 'paginator',
+      id: Paths.paginator,
       label: 'Paginator',      
       
     },
     {
       type: 'doc',
-      id: 'coinsStatuses',
+      id: Paths.coinStatuses,
       label: 'Coin Statuses',      
       
     },
     {
       type: 'doc',
-      id: 'scopes', 
+      id: Paths.scopes, 
       label: 'Scopes',      
       
     },
@@ -44,7 +45,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         {
           type: 'doc',
           id: 'login/phoneOTP', 
-          label: 'OTP',
+          label: Paths.otp,
           customProps: {
             method: 'POST',
           },
@@ -52,7 +53,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'login/phone', 
+          id: Paths.phone, 
           label: 'login',
           customProps: {
             method: 'POST',
@@ -61,7 +62,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'login/accessToken', 
+          id: Paths.updateToken, 
           label: 'Update Tokens',
           customProps: {
             method: 'POST',
@@ -70,7 +71,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'login/logout', 
+          id: Paths.logout, 
           label: 'Logout',
           customProps: {
             method: 'POST',
@@ -82,13 +83,13 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
     }, 
     {
       type: 'category',
-      label: 'Home',
+      label: 'User',
       collapsible: true,
       collapsed: true,
       items: [  
         {
           type: 'doc',
-          id: 'home/profile', 
+          id: Paths.user, 
           label: 'User',
           customProps: {
             method: 'GET',
@@ -105,7 +106,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       items: [  
         {
           type: 'doc',
-          id: 'transactions/TransactionsAll', 
+          id: Paths.transactionsAll, 
           label: 'Transactions',
           customProps: {
             method: 'GET',
@@ -115,7 +116,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         
         {
           type: 'doc',
-          id: 'transactions/TransactionsIndividual', 
+          id: Paths.transactionIndividual, 
           label: 'Transaction',
           customProps: {
             method: 'GET',
@@ -132,7 +133,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       items: [  
         {
           type: 'doc',
-          id: 'notifications/NotificationsAll', 
+          id: Paths.notificationsAll, 
           label: 'Notifications',
           customProps: {
             method: 'GET',
@@ -141,7 +142,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
         },
         {
           type: 'doc',
-          id: 'notifications/NotificationsIndividual', 
+          id: Paths.notificationsIndividual, 
           label: 'Notification',
           customProps: {
             method: 'GET',
@@ -159,7 +160,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       items: [  
         {
           type: 'doc',
-          id: 'Coins/coinsAll', 
+          id: Paths.coinsAll, 
           label: 'coins',
           customProps: {
             method: 'GET',

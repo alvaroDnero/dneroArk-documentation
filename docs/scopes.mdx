@@ -2,6 +2,9 @@
 id: scopes
 ---
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Paths } from '@site/src/constants/paths';
+import { Endpoint } from '@site/src/constants/endpointPath';
+
 
 # Scopes
 Here is a list of the scopes you require to access the API Endpoints and Webhook Events.
@@ -9,66 +12,66 @@ Here is a list of the scopes you require to access the API Endpoints and Webhook
 
 <div className="endpoint-list">
   <div className="highlight-box post">
-    <HttpMethodTag method={'POST'} /> **[/DneroArk/login](./login/phoneOTP)**
+    <HttpMethodTag method={'POST'} /> <a href={`./${Paths.otp}`}>**{Endpoint.otp}**</a>
+  </div>
+
+  
+  <div className="highlight-box post">
+    <HttpMethodTag method={'POST'} /> <a href={`./${Paths.phone}`}>**{Endpoint.login}**</a>
   </div>
 
   <div className="highlight-box post">
-    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/otp](./login/phone)**
+    <HttpMethodTag method={'POST'} /> <a href={`./${Paths.updateToken}`}>**{Endpoint.updateToken}**</a>
   </div>
 
   <div className="highlight-box post">
-    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/updateToken](./login/accessToken)**
-  </div>
-
-  <div className="highlight-box post">
-    <HttpMethodTag method={'POST'} /> **[/DneroArk/login/logout](./login/logout)**
+    <HttpMethodTag method={'POST'} /> <a href={`./${Paths.logout}`}>**{Endpoint.logout}**</a>
   </div>
 
 </div>
 
-## Home 
+## User
 
 <div className="endpoint-list">
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/home/user](./home/profile)**
-  </div> 
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.user}`}>**{Endpoint.user}**</a>
+  </div>
 </div>
 
 ## Transactions
+
 <div className="endpoint-list">
-
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions](./transactions/TransactionsAll)**
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionsAll}`}>**{Endpoint.transactionsAll}**</a>
   </div>
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/transactions/`{int}`](./transactions/TransactionsIndividual)**
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionIndividual}`}>**{Endpoint.transactionIndividual}**</a>
   </div>
-
 </div>
 
 ## Notifications
+
+
+
 <div className="endpoint-list">
-
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> ***[/DneroArk/notifications](./notifications/NotificationsAll)**
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsAll}`}>**{Endpoint.notificationsAll}**</a>
   </div>
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/notifications/`{int}`](./notifications/NotificationsIndividual)**
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsIndividual}`}>**{Endpoint.notificationsIndividual}**</a>
   </div>
-
 </div>
+
+
+
 
 ## Coins
 
 <div className="endpoint-list">
-
   <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> **[/DneroArk/coins](./Coins/coinsAll)**
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.coinsAll}`}>**{Endpoint.coinsAll}**</a>
   </div>
- 
-
 </div>
-
 
 
 
