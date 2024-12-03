@@ -38,7 +38,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       type: 'category',
       label: 'Login & Logout',
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: [        
         
         {
@@ -84,7 +84,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       type: 'category',
       label: 'Home',
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: [  
         {
           type: 'doc',
@@ -101,7 +101,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       type: 'category',
       label: 'Transactions',
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: [  
         {
           type: 'doc',
@@ -128,11 +128,11 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       type: 'category',
       label: 'Notifications',
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: [  
         {
           type: 'doc',
-          id: 'notifications/Notifications', 
+          id: 'notifications/NotificationsAll', 
           label: 'Notifications',
           customProps: {
             method: 'GET',
@@ -155,7 +155,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       type: 'category',
       label: 'Coins',
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: [  
         {
           type: 'doc',
