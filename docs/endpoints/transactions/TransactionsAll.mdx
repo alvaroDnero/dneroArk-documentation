@@ -86,54 +86,69 @@ If no parameters are provided, it returns all notifications from the most recent
 
 | Name                  | Type       |   Description                                                                                  |
 |-----------------------|------------|-----------------------------------------------------------------------------------------------|
-| `transactionId`                  | `long`     | Unique identifier of the transaction notification.                                           |
-| `type`                | `string`   | Possible values: `sent` or `received`.                                                      |
-| `userName`            | `string`   | If `type` is `sent`, it’s the recipient's name; if `received`, it’s the sender's name.       |
-| `userImgUrl`          | `string`   | If `type` is `sent`, it’s the recipient's image Url; if `received`, it’s the sender's image Url.       |
-| `date`                | `DateTime` | The date and time when the transaction was created.                                          |
+| `transactionId`       | `long`     | Unique identifier of the transaction notification.                                           |
+| `interactionType`     | `int`      | Possible values: `0` for sent or `1` received.                                                        |
+| `user`                | `object`   | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/userObject) |  
 | `amount`              | `string`   | The amount of money involved in the transaction.                                             |
 | `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
 | `expirationDate`      | `DateTime` | Expiration date of the coin. |
 | `capturedDate`        | `DateTime` | Date when the coin was captured. |
+| `createDate`          | `DateTime` | Date when the coin was created. |
+
 
 <details className='details-custom'>
   <summary>200 OK: No paginator</summary>
 ```JSON
-[
-  {
-    "transactionId": 123456789,
-    "type": "sent",
-    "userName": "Alice Smith",
-    "userImgUrl": "https://example.com/images/alice.jpg",
-    "date": "2023-11-24T15:30:00Z",
-    "amount": "150.75",
-    "coinStatus": 1,
-    "expirationDate": "2023-12-01T23:59:59Z",
-    "capturedDate": null
-  },
-  {
-    "transactionId": 987654321,
-    "type": "received",
-    "userName": "Bob Johnson",
-    "userImgUrl": "https://example.com/images/bob.jpg",
-    "date": "2023-11-23T12:00:00Z",
-    "amount": "200.00",
-    "coinStatus": 2,
-    "expirationDate": null,
-    "capturedDate": "2023-11-24T10:00:00Z"
-  },
-  {
-    "transactionId": 192837465,
-    "type": "sent",
-    "userName": "Charlie Brown",
-    "userImgUrl": "https://example.com/images/charlie.jpg",
-    "date": "2023-11-22T08:15:00Z",
-    "amount": "300.25",
-    "coinStatus": 3,
-    "expirationDate": "2023-12-05T23:59:59Z",
-    "capturedDate": "2023-11-24T10:00:00Z"
-  }
-]
+
+{
+  "transactions":  
+  [
+    {
+      "transactionId": 301,
+      "interactionType": 0,
+      "user": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+      },
+      "amount": "50.00",
+      "coinStatus": 1,
+      "expirationDate": "2024-12-01T00:00:00Z",
+      "capturedDate": null,
+      "createDate": "2024-11-20T10:00:00Z"
+    },
+    {
+      "transactionId": 302,
+      "interactionType": 1,
+      "user": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+      },
+      "amount": "75.25",
+      "coinStatus": 2,
+      "expirationDate": "2024-12-05T00:00:00Z",
+      "capturedDate": "2024-11-27T09:00:00Z",
+      "createDate": "2024-11-19T15:45:00Z"
+    },
+    {
+      "transactionId": 303,
+      "interactionType": 0,
+      "user": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+      },
+      "amount": "100.00",
+      "coinStatus": 3,
+      "expirationDate": "2024-11-30T00:00:00Z",
+      "capturedDate": null,
+      "createDate": "2024-11-18T12:30:00Z"
+    }
+  ]
+
+}
+
 
 ```
 </details>
@@ -150,41 +165,52 @@ If no parameters are provided, it returns all notifications from the most recent
   "totalPages": 5,
   "pageSize": 10,
   "totalTransactions": 45,
-  "transactions": [
+  "transactions":  
+  [
     {
-    "id": 123456789,
-    "type": "sent",
-    "userName": "Alice Smith",
-    "userImgUrl": "https://example.com/images/alice.jpg",
-    "date": "2023-11-24T15:30:00Z",
-    "amount": "150.75",
-    "coinStatus": 1,
-    "expirationDate": "2023-12-01T23:59:59Z",
-    "capturedDate": null
-  },
-  {
-    "id": 987654321,
-    "type": "received",
-    "userName": "Bob Johnson",
-    "userImgUrl": "https://example.com/images/bob.jpg",
-    "date": "2023-11-23T12:00:00Z",
-    "amount": "200.00",
-    "coinStatus": 2,
-    "expirationDate": null,
-    "capturedDate": "2023-11-24T10:00:00Z"
-  },
-  {
-    "id": 192837465,
-    "type": "sent",
-    "userName": "Charlie Brown",
-    "userImgUrl": "https://example.com/images/charlie.jpg",
-    "date": "2023-11-22T08:15:00Z",
-    "amount": "300.25",
-    "coinStatus": 3,
-    "expirationDate": "2023-12-05T23:59:59Z",
-    "capturedDate": "2023-11-24T10:00:00Z"
-  }
+      "transactionId": 301,
+      "interactionType": 0,
+      "user": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+      },
+      "amount": "50.00",
+      "coinStatus": 1,
+      "expirationDate": "2024-12-01T00:00:00Z",
+      "capturedDate": null,
+      "createDate": "2024-11-20T10:00:00Z"
+    },
+    {
+      "transactionId": 302,
+      "interactionType": 1,
+      "user": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+      },
+      "amount": "75.25",
+      "coinStatus": 2,
+      "expirationDate": "2024-12-05T00:00:00Z",
+      "capturedDate": "2024-11-27T09:00:00Z",
+      "createDate": "2024-11-19T15:45:00Z"
+    },
+    {
+      "transactionId": 303,
+      "interactionType": 0,
+      "user": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+      },
+      "amount": "100.00",
+      "coinStatus": 3,
+      "expirationDate": "2024-11-30T00:00:00Z",
+      "capturedDate": null,
+      "createDate": "2024-11-18T12:30:00Z"
+    }
   ]
+
 }
 ```
 </details>
@@ -192,7 +218,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 
 ---
-### JSON Response: Error
+### [JSON Response](/docs/genericResponse): Error
 
 <details className='details-custom'>
  <summary>400 Bad Request</summary>

@@ -14,7 +14,7 @@ import { Paths } from './src/constants/paths';
     {
       type: 'doc',
       id: Paths.parameters,
-      label: 'parameters',      
+      label: 'Parameters',      
       
     },
     {
@@ -29,12 +29,18 @@ import { Paths } from './src/constants/paths';
       label: 'Coin Statuses',      
       
     },
-    /*{
+    {
       type: 'doc',
-      id: Paths.scopes, 
-      label: 'Scopes',      
+      id: Paths.userObject, 
+      label: 'User Object',      
       
-    },*/
+    },
+    {
+      type: 'doc',
+      id: Paths.genericResponse, 
+      label: 'Generic Response',      
+      
+    },
     {
       type: 'category',  
           
@@ -104,6 +110,15 @@ import { Paths } from './src/constants/paths';
               label: 'User',
               customProps: {
                 method: 'GET',
+              },
+              
+            },
+            {
+              type: 'doc',
+              id: Paths.contact, 
+              label: 'Contacts',
+              customProps: {
+                method: 'POST',
               },
               
             },
@@ -186,7 +201,25 @@ import { Paths } from './src/constants/paths';
                 method: 'GET',
               },
               
-            },          
+            },  
+            {
+              type: 'doc',
+              id: Paths.coinsRedeem, 
+              label: 'Redeem',
+              customProps: {
+                method: 'POST',
+              },
+              
+            }, 
+            {
+              type: 'doc',
+              id: Paths.coinsDrop, 
+              label: 'Drop',
+              customProps: {
+                method: 'POST',
+              },
+              
+            },            
            ],
         }
 

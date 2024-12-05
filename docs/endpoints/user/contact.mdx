@@ -1,0 +1,239 @@
+---
+id: contact
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Endpoint } from '@site/src/constants/endpointPath';
+import { Paths } from '@site/src/constants/paths';
+export const apiPath = Endpoint.contact;
+export const method = 'POST';
+
+# Contact
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath} 
+</div>
+
+This endpoint verifies whether the provided phone numbers exist in the system's records. It ensures that only registered phone numbers are processed for further operations.
+
+## Header
+
+| Key             | Value            |
+|-----------------|------------------|
+| `Authorization` | Bearer key       |
+| `Content-Type`  | application/json |
+| `Accept`        | application/json |
+
+## Body
+
+
+| Name         | Type     | Required           | Description                                                |
+|--------------|----------|--------------------|------------------------------------------------------------|
+| `phone`      | `string` | :white_check_mark: | User's phone number.                                       |
+| `countryCode`| `string` | :white_check_mark: | Country code.                                              |
+
+
+<details className='details-custom'>
+ <summary>Body example</summary>
+
+```JSON
+[
+  {
+    "phone": "1234567890",
+    "countryCode": "1"
+  },
+  {
+    "phone": "9876543210",
+    "countryCode": "1"
+  },
+  {
+    "phone": "5551234567",
+    "countryCode": "1"
+  }
+]
+
+```
+</details>
+
+
+
+---
+### JSON Response: Success
+
+
+
+
+<div className="table-title">
+  Found Numbers Table
+</div>
+
+| Name        | Type       | Description                                                                 |
+|-------------|------------|-----------------------------------------------------------------------------|
+| `phone`     | `string`   | User's phone number.                                                       |
+| `countryCode`| `string`  | The country code associated with the phone number.                         |
+| `user`      | `object`   | Information about the user associated with the phone number. See [User Object Details.](/docs/userObject)|
+
+
+
+<div className="table-title">
+  Not Found Numbers Table
+</div>
+
+| Name        | Type       | Description                                                                 |
+|-------------|------------|-----------------------------------------------------------------------------|
+| `phone`     | `string`   | The phone number that was not found in the system.                         |
+| `countryCode`| `string`  | The country code associated with the phone number.                         |
+
+
+
+
+<details className='details-custom'>
+ <summary>200 ok</summary>
+
+```JSON
+{
+  "found": [
+    {
+      "phone": "1234567890",
+      "countryCode": "1",
+      "user": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+      }
+    },
+    {
+      "phone": "2345678901",
+      "countryCode": "1",
+      "user": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+      }
+    },
+    {
+      "phone": "3456789012",
+      "countryCode": "1",
+      "user": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+      }
+    }
+  ],
+  "notFound": [
+    {
+      "phone": "4567890123",
+      "countryCode": "1"
+    },
+    {
+      "phone": "5678901234",
+      "countryCode": "1"
+    },
+    {
+      "phone": "6789012345",
+      "countryCode": "1"
+    }
+  ]
+}
+
+```
+</details>
+
+
+---
+### [JSON Response](/docs/genericResponse): Error
+
+
+
+
+<details className='details-custom'>
+
+<summary>400 Bad Request: Missing Parameters</summary>
+
+```JSON
+{
+  "code": "MISSING_PARAMETERS",
+  "message": "The fields 'phone' and 'countryCode' are required but were not provided."
+}
+```
+
+</details>
+
+<details className='details-custom'>
+
+<summary>401 Unauthorized</summary>
+
+```JSON
+{
+  "code": "UNAUTHORIZED",
+  "message": "Authentication failed. Please provide a valid token."
+}
+```
+
+</details>
+
+<details className='details-custom'>
+
+<summary>400 Bad Request: Invalid Country Code</summary>
+
+```JSON
+{
+  "code": "INVALID_COUNTRY_CODE",
+  "message": "The provided country code is invalid or not supported."
+}
+```
+
+</details>
+
+
+
+<details className='details-custom'>
+
+<summary>404 Not Found: Phone Number Not Registered</summary>
+
+```JSON
+{
+  "code": "PHONE_NOT_FOUND",
+  "message": "The phone number '1234567890' does not exist in our records."
+}
+```
+
+</details>
+
+
+<details className='details-custom'>
+
+<summary>429 Too Many Requests</summary>
+
+```JSON
+{
+  "code": "TOO_MANY_REQUESTS",
+  "message": "You have exceeded the allowed number of requests. Please wait before trying again."
+}
+```
+
+</details>
+
+
+
+
+
+
+
+<details className='details-custom'>
+
+<summary>500 Internal Server Error</summary>
+
+```JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred. Please try again later."
+}
+```
+
+</details>
+
+
+
+

@@ -16,9 +16,9 @@ export const method = 'GET';
 <details className='details-custom'>
   <summary>Enpoint example</summary>
     <div className="examples-style"> 
-      {apiPath.replace('{int}','')}`444`
+      {apiPath.replace('{coinId}','444')}
     </div>
-</details>
+</details> 
 
 
 ### Header
@@ -92,10 +92,11 @@ export const method = 'GET';
 </div>
 
 
+
 | Name                  | Type       | Description                                                                                  |
 |-----------------------|------------|---------------------------------------------------------------------------------------------|
 | `coinId`              | `long`     | Unique identifier of the coin.                                                              |
-| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status](/docs/coinsStatuses) Codes page.|  |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
 | `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
 | `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
 | `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
@@ -103,50 +104,36 @@ export const method = 'GET';
 | `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
 | `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
-| `userSender`          | `Object`   | Information about the user who sent the coin.                                               |
-| `userReciver`         | `Object`   | Information about the user who received the coin.                                           |
+| `userSender`          | `Object`   | Information about the user who sent the coin. See <a href={`./${Paths.userObject}`}> User Object Details</a>  |
+| `userRecipient`       | `Object`   | Information about the user who received the coin. See <a href={`./${Paths.userObject}`}> User Object Details </a>   |
 
-
-<div className="table-title">
-  User Information
-</div>
-
-| Name                  | Type       | Description                                                                                  |
-|-----------------------|------------|---------------------------------------------------------------------------------------------|
-| `userId`              | `string`   | Unique identifier of the user.                                                              |
-| `userName`            | `string`   | Name of the user.                                                                           |
-| `userImgUrl`          | `string`   | URL of the user's profile image.                                                            |
-| `userIdReciver`       | `Object`   | Information about the recipient's user ID.                                                  |
 
 
 <details className='details-custom'>
   <summary>200 OK</summary>
 
   ```JSON
-  [
-  {
-    "coinId": 123456789,
+ {
+    "coinId": 101,
     "coinStatus": 1,
-    "latitude": 37.7749,
-    "longitude": -122.4194,
+    "latitude": 40.7128,
+    "longitude": -74.0060,
     "message": "Happy Birthday!",
-    "dollarAmount": 50.25,
-    "creationDate": "2023-11-24T10:00:00Z",
-    "expirationDate": "2023-12-01T23:59:59Z",
+    "dollarAmount": 25.50,
+    "creationDate": "2024-11-20T10:00:00Z",
+    "expirationDate": "2024-12-01T00:00:00Z",
     "redeemedDate": null,
     "userSender": {
-      "userId": "12345",
-      "userName": "Alice Smith",
-      "userImgUrl": "https://example.com/images/alice.jpg"
+      "userId": 1001,
+      "userName": "Alice Johnson",
+      "userImgUrl": "https://example.com/images/alice_johnson.jpg"
     },
-    "userReciver": {
-      "userId": "67890",
-      "userName": "Bob Johnson",
-      "userImgUrl": "https://example.com/images/bob.jpg"
+    "userRecipient": {
+      "userId": 1002,
+      "userName": "Bob Williams",
+      "userImgUrl": "https://example.com/images/bob_williams.jpg"
     }
-  },
- 
-]
+  }
 
 
   ```
@@ -156,7 +143,7 @@ export const method = 'GET';
 
 
 
-### JSON Response: Error
+### [JSON Response](/docs/genericResponse): Error
 
 
 <details className='details-custom'> 

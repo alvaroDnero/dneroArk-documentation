@@ -1,0 +1,60 @@
+---
+id: userObject
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Endpoint } from '@site/src/constants/endpointPath';
+import { Paths } from '@site/src/constants/paths';
+
+# User Object Model
+
+
+| Name                  | Type       | Description                            |
+|-----------------------|------------|----------------------------------------|
+| `userId`              | `long`   | Unique identifier of the user.         |
+| `userName`            | `string`   | First name and last name of the user.  |
+| `userImgUrl`          | `string`   | URL of the user's profile image.       |
+
+
+## It is used in the following endpoints.
+
+- ### Transactions
+
+<div className="endpoint-list">
+
+   <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionsAll}`}>**{Endpoint.transactionsAll}**</a>
+  </div>
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionIndividual}`}>**{Endpoint.transactionIndividual}**</a>
+  </div>
+
+</div>
+
+- ### Notifications
+
+<div className="endpoint-list">
+
+   <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsAll}`}>**{Endpoint.notificationsAll}**</a>
+  </div>
+  <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsIndividual}`}>**{Endpoint.notificationsIndividual}**</a>
+  </div>
+
+</div>
+
+- ### Coins
+
+<div className="endpoint-list">
+
+ <div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.coinsAll}`}>**{Endpoint.coinsAll}**</a>
+  </div>
+
+<div className="highlight-box get">
+    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.coinsIndividual}`}>**{Endpoint.coinsIndividual}**</a>
+</div>
+ 
+
+</div>

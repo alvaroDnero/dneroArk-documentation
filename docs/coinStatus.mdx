@@ -12,12 +12,9 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 | **Status Code** | **Description**                                                                 |
 |:---------------:|---------------------------------------------------------------------------------|
 | `0`             | Status zero does not exist, but if used as a <a href={`./${Paths.parameters}`}>**parameter**</a>, it will return coins from all statuses. |
-| `1`             | Received, pending to be collected.                                             |
-| `2`             | Sent, pending to be collected.                                                 |
-| `3`             | Received and collected.                                                        |
-| `4`             | Sent and collected.                                                            |
-| `5`             | Received and expired.                                                          |
-| `6`             | Sent and expired.                                                              |
+| `1`             | Collected.                                             |
+| `2`             | Pending.                                                 |
+| `3`             | Expired.                                                              |
 
 
 ## It is used in the following endpoints.

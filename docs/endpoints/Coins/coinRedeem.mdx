@@ -1,0 +1,127 @@
+---
+id: coinsRedeem
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Endpoint } from '@site/src/constants/endpointPath';
+import { Paths } from '@site/src/constants/paths';
+export const apiPath = Endpoint.coinsRedeem;
+export const method = 'POST';
+
+# Redeem Coin
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath} 
+</div>
+<details className='details-custom'>
+  <summary>Enpoint example</summary>
+    <div className="examples-style"> 
+      {apiPath.replace('{coinId}','444')}
+    </div>
+</details>
+
+
+## Header
+
+| Key             | Value            |
+|-----------------|------------------|
+| `Authorization` | Bearer `{{accessToken}}`|
+| `Accept`        | application/json |
+
+---
+
+### [JSON Response](/docs/genericResponse): Success 
+<details className='details-custom'>
+ <summary>200 OK</summary>
+```JSON
+{
+  "code": "REDEEM_SUCCESS",
+  "message": "Coin successfully redeemed."
+}
+```
+</details>
+---
+### [JSON Response](/docs/genericResponse): Error
+
+<details className='details-custom'>
+ <summary>400 Bad Request</summary>
+
+```JSON
+{
+  "code": "COIN_ALREADY_REDEEMED",
+  "message": "The coin has already been redeemed."
+}
+
+```
+
+
+</details>
+
+<details className='details-custom'> 
+<summary>403 Forbidden: Unauthorized Access</summary>
+
+```JSON
+{
+  "code": "UNAUTHORIZED_ACCESS",
+  "message": "You do not have the necessary permissions to access this resource."
+}
+
+
+```
+</details>
+
+
+<details className='details-custom'>
+<summary> 404 Not Found</summary>
+```JSON
+{
+  "code": "COIN_NOT_FOUND",
+  "message": "The specified coin does not exist."
+}
+
+```
+</details>
+
+
+
+<details className='details-custom'> 
+<summary>409 Conflict: Concurrent Requests</summary>
+```JSON
+{
+  "code": "CONCURRENT_REQUESTS",
+  "message": "Two requests were made simultaneously for the same resource. Please retry one of them."
+}
+
+
+```
+
+
+</details>
+
+
+<details className='details-custom'> 
+<summary>429 Too Many Requests</summary>
+```JSON
+{
+  "code": "TOO_MANY_REQUESTS",
+  "message": "You have exceeded the allowed number of requests. Please wait before trying again."
+}
+
+```
+</details>
+
+
+
+
+
+<details className='details-custom'>
+
+<summary> 500 Internal Server Error</summary>
+```JSON
+{
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred. Please try again later."
+}
+
+```
+</details>

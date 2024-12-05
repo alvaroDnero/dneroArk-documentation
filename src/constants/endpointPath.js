@@ -5,12 +5,15 @@ export const Endpoint = {
     updateToken: '/DneroArk/login/updateToken',
     logout: '/DneroArk/logout',
     user: '/DneroArk/user',
+    contact: '/DneroArk/user/contacts',
     transactionsAll: '/DneroArk/transactions',
-    transactionIndividual: '/DneroArk/transactions/{int}',
+    transactionIndividual: '/DneroArk/transactions/{transactionId}',
     notificationsAll: '/DneroArk/notifications',
-    notificationsIndividual: '/DneroArk/notifications/{int}',
+    notificationsIndividual: '/DneroArk/notifications/{notificationId}',
     coinsAll: '/DneroArk/coins',
-    coinsIndividual: '/DneroArk/coins/{int}',
+    coinsIndividual: '/DneroArk/coins/{coinId}',
+    coinsRedeem: '/DneroArk/coins/{coinId}/reedem',
+    coinsDrop: '/DneroArk/coins/coinsDrop',
   
   
   };

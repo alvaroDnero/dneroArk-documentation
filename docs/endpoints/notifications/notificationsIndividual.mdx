@@ -26,7 +26,7 @@ export const id = '{int}';
 <details className='details-custom'>
   <summary>Enpoint example</summary>
     <div className="examples-style"> 
-      {apiPath.replace('{int}','')}`444`
+      {apiPath.replace('{notificationId}','')}`444`
     </div>
 </details>
 
@@ -50,27 +50,29 @@ export const id = '{int}';
 | Name              | Type     | Description                                                                                     |
 |-------------------|----------|-------------------------------------------------------------------------------------------------|
 | `notificationId`  | `long`   | Notification identification number.                                                            |
-| `interactionType` | `int`    | If `1`, `userName` captured the coin; if `2`, `userName` threw the coin; if `0`, it results in a request error. |
-| `userName`        | `string` | Name of the person with whom the interaction occurred.                                          |
-| `userImgUrl`      | `string` | The user's image URL.                                                                           |
-| `date`            | `double` | If `interactionType` is `1`, the date when `userName` captured the coin; if `2`, the date when the coin was thrown by `userName`. |
-| `latitude`        | `double` | If `interactionType` is `2`, the latitude where the coin was thrown; otherwise, its value should be `0.0`. |
-| `longitude`       | `double` | If `interactionType` is `2`, the longitude where the coin was thrown; otherwise, its value should be `0.0`. |
+| `interactionType` | `int`    | Possible values: `0` for sent or `1` received.                                                        |
+| `user`            | `object` | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/userObject) |  
+| `interactionDate` | `double` | If `interactionType` is `0`, the date when `user` captured the coin. ; if `1`, the date when the coin was thrown by `user`  |
+| `latitude`        | `double` | If `interactionType` is `1`, the latitude where the coin was thrown; otherwise, its value should be `0.0`. |
+| `longitude`       | `double` | If `interactionType` is `1`, the longitude where the coin was thrown; otherwise, its value should be `0.0`. |
 
 
 
 <details className='details-custom'>
   <summary>200 OK</summary>
 ```JSON
-  {
-    "notificationId": 123456,
-    "interactionType": 1,
-    "userName": "Alice Smith",
-    "userImgUrl": "https://example.com/images/alice.jpg",
-    "date": 1680537600.0,
-    "latitude": 0.0,
-    "longitude": 0.0
+{
+  "notificationId": 201,
+  "interactionType": 0,
+  "user": {
+    "userId": 1001,
+    "userName": "Alice Johnson",
+    "userImgUrl": "https://example.com/images/alice_johnson.jpg"
   },
+  "interactionDate": "2024-11-27T10:30:00Z",
+  "latitude": 0.0,
+  "longitude": 0.0
+}
   
 ```
 
@@ -79,7 +81,7 @@ export const id = '{int}';
 
 
 
-### JSON Response: Error
+### [JSON Response](/docs/genericResponse): Error
 
 <details className='details-custom'> 
     <summary>400 Bad Request</summary>

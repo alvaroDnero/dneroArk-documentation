@@ -36,3 +36,8 @@
   background-color: #dc3545;
   color: white;
 }
+
+.method.webhook {
+  background-color: #6c757d; /* Neutral gray */
+  color: white;
+}

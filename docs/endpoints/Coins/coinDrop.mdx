@@ -1,0 +1,35 @@
+---
+id: coinDrop
+---
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Paths } from '@site/src/constants/paths';
+import { Endpoint } from '@site/src/constants/endpointPath';
+
+export const apiPath = Endpoint.coinsDrop;
+export const method = 'POST';
+
+# Drop a coin
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath} 
+</div>
+
+## Header
+
+| Key             | Value            |
+|-----------------|------------------|
+| `Authorization` | Bearer key       |
+| `Content-Type`  | application/json |
+| `Accept`        | application/json |
+
+## Body
+
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | A message associated with the coin.                                   |
+| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
+| `userRecipientId`     | `int`      | Id of the user who will receive the coin.    |

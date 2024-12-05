@@ -24,7 +24,7 @@ export const id = '{int}';
 <details className='details-custom'>
   <summary>Enpoint example</summary>
     <div className="examples-style"> 
-      {apiPath.replace('{int}','')}`444`
+      {apiPath.replace('{transactionId}','')}`444`
     </div>
 </details>
 
@@ -50,21 +50,16 @@ Coin Statuses
 
 ### JSON Response: Success 
 
-<div className="table-title">
-  A list of
-</div>
-
-| Name                  | Type       | Description                                                                                  |
+| Name                  | Type       |   Description                                                                                  |
 |-----------------------|------------|-----------------------------------------------------------------------------------------------|
-| `id`                  | `long`     | Unique identifier of the transaction notification.                                           |
-| `type`                | `string`   | Possible values: `sent` or `received`.                                                      |
-| `userName`            | `string`   | If `type` is `sent`, it’s the recipient's name; if `received`, it’s the sender's name.       |
-| `userImgUrl`          | `string`   | If `type` is `sent`, it’s the recipient's image Url; if `received`, it’s the sender's image Url.       |
-| `date`                | `DateTime` | The date and time when the transaction was created.                                          |
+| `transactionId`       | `long`     | Unique identifier of the transaction notification.                                           |
+| `interactionType`     | `int`      | Possible values: `0` for sent or `1` received.                                                        |
+| `user`                | `object`   | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/userObject) |  
 | `amount`              | `string`   | The amount of money involved in the transaction.                                             |
-| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|                                           |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
 | `expirationDate`      | `DateTime` | Expiration date of the coin. |
 | `capturedDate`        | `DateTime` | Date when the coin was captured. |
+| `createDate`          | `DateTime` | Date when the coin was created. |
 
 
 <details className='details-custom'>
@@ -72,24 +67,27 @@ Coin Statuses
 ```JSON
 
 {
-  "id": 123456789,
-  "type": "sent",
-  "userName": "Alice Smith",
-  "userImgUrl": "https://example.com/images/alice.jpg",
-  "date": "2023-11-24T15:30:00Z",
-  "amount": "150.75",
+  "transactionId": 301,
+  "interactionType": 0,
+  "user": {
+    "userId": 1001,
+    "userName": "Alice Johnson",
+    "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+  },
+  "amount": "50.00",
   "coinStatus": 1,
-  "expirationDate": "2023-12-01T23:59:59Z",
-  "capturedDate": null
+  "expirationDate": "2024-12-01T00:00:00Z",
+  "capturedDate": null,
+  "createDate": "2024-11-20T10:00:00Z"
 }
- 
+
 ```
 </details>
 
 
 
 ---
-### JSON Response: Error
+### [JSON Response](/docs/genericResponse): Error
 
 
 <details className='details-custom'>

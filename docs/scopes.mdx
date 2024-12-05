@@ -37,6 +37,11 @@ Here is a list of the scopes you require to access the API Endpoints and Webhook
     <HttpMethodTag method={'GET'} /> <a href={`./${Paths.user}`}>**{Endpoint.user}**</a>
   </div>
 </div>
+<div className="endpoint-list">
+  <div className="highlight-box get">
+    <HttpMethodTag method={'POST'} /> <a href={`./${Paths.contact}`}>**{Endpoint.contact}**</a>
+  </div>
+</div>
 
 ## Transactions
 
@@ -74,6 +79,14 @@ Here is a list of the scopes you require to access the API Endpoints and Webhook
 
   <div className="highlight-box get">
     <HttpMethodTag method={'GET'} /> <a href={`./${Paths.coinsIndividual}`}>**{Endpoint.coinsIndividual}**</a>
+  </div>
+  
+  <div className="highlight-box get">
+    <HttpMethodTag method={'POST'} /> <a href={`./${Paths.coinsRedeem}`}>**{Endpoint.coinsRedeem}**</a>
+  </div>
+
+  <div className="highlight-box get">
+    <HttpMethodTag method={'POST'} /> <a href={`./${Paths.coinsDrop}`}>**{Endpoint.coinsDrop}**</a>
   </div>
 </div>
 

@@ -4,16 +4,16 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 
 export default function DocSidebarItem(props) {
-  // Leer el método HTTP solo si está definido
-  const apiMethod = props.item?.customProps?.method || null; // Valor predeterminado: null
-  const methodClass = apiMethod ? apiMethod.toLowerCase() : ''; // Clase CSS basada en el método
+  // Read the HTTP method or webhook
+  const apiMethod = props.item?.customProps?.method || null; // Default: null
+  const methodClass = apiMethod ? apiMethod.toLowerCase() : ''; // Class based on method
 
   return (
     <div className={clsx(styles.sidebarItem)}>
       <OriginalDocSidebarItem {...props} />
-      {apiMethod && ( // Mostrar solo si apiMethod está definido
+      {apiMethod && ( // Show only if apiMethod is defined
         <span className={clsx(styles.method, styles[methodClass])}>
-          {apiMethod}
+          {apiMethod === 'WEBHOOK' ? 'Webhook' : apiMethod}
         </span>
       )}
     </div>

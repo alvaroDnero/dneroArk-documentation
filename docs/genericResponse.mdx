@@ -1,0 +1,29 @@
+---
+id: genericResponse
+---
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Paths } from '@site/src/constants/paths';
+import { Endpoint } from '@site/src/constants/endpointPath';
+
+# Generic Response
+
+
+
+The `genericResponse` object serves as a standardized model for server responses that do not include specific or operation-critical data. It provides clear feedback on errors or issues encountered during the request.
+
+This structure ensures consistency in error handling and simplifies client-side processing of server responses.
+
+
+| Field    | Type   | Description                                                         | 
+|----------|--------|---------------------------------------------------------------------|
+| `code`   | String | Error code indicating the type of issue.                            |
+| `message`| String | Detailed description of the error, specifying the missing fields.   | 
+
+Example - 400 Bad Request:
+
+```JSON
+{
+  "code": "MISSING_FIELDS",
+  "message": "The fields 'phone', 'countryCode', 'otp', and 'deviceID' are required."
+}
+```
