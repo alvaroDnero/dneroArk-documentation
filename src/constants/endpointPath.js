@@ -13,8 +13,9 @@ export const Endpoint = {
     coinsAll: '/DneroArk/coins',
     coinsIndividual: '/DneroArk/coins/{coinId}',
     coinsRedeem: '/DneroArk/coins/{coinId}/reedem',
-    coinsDrop: '/DneroArk/coins/coinsDrop',
-  
+    coinsDrop: '/DneroArk/coins/Drop',
+    coinsPending: '/DneroArk/coins/pending',
+   
   
   };
   

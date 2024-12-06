@@ -20,6 +20,7 @@ export const Paths = {
   coinsIndividual: 'endpoints/Coins/coinsIndividual',
   coinsRedeem: 'endpoints/Coins/coinsRedeem',
   coinsDrop: 'endpoints/Coins/coinDrop', 
+  coinsPending: 'endpoints/Coins/coinPending', 
 
 
 

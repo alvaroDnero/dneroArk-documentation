@@ -219,7 +219,16 @@ import { Paths } from './src/constants/paths';
                 method: 'POST',
               },
               
-            },            
+            },   
+            {
+              type: 'doc',
+              id: Paths.coinsPending, 
+              label: 'Pending',
+              customProps: {
+                method: 'GET',
+              },
+              
+            },              
            ],
         }
 
