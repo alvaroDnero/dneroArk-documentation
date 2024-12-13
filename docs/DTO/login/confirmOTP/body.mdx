@@ -1,0 +1,35 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Confirm OTP Body
+
+| Name         | Type     | Required           | Description                                                |
+|--------------|----------|--------------------|------------------------------------------------------------|
+| `otp`        | `string` | :white_check_mark: | Code received via OTP.                                     |
+| `deviceInfo` | `Object` | :x:                | Device info to prevent open sessions on multiple devices. For detailed information, see the **[Device Info](/docs/Objects/phoneObject)**    |
+
+
+<Tabs>
+  <TabItem value="json" label="Json">
+```JSON
+{
+  "otp": "123456",
+  "deviceInfo": {
+    "phone": "1234567890",
+    "countryCode": "+1"
+  }
+}
+```
+
+  </TabItem>
+
+  <TabItem value="c#" label="C#">
+
+```c#
+
+```
+
+  </TabItem>
+
+  
+</Tabs>

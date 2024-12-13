@@ -31,7 +31,7 @@ import { Labels } from './src/constants/sidebarLabels';
       
     },
     
-    {
+    /*{
     type: 'category',
      label: Labels.objectCategory,     
      collapsible: true,
@@ -62,7 +62,7 @@ import { Labels } from './src/constants/sidebarLabels';
     },
 
      ]
-   },
+   },*/
     
     {
       type: 'category',  
@@ -247,44 +247,217 @@ import { Labels } from './src/constants/sidebarLabels';
       label: Labels.dto,     
       collapsible: true,
       collapsed: true,
-      link: {
+      /*link: {
         type: 'doc',
-        id: Paths.dto, // Replace 'scopes' with the ID of the page you want to link
-      },
-      items: [        
-      {
-        type: 'category',
-        label: "Complement Objects",     
-        collapsible: true,
-        collapsed: true,          
-        items: [
-          {
-            type: 'doc',
-            id: Paths.userDto, 
-            label: Labels.userDto,       
-          },
-          {
-            type: 'doc',
-            id: Paths.deviceInfoDto, 
-            label: Labels.deviceInfoDto,       
-          },
-          {
-            type: 'doc',
-            id: Paths.balanceDto, 
-            label: Labels.balanceDto,       
-          },
-          {
-            type: 'doc',
-            id: Paths.genericResponseDto, 
-            label: Labels.genericResponseDto,       
-          },
-  
+        id: Paths.dto, 
+      },*/
+      items: [    
+        
+        {
+          type: 'doc',
+          id: Paths.userDto, 
+          label: Labels.userDto,       
+        },
+        {
+          type: 'doc',
+          id: Paths.deviceInfoDto, 
+          label: Labels.deviceInfoDto,       
+        },
+        {
+          type: 'doc',
+          id: Paths.balanceDto, 
+          label: Labels.balanceDto,       
+        },
+        {
+          type: 'doc',
+          id: Paths.genericResponseDto, 
+          label: Labels.genericResponseDto,       
+        },
+
+        {
+          type: 'category',
+          label: 'Login & Logout',
+          collapsible: true,
+          collapsed: true,
+          items: [   
+            {
+              type: 'category',
+              label: Labels.otp,
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: Paths.otpDtoBody, 
+                  label: "Body DTO",   
+                },
+                {
+                  type: 'doc',
+                  id: Paths.otpDtoResponse, 
+                  label: "Response DTO",
+                  
+                  
+                },
+
+              ]
+            },
+            {
+              type: 'category',
+              label: Labels.phoneDto,
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: Paths.phoneDtoBody, 
+                  label: "Body DTO",   
+                },
+                {
+                  type: 'doc',
+                  id: Paths.phoneDtoResponse, 
+                  label: "Response DTO",                  
+                  
+                },
+
+              ]
+            },
+            {
+              type: 'category',
+              label: Labels.updateTokenDto,
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: Paths.updateTokenDtoBody, 
+                  label: "Body DTO",   
+                },
+                {
+                  type: 'doc',
+                  id: Paths.updateTokenDtoResponse, 
+                  label: "Response DTO",                  
+                  
+                },
+
+              ]
+            },
+
           ]
         },
+        {
+          type: 'category',
+          label: 'User',
+          collapsible: true,
+          collapsed: true,
+          items: [  
+            {
+              type: 'doc',
+              id: Paths.userProfileDto, 
+              label: Labels.userDto,                  
+              
+            },
+            {
+              type: 'category',
+              label: Labels.contact,
+              collapsible: true,
+              collapsed: true,
+              items: [  
+                {
+                  type: 'doc',
+                  id: Paths.contactDtoBody, 
+                  label: "Body DTO",   
+                },
+                {
+                  type: 'doc',
+                  id: Paths.contactDtoResponse, 
+                  label: "Response DTO",                  
+                  
+                },
+    
+              ]
+            } ,
+
+          ]
+        } , 
+        {
+          type: 'category',
+          label: "Transactions",
+          collapsible: true,
+          collapsed: true,
+          items: [ 
+            {
+              type: 'doc',
+              id: Paths.transactionsAllDto, 
+              label: Labels.transactionsAllDto,   
+            },
+            {
+              type: 'doc',
+              id: Paths.transactionIndividualDto, 
+              label: Labels.transactionIndividualDto,                  
+              
+            },
+          ]
+
+        }, 
+        {
+          type: 'category',
+          label: "Coins",
+          collapsible: true,
+          collapsed: true,
+          items: [ 
+            {
+              type: 'category',
+              label: Labels.coinsAll,
+              collapsible: true,
+              collapsed: true,
+              items: [ 
+                {
+                  type: 'doc',
+                  id: Paths.coinsAllDtoNormal, 
+                  label: "Normal DTO",   
+                },
+                {
+                  type: 'doc',
+                  id: Paths.coinsAllDtoVerbose, 
+                  label: "Verbose DTO",                  
+                  
+                },
+              ]
+    
+            }, 
+            {
+              type: 'category',
+              label: Labels.coinsIndividual,
+              collapsible: true,
+              collapsed: true,
+              items: [ 
+                {
+                  type: 'doc',
+                  id: Paths.coinsIndividualDtoNormal, 
+                  label: "Normal DTO",   
+                },
+                {
+                  type: 'doc',
+                  id: Paths.coinsIndividualDtoVerbose, 
+                  label: "Verbose DTO",                  
+                  
+                },
+              ]
+    
+            }, 
+            {
+              type: 'doc',
+              id: Paths.coinsNumberToCollectDto, 
+              label: Labels.coinsNumberToCollectDto,   
+            },
+          ]
+
+        }, 
+        
   
   
-        ]
-      },
+      ]
+    },
   ],
 };
 

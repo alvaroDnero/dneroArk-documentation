@@ -1,12 +1,33 @@
+
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Generic Response DTO
 
-| Field    | Type   | 
-|----------|--------|
-| `event`  | String | 
-| `message`| String | 
+| Field    | Type   | Description                                                                 |
+|----------|--------|-----------------------------------------------------------------------------|
+| `event`  | String | A code indicating the type of result or error.                              |
+| `message`| String | A detailed description providing context for the result of the operation.   |
 
 
-## C#
+
+
+
+<Tabs>
+  <TabItem value="json" label="Json">
+```JSON
+{
+  "event": "MISSING_FIELDS",
+  "message": "The fields 'phone', 'countryCode', 'otp', and 'deviceID' are required."
+}
+```
+
+  </TabItem>
+
+  <TabItem value="c#" label="C#">
+
 ```c#
 /// <summary>
 /// Represents a Data Transfer Object (DTO) for an operation result or error message.
@@ -24,4 +45,9 @@ public class GenericResponseDTO
     public string Message { get; set; }
 } 
 
-```
+``` 
+
+  </TabItem>
+
+  
+</Tabs>

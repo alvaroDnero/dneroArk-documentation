@@ -1,0 +1,140 @@
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# All Coins Verbose
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
+| `cashAmount`          | `double`   | The dollar equivalent value of the coin.                                                   |
+| `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
+| `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
+| `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
+| `userSender`          | `Object`   | Information about the user who sent the coin. See [User Object Details.](/docs/Objects/userObject)  |
+| `userRecipient`       | `Object`   | Information about the user who received the coin. See [User Object Details.](/docs/Objects/userObject)    |
+
+
+
+
+<Tabs>
+  <TabItem value="json" label="Json">
+
+```JSON
+{
+  
+    {
+      "coinId": 101,
+      "coinStatus": 2,
+      "latitude": 40.7128,
+      "longitude": -74.0060,
+      "message": "Happy Birthday!",
+      "cashAmount": 25.50,
+      "creationDate": "2024-11-20T10:00:00Z",
+      "expirationDate": "2024-12-01T00:00:00Z",
+      "redeemedDate": null,
+      "userSender": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+      },
+      "userRecipient": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+      }
+    },
+    {
+      "coinId": 102,
+      "coinStatus": 1,
+      "latitude": 34.0522,
+      "longitude": -118.2437,
+      "message": "Thank you for your help!",
+      "cashAmount": 50.00,
+      "creationDate": "2024-11-18T15:30:00Z",
+      "expirationDate": "2024-11-30T00:00:00Z",
+      "redeemedDate": "2024-11-25T12:00:00Z",
+      "userSender": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+      },
+      "userRecipient": {
+        "userId": 1004,
+        "userName": "Dana White",
+        "userImgUrl": "https://example.com/images/dana_white.jpg"
+      }
+    }
+}
+  ```
+
+  </TabItem>
+
+  <TabItem value="c#" label="Json Paginator">
+
+
+```JSON
+{
+  "currentPage": 1,
+  "totalPages": 5,
+  "pageSize": 2,
+  "totalElements": 10,
+  "coins": 
+  [
+    {
+      "coinId": 101,
+      "coinStatus": 2,
+      "latitude": 40.7128,
+      "longitude": -74.0060,
+      "message": "Happy Birthday!",
+      "cashAmount": 25.50,
+      "creationDate": "2024-11-20T10:00:00Z",
+      "expirationDate": "2024-12-01T00:00:00Z",
+      "redeemedDate": null,
+      "userSender": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+      },
+      "userRecipient": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+      }
+    },
+    {
+      "coinId": 102,
+      "coinStatus": 1,
+      "latitude": 34.0522,
+      "longitude": -118.2437,
+      "message": "Thank you for your help!",
+      "cashAmount": 50.00,
+      "creationDate": "2024-11-18T15:30:00Z",
+      "expirationDate": "2024-11-30T00:00:00Z",
+      "redeemedDate": "2024-11-25T12:00:00Z",
+      "userSender": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+      },
+      "userRecipient": {
+        "userId": 1004,
+        "userName": "Dana White",
+        "userImgUrl": "https://example.com/images/dana_white.jpg"
+      }
+    }
+  ]
+
+}
+
+```
+
+  </TabItem>
+
+  
+</Tabs>

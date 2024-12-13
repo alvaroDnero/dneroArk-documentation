@@ -1,4 +1,12 @@
+
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Balance DTO
+
+
 
 | Name            | Type     | Description                                     |
 |-----------------|----------|-------------------------------------------------|
@@ -7,7 +15,26 @@
 
 
 
-## C#
+
+
+
+
+
+
+<Tabs>
+  <TabItem value="json" label="Json">
+
+```JSON
+{
+  "cashBalance": 1500.75,
+  "cryptoBalance": 2.356
+}
+
+```
+
+  </TabItem>
+
+  <TabItem value="c#" label="C#">
 
 ```c#
 /// <summary>
@@ -26,3 +53,9 @@ public class ArkBalanceDTO
     public double CryptoBalance { get; set; }
 }
 ``` 
+
+  </TabItem>
+
+  
+</Tabs>
+

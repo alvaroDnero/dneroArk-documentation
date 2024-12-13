@@ -1,0 +1,45 @@
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# User Profile
+
+| Name            | Type     | Description                                     |
+|-----------------|----------|-------------------------------------------------|
+| `userId`        | `long`   | Unique identifier of the user.                  |
+| `imgUrl`        | `string` | URL where the profile image is hosted.          |
+| `firstName`     | `string` | User's first name.                              |
+| `lastName`      | `string` | User's last name.                               |
+| `deviceInfo`    | `object` | Information about the user's device. For detailed information, see the **[Device Info](/docs/DTO/Objects/deviceInfoDto)**  |
+| `balance`       | `object` | Information about Balance. For detailed information, see the **[balance info](/docs/DTO/Objects/balanceDTO)**           |
+
+
+
+<Tabs>
+  <TabItem value="json" label="Json">
+
+```json
+{
+  "userId": 123456789,
+  "imgProfileUrl": "https://example.com/profile-images/user123.jpg",
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": {...},
+  "deviceInfo": {...},
+}
+```
+
+  </TabItem>
+
+  <TabItem value="c#" label="C#">
+
+```c#
+
+```
+
+  </TabItem>
+
+  
+</Tabs>

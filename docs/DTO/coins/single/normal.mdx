@@ -1,0 +1,44 @@
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Coin Individual DTO
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)  |
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
+| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `senderName`          | `string`   | Name of the person who sent the coin.      
+
+<Tabs>
+  <TabItem value="json" label="Json">
+
+```JSON
+{
+    "coinId": 123456789,
+    "coinStatus": 2,
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "message": "Happy Birthday!",
+    "dollarAmount": 50.25,
+    "senderName": "Alice Smith"
+}
+```
+
+  </TabItem>
+
+  <TabItem value="c#" label="C#">
+
+```c#
+
+```
+
+  </TabItem>
+
+  
+</Tabs>

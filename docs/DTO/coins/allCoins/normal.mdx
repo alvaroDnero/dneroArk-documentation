@@ -1,0 +1,81 @@
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# All Coins
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)  |
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
+| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `senderName`          | `string`   | Name of the person who sent the coin.      
+
+
+<Tabs>
+  <TabItem value="json" label="Json">
+
+```JSON
+[
+  {
+    "coinId": 123456789,
+    "coinStatus": 2,
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "message": "Happy Birthday!",
+    "dollarAmount": 50.25,
+    "senderName": "Alice Smith"
+  },
+  {
+    "coinId": 987654321,
+    "coinStatus": 1,
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "message": "Thank you for your help!",
+    "dollarAmount": 100.00,
+    "senderName": "Charlie Brown"
+  }
+]
+```
+
+  </TabItem>
+
+  <TabItem value="c#" label="Json Paginator">
+
+
+```JSON
+{
+  "currentPage": 1,
+  "totalPages": 5,
+  "pageSize": 2,
+  "totalCoins": 10,
+  "coins": [
+    {
+      "coinId": 123456789,
+      "coinStatus": 2,
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "message": "Happy Birthday!",
+      "dollarAmount": 50.25,
+      "senderName": "Alice Smith"
+    },
+    {
+      "coinId": 987654321,
+      "coinStatus": 1,
+      "latitude": 40.7128,
+      "longitude": -74.0060,
+      "message": "Thank you for your help!",
+      "dollarAmount": 100.00,
+      "senderName": "Charlie Brown"
+    }
+  ]
+}
+```
+
+  </TabItem>
+
+  
+</Tabs>

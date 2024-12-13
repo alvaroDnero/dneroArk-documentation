@@ -1,14 +1,34 @@
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # User DTO
 
-| Name                  | Type       | 
-|-----------------------|------------|
-| `userId`              | `long`     | 
-| `firstName`           | `string`   | 
-| `lastName`            | `string`   | 
-| `imgUrl`              | `string`   | 
-| `deviceInfo`          | `object`   | 
+| Name                  | Type       | Description                            |
+|-----------------------|------------|----------------------------------------|
+| `userId`              | `long`     | Unique identifier of the user.         |
+| `firstName`           | `string`   | User's first name.                     |
+| `lastName`            | `string`   | User's last name.                      |
+| `imgUrl`              | `string`   | URL of the user's profile image.       |
+| `deviceInfo`          | `object`   | Information about the user's device. For detailed information, see the **[Device Info](./deviceInfoDto)**  |
 
-## C#
+
+<Tabs>
+  <TabItem value="json" label="Json">
+
+```JSON
+{
+  "userId": 123456789,  
+  "firstName": "John",
+  "lastName": "Doe",
+  "imgUrl": "https://example.com/profile-images/user123.jpg",
+  "deviceInfo": {...}  
+}
+```
+  </TabItem>
+
+  <TabItem value="c#" label="C#">
 
 ```C#
 /// <summary>
@@ -43,3 +63,9 @@ public class UserDTO
     public DeviceInfoDTO DeviceInfo { get; set; }
 }
 ```
+
+  </TabItem>
+
+  
+</Tabs>
+

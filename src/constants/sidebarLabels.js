@@ -23,6 +23,19 @@ export const Labels = {
   genericResponseDto: "Generic Response DTO",
   balanceDto: "Balance DTO",
 
+  otpDto: 'Generate OTP DTO',
+  phoneDto: 'Confirm OTP DTO',
+  updateTokenDto: 'Update User Tokens DTO',  
+
+  userDto: 'User Profile DTO',
+  contactDto: 'Validate Phones DTO',
+
+  transactionsAllDto: 'Get All Transactions DTO',
+  transactionIndividualDto: 'Get A Transaction DTO',
+
+  coinsNumberToCollectDto: "Number of coins to collect DTO",
+ 
+
 
 
   //todos los endpoint

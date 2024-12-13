@@ -1,0 +1,134 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Get All The Transactions
+
+| Name                  | Type       |   Description                                                                                  |
+|-----------------------|------------|-----------------------------------------------------------------------------------------------|
+| `transactionId`       | `long`     | Unique identifier of the transaction notification.                                           |
+| `interactionType`     | `int`      | Possible values: `0` for sent or `1` received.                                                        |
+| `amount`              | `string`   | The amount of money involved in the transaction.                                             |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
+| `expirationDate`      | `DateTime` | Expiration date of the coin. |
+| `capturedDate`        | `DateTime` | Date when the coin was captured. |
+| `createDate`          | `DateTime` | Date when the coin was created. |
+| `user`                | `object`   | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/Objects/userObject) |  
+
+
+<Tabs>
+  <TabItem value="json" label="JSON No Paginator">
+
+```json
+{
+  
+    {
+        "transactionId": 301,
+        "interactionType": 0,      
+        "amount": "50.00",
+        "coinStatus": 1,
+        "expirationDate": "2024-12-01T00:00:00Z",
+        "capturedDate": null,
+        "createDate": "2024-11-20T10:00:00Z",
+        "user": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+        }
+    },
+    {
+        "transactionId": 302,
+        "interactionType": 1,      
+        "amount": "75.25",
+        "coinStatus": 2,
+        "expirationDate": "2024-12-05T00:00:00Z",
+        "capturedDate": "2024-11-27T09:00:00Z",
+        "createDate": "2024-11-19T15:45:00Z",
+        "user": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+        }
+    },
+    {
+        "transactionId": 303,
+        "interactionType": 0,      
+        "amount": "100.00",
+        "coinStatus": 3,
+        "expirationDate": "2024-11-30T00:00:00Z",
+        "capturedDate": null,
+        "createDate": "2024-11-18T12:30:00Z",
+        "user": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+        }
+    }
+  
+}
+```
+
+  </TabItem>
+
+  <TabItem value="c#" label="JSON Paginator">
+
+```JSON
+{
+  "currentPage": 2,
+  "totalPages": 5,
+  "pageSize": 10,
+  "totalElements": 45,
+  "transactions":  
+  [
+    {
+      "transactionId": 301,
+      "interactionType": 0,
+      "user": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+      },
+      "amount": "50.00",
+      "coinStatus": 1,
+      "expirationDate": "2024-12-01T00:00:00Z",
+      "capturedDate": null,
+      "createDate": "2024-11-20T10:00:00Z"
+    },
+    {
+      "transactionId": 302,
+      "interactionType": 1,
+      "user": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+      },
+      "amount": "75.25",
+      "coinStatus": 2,
+      "expirationDate": "2024-12-05T00:00:00Z",
+      "capturedDate": "2024-11-27T09:00:00Z",
+      "createDate": "2024-11-19T15:45:00Z"
+    },
+    {
+      "transactionId": 303,
+      "interactionType": 0,
+      "user": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+      },
+      "amount": "100.00",
+      "coinStatus": 3,
+      "expirationDate": "2024-11-30T00:00:00Z",
+      "capturedDate": null,
+      "createDate": "2024-11-18T12:30:00Z"
+    }
+  ]
+
+}
+
+```
+
+  </TabItem>
+
+  
+</Tabs>

@@ -15,11 +15,36 @@ export const Paths = {
 
 //Esquemas
   dto: 'DTO/dto',
+
   userDto:'DTO/Objects/userDTO',
   deviceInfoDto: 'DTO/Objects/deviceInfoDto',
   genericResponseDto: "DTO/Objects/genericResponseDTO",
   balanceDto: "DTO/Objects/balanceDTO",
 
+  otpDtoBody: 'DTO/login/generateOTP/body',
+  otpDtoResponse: 'DTO/login/generateOTP/response',
+
+  phoneDtoBody: 'DTO/login/confirmOTP/body',
+  phoneDtoResponse: 'DTO/login/confirmOTP/response',
+  phoneDtoBody: 'DTO/login/confirmOTP/body',
+  phoneDtoResponse: 'DTO/login/confirmOTP/response',
+  updateTokenDtoBody: 'DTO/login/accessToken/body',
+  updateTokenDtoResponse: 'DTO/login/accessToken/response',
+
+  userProfileDto: 'DTO/user/userProfile',
+  contactDtoBody: 'DTO/user/contacts/body',
+  contactDtoResponse: 'DTO/user/contacts/response',
+
+  transactionsAllDto: 'DTO/transactions/allTransactions',
+  transactionIndividualDto: 'DTO/transactions/transactionIndividual',
+
+  coinsAllDtoNormal: 'DTO/coins/allCoins/normal',
+  coinsAllDtoVerbose: 'DTO/coins/allCoins/verbose',
+
+  coinsIndividualDtoNormal: 'DTO/coins/single/normal',
+  coinsIndividualDtoVerbose: 'DTO/coins/single/verbose',
+  coinsNumberToCollectDto: 'DTO/coins/numberOfCoinsToCollect', 
+  
 
   
 
