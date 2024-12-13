@@ -11,10 +11,11 @@ export const Endpoint = {
     notificationsAll: '/DneroArk/notifications',
     notificationsIndividual: '/DneroArk/notifications/{notificationId}',
     coinsAll: '/DneroArk/coins',
-    coinsIndividual: '/DneroArk/coins/{coinId}',
-    coinsRedeem: '/DneroArk/coins/{coinId}/reedem',
+    coinsIndividual: '/DneroArk/coins/{coinId}',    
     coinsDrop: '/DneroArk/coins/Drop',
-    coinsPending: '/DneroArk/coins/pending',
+    coinsRedeem: '/DneroArk/coins/reedem/{coinId}',
+    coinsPending: '/DneroArk/coins/collectable/pending',
+    coinsNumberToCollect: '/DneroArk/coins/collectable/count',
    
   
   };

@@ -13,18 +13,18 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 | Name           | Type      |  Description                                                                                   |
 |----------------|-----------|-----------------------------------------------------------------------------------------------|
 | `statuses`     | `int[]`   | An array of statuses to filter the information. If `null` or `0`, all statuses are returned. Multiple statuses can be provided. For detailed information, see the <a href={`./${Paths.scopes}`}>**Status Codes page.**</a> |
-| `pageSize`     | `int`     | The number of items to include in each page of the results. Required if using the <a href={`./${Paths.paginator}`}>**paginator**</a>.  | 
+| `pageSize`     | `int`     | The number of items to include in each page of the results. If set to `0`, all existing elements will be returned, and `page` will be ignored (treated as `0`). Required if using the <a href={`./${Paths.paginator}`}>**paginator**</a>. |
 | `page`         | `int`     | The page number to retrieve, starting from 1 for the first page. Required if using the <a href={`./${Paths.paginator}`}>**paginator**</a>. |
-| `reverseOrder` | `boolean` | Determines the sorting order. If `false`, Information is sorted from the most recent to the oldest. If `true`, the order is reversed. |
+| `sortOrder`    | `enum`    | Specifies the sorting order. Possible values are `ASC` for ascending (oldest to newest) and `DESC` for descending (newest to oldest). Defaults to `DESC`. |
 | `verbose`      | `boolean` | If `true`, returns additional details about each object. If `false`, only returns essential information. |
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>Parameters for transactions</summary>
   - statuses
   - pageSize
   - page
-  - reverseOrder
+  - sortOrder
 
  <div className="highlight-box get">
     <HttpMethodTag method={'GET'} /> <a href={`./${Paths.transactionsAll}`}>**{Endpoint.transactionsAll}**</a>
@@ -33,25 +33,15 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 </details>
 
 
-<details className='details-custom'>
-  <summary>Parameters for notifications</summary>
-  - pageSize
-  - page
-  - reverseOrder
-
-<div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsAll}`}>**{Endpoint.notificationsAll}**</a>
-  </div>
- 
-</details>
 
 
-<details className='details-custom'>
+
+<details className='details-custom' open>
   <summary>Parameters for coins</summary>
   - statuses
   - pageSize
   - page
-  - reverseOrder
+  - sortOrder
   - verbose
 
   <div className="highlight-box get">

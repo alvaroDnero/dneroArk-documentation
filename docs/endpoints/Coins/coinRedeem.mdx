@@ -25,30 +25,30 @@ export const method = 'POST';
 
 | Key             | Value            |
 |-----------------|------------------|
-| `Authorization` | Bearer `{{accessToken}}`|
+| `Authorization` | Bearer `{accessToken}`|
 | `Accept`        | application/json |
 
 ---
 
-### [JSON Response](/docs/genericResponse): Success 
+### [JSON Response](/docs/Objects/genericResponse): Success 
 <details className='details-custom'>
  <summary>200 OK</summary>
 ```JSON
 {
-  "code": "REDEEM_SUCCESS",
+  "event": "REDEEM_SUCCESS",
   "message": "Coin successfully redeemed."
 }
 ```
 </details>
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 <details className='details-custom'>
  <summary>400 Bad Request</summary>
 
 ```JSON
 {
-  "code": "COIN_ALREADY_REDEEMED",
+  "event": "COIN_ALREADY_REDEEMED",
   "message": "The coin has already been redeemed."
 }
 
@@ -62,7 +62,7 @@ export const method = 'POST';
 
 ```JSON
 {
-  "code": "UNAUTHORIZED_ACCESS",
+  "event": "UNAUTHORIZED_ACCESS",
   "message": "You do not have the necessary permissions to access this resource."
 }
 
@@ -75,7 +75,7 @@ export const method = 'POST';
 <summary> 404 Not Found</summary>
 ```JSON
 {
-  "code": "COIN_NOT_FOUND",
+  "event": "COIN_NOT_FOUND",
   "message": "The specified coin does not exist."
 }
 
@@ -88,7 +88,7 @@ export const method = 'POST';
 <summary>409 Conflict: Concurrent Requests</summary>
 ```JSON
 {
-  "code": "CONCURRENT_REQUESTS",
+  "event": "CONCURRENT_REQUESTS",
   "message": "Two requests were made simultaneously for the same resource. Please retry one of them."
 }
 
@@ -103,7 +103,7 @@ export const method = 'POST';
 <summary>429 Too Many Requests</summary>
 ```JSON
 {
-  "code": "TOO_MANY_REQUESTS",
+  "event": "TOO_MANY_REQUESTS",
   "message": "You have exceeded the allowed number of requests. Please wait before trying again."
 }
 
@@ -119,7 +119,7 @@ export const method = 'POST';
 <summary> 500 Internal Server Error</summary>
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred. Please try again later."
 }
 

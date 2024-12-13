@@ -44,7 +44,7 @@ Generate the OTP to log in.
 
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
  <summary>Body example</summary>
 
 ```JSON
@@ -56,27 +56,27 @@ Generate the OTP to log in.
 ```
 </details>
 ---
-### [JSON Response](/docs/genericResponse): Success 
+### [JSON Response](/docs/Objects/genericResponse): Success 
 
-<details className='details-custom'>
+<details className='details-custom' open>
  <summary>200 OK</summary>
 ```JSON
 {
-  "code": "REQUEST_SUCCESS",
+  "event": "REQUEST_SUCCESS",
   "message": "The request was successfully processed."
 }
 ```
 
 </details>
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 <details className='details-custom'>
  <summary>400 Bad Request</summary>
 ```JSON
 
 {
-  "code": "MISSING_FIELDS",
+  "event": "MISSING_FIELDS",
   "message": "The fields 'phone' and 'countryCode' are required."
 }
 
@@ -85,7 +85,7 @@ Generate the OTP to log in.
 ```JSON
 
 {
-  "code": "INVALID_PHONE",
+  "event": "INVALID_PHONE",
   "message": "The provided phone number is invalid."
 }
 
@@ -93,7 +93,7 @@ Generate the OTP to log in.
 
 ```JSON
 {
-  "code": "INVALID_COUNTRY_CODE",
+  "event": "INVALID_COUNTRY_CODE",
   "message": "The provided country code is invalid."
 }
 ```
@@ -104,7 +104,7 @@ Generate the OTP to log in.
 
 ```JSON
 {
-  "code": "PHONE_NOT_FOUND",
+  "event": "PHONE_NOT_FOUND",
   "message": "The provided phone number does not exist in our records."
 }
 
@@ -117,9 +117,8 @@ Generate the OTP to log in.
 
 ```JSON
 {
-  "code": "SESSION_CONFLICT",
-  "message": "Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.",
-  "resolution": "Cierra sesión desde el otro dispositivo para continuar."
+  "event": "SESSION_CONFLICT",
+  "message": "Session active on another device. Please close it and try again."  
 }
 
 ```
@@ -130,9 +129,8 @@ Generate the OTP to log in.
  <summary>403 Forbidden</summary>
 ``` JSON
 {
-  "code": "SESSION_FORBIDDEN",
-  "message": "Sesión abierta en otro dispositivo, ciérrala y vuelve a intentarlo.",
-  "resolution": "Cierra sesión desde el otro dispositivo para continuar."
+  "event": "SESSION_FORBIDDEN",
+  "message": "Session active on another device. Please close it and try again.",
 }
 
 ```
@@ -145,7 +143,7 @@ Generate the OTP to log in.
 
 ```JSON
 {
-  "code": "UNSUPPORTED_COUNTRY_CODE",
+  "event": "UNSUPPORTED_COUNTRY_CODE",
   "message": "The provided country code is not supported."
 }
 
@@ -155,7 +153,7 @@ Generate the OTP to log in.
 
 ```JSON
 {
-  "code": "PHONE_BLACKLISTED",
+  "event": "PHONE_BLACKLISTED",
   "message": "The provided phone number is blacklisted."
 }
 
@@ -169,7 +167,7 @@ Generate the OTP to log in.
 
 ```JSON
 {
-  "code": "TOO_MANY_REQUESTS",
+  "event": "TOO_MANY_REQUESTS",
   "message": "You have made too many requests in a short period. Please wait before trying again."
 }
 ```
@@ -179,7 +177,7 @@ Generate the OTP to log in.
 <summary> 500 Internal Server Error</summary>
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 

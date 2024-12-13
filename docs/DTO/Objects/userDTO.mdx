@@ -1,0 +1,45 @@
+# User DTO
+
+| Name                  | Type       | 
+|-----------------------|------------|
+| `userId`              | `long`     | 
+| `firstName`           | `string`   | 
+| `lastName`            | `string`   | 
+| `imgUrl`              | `string`   | 
+| `deviceInfo`          | `object`   | 
+
+## C#
+
+```C#
+/// <summary>
+/// Represents a Data Transfer Object (DTO) for a user.
+/// </summary>
+public class UserDTO
+{
+    /// <summary>
+    /// Unique identifier of the user.
+    /// </summary>
+    public long UserId { get; set; }
+
+    /// <summary>
+    /// User's first name.
+    /// </summary>
+    public string FirstName { get; set; }
+
+    /// <summary>
+    /// User's last name.
+    /// </summary>
+    public string LastName { get; set; }
+
+    /// <summary>
+    /// URL of the user's profile image.
+    /// </summary>
+    public string ImgUrl { get; set; }
+
+    /// <summary>
+    /// Information about the user's device.
+    /// For detailed information, see the DeviceInfoDTO.
+    /// </summary>
+    public DeviceInfoDTO DeviceInfo { get; set; }
+}
+```

@@ -21,13 +21,13 @@ export const method = 'POST';
 
 
 
-Delete the tokens and log the logout activity on the device.
+
 
 ### Header
 
 | Key      | Value     |
 |-------------|----------|
-| `Authorization` | Bearer `{{accessToken}}`|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 
@@ -35,25 +35,25 @@ Delete the tokens and log the logout activity on the device.
 
 
 ---
-### [JSON Response](/docs/genericResponse): Success 
-<details className='details-custom'>
+### [JSON Response](/docs/Objects/genericResponse): Success 
+<details className='details-custom' open>
  <summary>200 OK</summary>
 ```JSON
 {
-  "code": "LOGOUT_SUCCESS",
+  "type": "LOGOUT_SUCCESS",
   "message": "The session was successfully terminated."
 }
 ```
 </details>
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 <details className='details-custom'>
  <summary>400 Bad Request</summary>
 
 ```JSON
 {
-  "code": "INVALID_REQUEST",
+  "type": "INVALID_REQUEST",
   "message": "The authorization token is required."
 }
 ```
@@ -65,7 +65,7 @@ Delete the tokens and log the logout activity on the device.
 
 ```JSON
 {
-  "code": "TOKEN_INVALID",
+  "type": "TOKEN_INVALID",
   "message": "The authorization token is invalid or has expired."
 }
 ```
@@ -76,7 +76,7 @@ Delete the tokens and log the logout activity on the device.
 <summary> 403 Forbidden</summary>
 ```JSON
 {
-  "code": "TOKEN_FORBIDDEN",
+  "type": "TOKEN_FORBIDDEN",
   "message": "You do not have permission to log out from this session."
 }
 
@@ -87,7 +87,7 @@ Delete the tokens and log the logout activity on the device.
 <summary> 500 Internal Server Error</summary>
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 

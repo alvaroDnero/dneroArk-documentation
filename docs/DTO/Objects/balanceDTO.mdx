@@ -1,0 +1,28 @@
+# Balance DTO
+
+| Name            | Type     | Description                                     |
+|-----------------|----------|-------------------------------------------------|
+| `cashBalance`  | `double` | Total dollar balance specific to ARK.           |
+| `cryptoBalance` | `double` | Total cryptocurrency balance for ARK.           |
+
+
+
+## C#
+
+```c#
+/// <summary>
+/// Represents a Data Transfer Object (DTO) for balances in ARK.
+/// </summary>
+public class ArkBalanceDTO
+{
+    /// <summary>
+    /// Total dollar balance specific to ARK.
+    /// </summary>
+    public double CashBalance { get; set; }
+
+    /// <summary>
+    /// Total cryptocurrency balance for ARK.
+    /// </summary>
+    public double CryptoBalance { get; set; }
+}
+``` 

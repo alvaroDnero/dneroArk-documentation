@@ -1,0 +1,35 @@
+---
+id: phoneObject
+---
+
+# Phone Object
+
+### **Device Info Object**
+
+
+
+| Name           | Type       | Required           | Description                                   |
+|----------------|------------|--------------------|-----------------------------------------------|
+| `phone`        | `string`   | :white_check_mark: | User's phone number associated with the device. |
+| `countryCode`  | `string`   | :white_check_mark: | Country code associated with the phone number. |
+| `deviceID`     | `UUID`     | :x:                | Unique identifier of the device.             |
+| `deviceType`   | `string`   | :x:                | Type of device, e.g., `Android` or `iOS`.    |
+| `appVersion`   | `string`   | :x:                | Version of the application installed on the device. |
+| `osVersion`    | `string`   | :x:                | Operating system version of the device.      |
+
+
+
+<details className='details-custom' open>
+ <summary>Example</summary>
+
+```JSON
+{
+  "phone": "1234567890",
+  "countryCode": "1",
+  "deviceID": "550e8400-e29b-41d4-a716-446655440000",
+  "deviceType": "Android",
+  "appVersion": "1.5.0",
+  "osVersion": "11.0"
+}
+```
+</details>

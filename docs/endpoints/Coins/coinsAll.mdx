@@ -21,18 +21,21 @@ export const method = 'GET';
 | Key      | Value     |
 |-------------|----------|
 | `Accept` | application/json |
-| `Authorization` | Bearer key|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 ### Parameter
 
- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
 
-  - statuses
-  - pageSize
-  - page
-  - reverseOrder
-  - verbose
+<a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
+
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**statuses**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**pageSize**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**page**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**sortOrder**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**verbose**</a>
+  
+
 
 <details className='details-custom'>
   <summary>Query parameters example: Only Status</summary>
@@ -50,9 +53,9 @@ export const method = 'GET';
 </details>
 
 <details className='details-custom'>
-  <summary>Query parameters example: Only Reverse Order</summary>
+  <summary>Query parameters example: Only Sort Order</summary>
     <div className="examples-style"> 
-      {apiPath}`?reverseOrder=false`
+      {apiPath}`?sortOrder=DESC`
     </div>
 </details>
 
@@ -94,13 +97,13 @@ export const method = 'GET';
 | `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
 | `senderName`          | `string`   | Name of the person who sent the coin.      
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK: No paginator</summary>
 ```JSON
 [
   {
     "coinId": 123456789,
-    "coinStatus": 1,
+    "coinStatus": 2,
     "latitude": 37.7749,
     "longitude": -122.4194,
     "message": "Happy Birthday!",
@@ -109,7 +112,7 @@ export const method = 'GET';
   },
   {
     "coinId": 987654321,
-    "coinStatus": 2,
+    "coinStatus": 1,
     "latitude": 40.7128,
     "longitude": -74.0060,
     "message": "Thank you for your help!",
@@ -123,7 +126,7 @@ export const method = 'GET';
 </details>      
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK: Paginator</summary>
 ```JSON
 {
@@ -134,7 +137,7 @@ export const method = 'GET';
   "coins": [
     {
       "coinId": 123456789,
-      "coinStatus": 1,
+      "coinStatus": 2,
       "latitude": 37.7749,
       "longitude": -122.4194,
       "message": "Happy Birthday!",
@@ -143,7 +146,7 @@ export const method = 'GET';
     },
     {
       "coinId": 987654321,
-      "coinStatus": 2,
+      "coinStatus": 1,
       "latitude": 40.7128,
       "longitude": -74.0060,
       "message": "Thank you for your help!",
@@ -171,30 +174,29 @@ export const method = 'GET';
 | `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
 | `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
 | `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
-| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `cashAmount`          | `double`   | The dollar equivalent value of the coin.                                                   |
 | `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
 | `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
-| `userSender`          | `Object`   | Information about the user who sent the coin. See <a href={`./${Paths.userObject}`}> User Object Details</a>  |
-| `userRecipient`       | `Object`   | Information about the user who received the coin. See <a href={`./${Paths.userObject}`}> User Object Details </a>   |
+| `userSender`          | `Object`   | Information about the user who sent the coin. See [User Object Details.](/docs/Objects/userObject)  |
+| `userRecipient`       | `Object`   | Information about the user who received the coin. See [User Object Details.](/docs/Objects/userObject)    |
 
 
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK: Verbose without paginator</summary>
 
   ```JSON
 {
-  "coins": 
-  [
+  
     {
       "coinId": 101,
-      "coinStatus": 1,
+      "coinStatus": 2,
       "latitude": 40.7128,
       "longitude": -74.0060,
       "message": "Happy Birthday!",
-      "dollarAmount": 25.50,
+      "cashAmount": 25.50,
       "creationDate": "2024-11-20T10:00:00Z",
       "expirationDate": "2024-12-01T00:00:00Z",
       "redeemedDate": null,
@@ -211,11 +213,11 @@ export const method = 'GET';
     },
     {
       "coinId": 102,
-      "coinStatus": 2,
+      "coinStatus": 1,
       "latitude": 34.0522,
       "longitude": -118.2437,
       "message": "Thank you for your help!",
-      "dollarAmount": 50.00,
+      "cashAmount": 50.00,
       "creationDate": "2024-11-18T15:30:00Z",
       "expirationDate": "2024-11-30T00:00:00Z",
       "redeemedDate": "2024-11-25T12:00:00Z",
@@ -230,16 +232,13 @@ export const method = 'GET';
         "userImgUrl": "https://example.com/images/dana_white.jpg"
       }
     }
-  ]
-
 }
-
   ```
 
 </details>
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK: Verbose with paginator</summary>
 
 
@@ -248,16 +247,16 @@ export const method = 'GET';
   "currentPage": 1,
   "totalPages": 5,
   "pageSize": 2,
-  "totalCoins": 10,
+  "totalElements": 10,
   "coins": 
   [
     {
       "coinId": 101,
-      "coinStatus": 1,
+      "coinStatus": 2,
       "latitude": 40.7128,
       "longitude": -74.0060,
       "message": "Happy Birthday!",
-      "dollarAmount": 25.50,
+      "cashAmount": 25.50,
       "creationDate": "2024-11-20T10:00:00Z",
       "expirationDate": "2024-12-01T00:00:00Z",
       "redeemedDate": null,
@@ -274,11 +273,11 @@ export const method = 'GET';
     },
     {
       "coinId": 102,
-      "coinStatus": 2,
+      "coinStatus": 1,
       "latitude": 34.0522,
       "longitude": -118.2437,
       "message": "Thank you for your help!",
-      "dollarAmount": 50.00,
+      "cashAmount": 50.00,
       "creationDate": "2024-11-18T15:30:00Z",
       "expirationDate": "2024-11-30T00:00:00Z",
       "redeemedDate": "2024-11-25T12:00:00Z",
@@ -303,7 +302,7 @@ export const method = 'GET';
 </details>
 
 
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 
 <details className='details-custom'> 
@@ -311,7 +310,7 @@ export const method = 'GET';
 
 ```json
 {
-  "code": "INVALID_PARAMETERS",
+ "event": "INVALID_PARAMETERS",
   "message": "One or more query parameters are invalid or malformed."
 }
 ```
@@ -322,7 +321,7 @@ export const method = 'GET';
 <summary>401 Unauthorized</summary>
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+ "event": "UNAUTHORIZED",
   "message": "Authentication failed. Please provide a valid Bearer token."
 }
 
@@ -335,7 +334,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "ACCESS_FORBIDDEN",
+ "event": "ACCESS_FORBIDDEN",
   "message": "You do not have permission to access this resource."
 }
 
@@ -348,7 +347,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "RESOURCE_NOT_FOUND",
+ "event": "RESOURCE_NOT_FOUND",
   "message": "No coins were found for the provided filters."
 }
 
@@ -360,7 +359,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "UNPROCESSABLE_ENTITY",
+ "event": "UNPROCESSABLE_ENTITY",
   "message": "The provided pagination values (page or pageSize) are invalid."
 }
 
@@ -373,7 +372,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "TOO_MANY_REQUESTS",
+ "event": "TOO_MANY_REQUESTS",
   "message": "You have exceeded the rate limit. Please wait and try again later."
 }
 
@@ -386,7 +385,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+ "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while processing the request. Please try again later."
 }
 

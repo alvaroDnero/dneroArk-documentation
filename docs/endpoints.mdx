@@ -1,12 +1,12 @@
 ---
-id: scopes
+id: endpoints 
 ---
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
 import { Paths } from '@site/src/constants/paths';
 import { Endpoint } from '@site/src/constants/endpointPath';
 
 
-# Scopes
+# Endpoints
 Here is a list of the scopes you require to access the API Endpoints and Webhook Events.
 ## Login
 
@@ -54,18 +54,7 @@ Here is a list of the scopes you require to access the API Endpoints and Webhook
   </div>
 </div>
 
-## Notifications
 
-
-
-<div className="endpoint-list">
-  <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsAll}`}>**{Endpoint.notificationsAll}**</a>
-  </div>
-  <div className="highlight-box get">
-    <HttpMethodTag method={'GET'} /> <a href={`./${Paths.notificationsIndividual}`}>**{Endpoint.notificationsIndividual}**</a>
-  </div>
-</div>
 
 
 

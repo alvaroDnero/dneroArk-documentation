@@ -8,12 +8,28 @@ import { Paths } from '@site/src/constants/paths';
 
 # User Object Model
 
-
 | Name                  | Type       | Description                            |
 |-----------------------|------------|----------------------------------------|
-| `userId`              | `long`   | Unique identifier of the user.         |
-| `userName`            | `string`   | First name and last name of the user.  |
-| `userImgUrl`          | `string`   | URL of the user's profile image.       |
+| `userId`              | `long`     | Unique identifier of the user.         |
+| `firstName`           | `string`   | User's first name.                     |
+| `lastName`            | `string`   | User's last name.                      |
+| `imgUrl`              | `string`   | URL of the user's profile image.       |
+| `deviceInfo`          | `object`   | Information about the user's device. For detailed information, see the **[Device Info](./phoneObject)**  |
+
+<details className='details-custom' open>
+ <summary>Example</summary>
+
+```JSON
+{
+  "userId": 123456789,  
+  "firstName": "John",
+  "lastName": "Doe",
+  "imgUrl": "https://example.com/profile-images/user123.jpg",
+  "deviceInfo": {...}  
+}
+```
+</details>
+
 
 
 ## It is used in the following endpoints.

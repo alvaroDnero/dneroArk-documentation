@@ -32,8 +32,6 @@ export const id = '{int}';
 
 Retrieves a single transaction's details based on its unique identifier.
 
-Coin Statuses
-
 
 
 
@@ -42,11 +40,11 @@ Coin Statuses
 | Key      | Value     |
 |-------------|----------|
 | `Accept` | application/json |
-| `Authorization` | Bearer key|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 
----
+--- 
 
 ### JSON Response: Success 
 
@@ -54,31 +52,32 @@ Coin Statuses
 |-----------------------|------------|-----------------------------------------------------------------------------------------------|
 | `transactionId`       | `long`     | Unique identifier of the transaction notification.                                           |
 | `interactionType`     | `int`      | Possible values: `0` for sent or `1` received.                                                        |
-| `user`                | `object`   | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/userObject) |  
 | `amount`              | `string`   | The amount of money involved in the transaction.                                             |
 | `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
 | `expirationDate`      | `DateTime` | Expiration date of the coin. |
 | `capturedDate`        | `DateTime` | Date when the coin was captured. |
 | `createDate`          | `DateTime` | Date when the coin was created. |
+| `user`                | `object`   | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/Objects/userObject) |  
 
 
-<details className='details-custom'>
+
+<details className='details-custom' open>
 <summary>200 ok</summary>
 ```JSON
 
 {
   "transactionId": 301,
-  "interactionType": 0,
+  "interactionType": 0,  
+  "amount": "50.00",
+  "coinStatus": 1,
+  "expirationDate": "2024-12-01T00:00:00Z",
+  "capturedDate": null,
+  "createDate": "2024-11-20T10:00:00Z",
   "user": {
     "userId": 1001,
     "userName": "Alice Johnson",
     "userImgUrl": "https://example.com/images/alice_johnson.jpg"
   },
-  "amount": "50.00",
-  "coinStatus": 1,
-  "expirationDate": "2024-12-01T00:00:00Z",
-  "capturedDate": null,
-  "createDate": "2024-11-20T10:00:00Z"
 }
 
 ```
@@ -87,7 +86,7 @@ Coin Statuses
 
 
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 
 <details className='details-custom'>
@@ -95,7 +94,7 @@ Coin Statuses
 
 ```JSON
 {
-  "code": "INVALID_TRANSACTION_ID",
+  "event": "INVALID_TRANSACTION_ID",
   "message": "The provided transaction ID is invalid or malformed."
 }
 ```
@@ -105,7 +104,7 @@ Coin Statuses
 <summary>404 Not Found</summary>
 ```JSON
 {
-  "code": "TRANSACTION_NOT_FOUND",
+  "event": "TRANSACTION_NOT_FOUND",
   "message": "No transaction was found for the provided ID."
 }
 
@@ -117,7 +116,7 @@ Coin Statuses
 
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+  "event": "UNAUTHORIZED",
   "message": "You are not authorized to access this transaction. Please provide valid authentication."
 }
 
@@ -130,7 +129,7 @@ Coin Statuses
 
 ``` JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 ```

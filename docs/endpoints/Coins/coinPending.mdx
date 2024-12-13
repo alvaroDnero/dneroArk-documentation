@@ -20,18 +20,18 @@ export const method = 'GET';
 | Key      | Value     |
 |-------------|----------|
 | `Accept` | application/json |
-| `Authorization` | Bearer key|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 ### Parameter
 
- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
+<a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
 
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**verbose**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**pageSize**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**page**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**sortOrder**</a>
   
-  - pageSize
-  - page
-  - reverseOrder
-  - verbose
 
 
 <details className='details-custom'>
@@ -67,7 +67,7 @@ export const method = 'GET';
 ### JSON Response: Success
 
    
-It will return coins with [status 2.](/docs/coinsStatuses),  specifically those coins where the user is the recipient.
+It will return coins with [status 1.](/docs/coinsStatuses),  specifically those coins where the user is the recipient.
 
 
 The information will be the same as the <a href={`/DneroArk-Documentation/docs/${Paths.coinsAll}`}>**{Endpoint.coinsAll}**</a> endpoint.
@@ -78,7 +78,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 [
   {
     "coinId": 123456789,
-    "coinStatus": 1,
+    "coinStatus": 2,
     "latitude": 37.7749,
     "longitude": -122.4194,
     "message": "Happy Birthday!",
@@ -87,7 +87,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
   },
   {
     "coinId": 987654321,
-    "coinStatus": 2,
+    "coinStatus": 1,
     "latitude": 40.7128,
     "longitude": -74.0060,
     "message": "Thank you for your help!",
@@ -112,7 +112,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
   "coins": [
     {
       "coinId": 123456789,
-      "coinStatus": 1,
+      "coinStatus": 2,
       "latitude": 37.7749,
       "longitude": -122.4194,
       "message": "Happy Birthday!",
@@ -121,7 +121,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
     },
     {
       "coinId": 987654321,
-      "coinStatus": 2,
+      "coinStatus": 1,
       "latitude": 40.7128,
       "longitude": -74.0060,
       "message": "Thank you for your help!",
@@ -145,7 +145,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
   [
     {
       "coinId": 101,
-      "coinStatus": 1,
+      "coinStatus": 2,
       "latitude": 40.7128,
       "longitude": -74.0060,
       "message": "Happy Birthday!",
@@ -166,7 +166,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
     },
     {
       "coinId": 102,
-      "coinStatus": 2,
+      "coinStatus": 1,
       "latitude": 34.0522,
       "longitude": -118.2437,
       "message": "Thank you for your help!",
@@ -260,7 +260,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 
 
 
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 
 <details className='details-custom'> 
@@ -268,7 +268,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 
 ```json
 {
-  "code": "INVALID_PARAMETERS",
+  "event": "INVALID_PARAMETERS",
   "message": "One or more query parameters are invalid or malformed."
 }
 ```
@@ -279,7 +279,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 <summary>401 Unauthorized</summary>
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+  "event": "UNAUTHORIZED",
   "message": "Authentication failed. Please provide a valid Bearer token."
 }
 
@@ -292,7 +292,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 
 ```JSON
 {
-  "code": "ACCESS_FORBIDDEN",
+  "event": "ACCESS_FORBIDDEN",
   "message": "You do not have permission to access this resource."
 }
 
@@ -305,7 +305,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 
 ```JSON
 {
-  "code": "RESOURCE_NOT_FOUND",
+  "event": "RESOURCE_NOT_FOUND",
   "message": "No coins were found for the provided filters."
 }
 
@@ -317,7 +317,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 
 ```JSON
 {
-  "code": "UNPROCESSABLE_ENTITY",
+  "event": "UNPROCESSABLE_ENTITY",
   "message": "The provided pagination values (page or pageSize) are invalid."
 }
 
@@ -330,7 +330,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 
 ```JSON
 {
-  "code": "TOO_MANY_REQUESTS",
+  "event": "TOO_MANY_REQUESTS",
   "message": "You have exceeded the rate limit. Please wait and try again later."
 }
 
@@ -343,7 +343,7 @@ The information will be the same as the <a href={`/DneroArk-Documentation/docs/$
 
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while processing the request. Please try again later."
 }
 

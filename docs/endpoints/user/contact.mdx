@@ -20,7 +20,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 
 | Key             | Value            |
 |-----------------|------------------|
-| `Authorization` | Bearer key       |
+| `Authorization` | Bearer `{accessToken}`      |
 | `Content-Type`  | application/json |
 | `Accept`        | application/json |
 
@@ -33,7 +33,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 | `countryCode`| `string` | :white_check_mark: | Country code.                                              |
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
  <summary>Body example</summary>
 
 ```JSON
@@ -67,82 +67,48 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
   Found Numbers Table
 </div>
 
-| Name        | Type       | Description                                                                 |
-|-------------|------------|-----------------------------------------------------------------------------|
-| `phone`     | `string`   | User's phone number.                                                       |
-| `countryCode`| `string`  | The country code associated with the phone number.                         |
-| `user`      | `object`   | Information about the user associated with the phone number. See [User Object Details.](/docs/userObject)|
-
-
-
-<div className="table-title">
-  Not Found Numbers Table
-</div>
+It will return a list of user objects.
 
 | Name        | Type       | Description                                                                 |
 |-------------|------------|-----------------------------------------------------------------------------|
-| `phone`     | `string`   | The phone number that was not found in the system.                         |
-| `countryCode`| `string`  | The country code associated with the phone number.                         |
+| `user`      | `object`   | Information about the user associated with the phone number. See [User Object Details.](/docs/Objects/userObject)|
 
 
 
 
-<details className='details-custom'>
+
+<details className='details-custom' open>
  <summary>200 ok</summary>
 
 ```JSON
-{
-  "found": [
-    {
+[
+  {
+    "userId": 987654321,
+    "firstName": "John",
+    "lastName": "Doe",
+    "imgUrl": "https://example.com/images/johndoe.jpg",
+    "deviceInfo": {
       "phone": "1234567890",
-      "countryCode": "1",
-      "user": {
-        "userId": 1001,
-        "userName": "Alice Johnson",
-        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
-      }
-    },
-    {
-      "phone": "2345678901",
-      "countryCode": "1",
-      "user": {
-        "userId": 1002,
-        "userName": "Bob Williams",
-        "userImgUrl": "https://example.com/images/bob_williams.jpg"
-      }
-    },
-    {
-      "phone": "3456789012",
-      "countryCode": "1",
-      "user": {
-        "userId": 1003,
-        "userName": "Charlie Davis",
-        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
-      }
+      "countryCode": "+1"
     }
-  ],
-  "notFound": [
-    {
-      "phone": "4567890123",
-      "countryCode": "1"
-    },
-    {
-      "phone": "5678901234",
-      "countryCode": "1"
-    },
-    {
-      "phone": "6789012345",
-      "countryCode": "1"
+  },
+  {
+    "userId": 123456789,
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "imgUrl": "https://example.com/images/janesmith.jpg",
+    "deviceInfo": {
+      "phone": "9876543210",
+      "countryCode": "+1"
     }
-  ]
-}
-
+  }
+]
 ```
 </details>
 
 
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 
 
@@ -153,7 +119,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 
 ```JSON
 {
-  "code": "MISSING_PARAMETERS",
+  "event": "MISSING_PARAMETERS",
   "message": "The fields 'phone' and 'countryCode' are required but were not provided."
 }
 ```
@@ -166,7 +132,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+  "event": "UNAUTHORIZED",
   "message": "Authentication failed. Please provide a valid token."
 }
 ```
@@ -179,7 +145,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 
 ```JSON
 {
-  "code": "INVALID_COUNTRY_CODE",
+  "event": "INVALID_COUNTRY_CODE",
   "message": "The provided country code is invalid or not supported."
 }
 ```
@@ -194,7 +160,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 
 ```JSON
 {
-  "code": "PHONE_NOT_FOUND",
+  "event": "PHONE_NOT_FOUND",
   "message": "The phone number '1234567890' does not exist in our records."
 }
 ```
@@ -208,7 +174,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 
 ```JSON
 {
-  "code": "TOO_MANY_REQUESTS",
+  "event": "TOO_MANY_REQUESTS",
   "message": "You have exceeded the allowed number of requests. Please wait before trying again."
 }
 ```
@@ -227,7 +193,7 @@ This endpoint verifies whether the provided phone numbers exist in the system's 
 
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred. Please try again later."
 }
 ```

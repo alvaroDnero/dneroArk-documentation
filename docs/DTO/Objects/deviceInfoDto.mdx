@@ -1,0 +1,53 @@
+# Device Info DTO 
+
+| Name           | Type       |
+|----------------|------------|
+| `phone`        | `string`   | 
+| `countryCode`  | `string`   | 
+| `deviceID`     | `UUID`     | 
+| `deviceType`   | `string`   |
+| `appVersion`   | `string`   | 
+| `osVersion`    | `string`   | 
+
+
+
+## C#
+```C#
+/// <summary>
+/// DTO to transfer devices's information
+/// DTO para transferir información del dispositivo.
+/// </summary>
+public class DeviceInfoDto
+{
+    /// <summary>
+    /// User's phone number associated with the device. (Required)
+    /// </summary> 
+    public string Phone { get; set; }
+
+    /// <summary>
+    /// Country code associated with the phone number. (Required)
+    /// </summary>
+    public string CountryCode { get; set; }
+
+    /// <summary>
+    /// Unique identifier of the device. (Optional)
+    /// </summary>
+    public string DeviceID { get; set; }
+
+    /// <summary>
+    /// Type of device, e.g., 'Android' or 'iOS'. (Optional)
+    /// </summary>
+    public string DeviceType { get; set; }
+
+    /// <summary>
+    /// Version of the application installed on the device. (Optional)
+    /// </summary>
+    public string AppVersion { get; set; }
+
+    /// <summary>
+    /// Operating system version of the device. (Optional)
+    /// </summary>
+    public string OsVersion { get; set; }
+}
+
+```

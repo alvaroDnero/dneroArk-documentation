@@ -28,7 +28,7 @@ Get user profile information.
 
 | Key      | Value     |
 |-------------|----------|
-| `Authorization` | Bearer `{{accessToken}}`|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 
@@ -39,15 +39,14 @@ Get user profile information.
 | Name            | Type     | Description                                     |
 |-----------------|----------|-------------------------------------------------|
 | `userId`        | `long`   | Unique identifier of the user.                  |
-| `imgProfileUrl` | `string` | URL where the profile image is hosted.          |
+| `imgUrl`        | `string` | URL where the profile image is hosted.          |
 | `firstName`     | `string` | User's first name.                              |
 | `lastName`      | `string` | User's last name.                               |
-| `phone`         | `string` | User's phone number.                            |
-| `dolarBalance`  | `double` | Total dollar balance specific to ARK.           |
-| `cryptoBalance` | `double` | Total cryptocurrency balance for ARK.           |
-| `pendingCoins`  | `int`    | Number of pending Coins to collect.             |
+| `deviceInfo`    | `object` | Information about the user's device. For detailed information, see the **[Device Info](/docs/Objects/phoneObject)**  |
+| `balance`       | `object` | Information about Balance. For detailed information, see the **[balance info](/docs/Objects/balanceObject)**           |
 
-<details className='details-custom'>
+
+<details className='details-custom' open>
  <summary>200 OK</summary>
 
 ```JSON
@@ -56,15 +55,13 @@ Get user profile information.
   "imgProfileUrl": "https://example.com/profile-images/user123.jpg",
   "firstName": "John",
   "lastName": "Doe",
-  "phone": "1234567890",
-  "dolarCash": 1500.75,
-  "cryptoBalance": 2.356
+  "phone": {...},
+  "deviceInfo": {...},
 }
-
 ```
 </details>
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 
 <details className='details-custom'>
@@ -73,7 +70,7 @@ Get user profile information.
 
 ```JSON
 {
-  "code": "INVALID_REQUEST",
+  "event": "INVALID_REQUEST",
   "message": "The authorization token is required."
 }
 
@@ -81,7 +78,7 @@ Get user profile information.
 
 ```JSON
 {
-  "code": "INVALID_USER_ID",
+  "event": "INVALID_USER_ID",
   "message": "The provided user ID is invalid."
 }
 
@@ -93,7 +90,7 @@ Get user profile information.
 
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+  "event": "UNAUTHORIZED",
   "message": "The provided token is invalid or has expired. Please log in again."
 }
 
@@ -106,7 +103,7 @@ Get user profile information.
 
 ```JSON
 {
-  "code": "USER_NOT_FOUND",
+  "event": "USER_NOT_FOUND",
   "message": "The user with the provided ID does not exist."
 }
 
@@ -119,7 +116,7 @@ Get user profile information.
 
 ``` JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 ```

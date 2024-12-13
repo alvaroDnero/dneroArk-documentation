@@ -1,5 +1,6 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 import { Paths } from './src/constants/paths';
+import { Labels } from './src/constants/sidebarLabels';
 
 
  const sidebars: SidebarsConfig = {
@@ -8,48 +9,70 @@ import { Paths } from './src/constants/paths';
     {
       type: 'doc',
       id: Paths.overview,
-      label: 'Overview',      
+      label: Labels.overview,      
        
     },
     {
       type: 'doc',
       id: Paths.parameters,
-      label: 'Parameters',      
+      label: Labels.parameters,      
       
     },
     {
       type: 'doc',
       id: Paths.paginator,
-      label: 'Paginator',      
+      label: Labels.paginator,      
       
     },
     {
       type: 'doc',
       id: Paths.coinStatuses,
-      label: 'Coin Statuses',      
+      label: Labels.coinStatuses,      
       
     },
+    
     {
-      type: 'doc',
-      id: Paths.userObject, 
-      label: 'User Object',      
-      
-    },
-    {
+    type: 'category',
+     label: Labels.objectCategory,     
+     collapsible: true,
+     collapsed: true,     
+     items: [
+      {
+        type: 'doc',
+        id: Paths.userObject, 
+        label: Labels.userObject,      
+        
+      },   
+      {
+        type: 'doc',
+        id: Paths.phoneObject, 
+        label: Labels.phoneObject,      
+        
+      },     
+     {
+       type: 'doc',
+       id: Paths.balanceObject, 
+       label: Labels.balanceObject,       
+     },
+     {
       type: 'doc',
       id: Paths.genericResponse, 
-      label: 'Generic Response',      
+      label: Labels.genericResponse,      
       
     },
+
+     ]
+   },
+    
     {
       type: 'category',  
           
-      label: 'Scopes',     
+      label: Labels.endpoint,     
       collapsible: true,
       collapsed: true,
       link: {
         type: 'doc',
-        id: 'scopes', // Replace 'scopes' with the ID of the page you want to link
+        id: Paths.endpoint, // Replace 'scopes' with the ID of the page you want to link
       },
       items: [
         {
@@ -62,7 +85,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.otp, 
-              label: 'OTP',
+              label: Labels.otp,
               customProps: {
                 method: 'POST',
               },
@@ -71,7 +94,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.phone, 
-              label: 'login',
+              label: Labels.phone, 
               customProps: {
                 method: 'POST',
               },
@@ -80,7 +103,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.updateToken, 
-              label: 'Update Tokens',
+              label: Labels.updateToken, 
               customProps: {
                 method: 'POST',
               },
@@ -89,7 +112,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.logout, 
-              label: 'Logout',
+              label: Labels.logout, 
               customProps: {
                 method: 'POST',
               },
@@ -107,7 +130,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.user, 
-              label: 'User',
+              label: Labels.user, 
               customProps: {
                 method: 'GET',
               },
@@ -116,7 +139,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.contact, 
-              label: 'Contacts',
+              label: Labels.contact, 
               customProps: {
                 method: 'POST',
               },
@@ -133,7 +156,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.transactionsAll, 
-              label: 'Transactions',
+              label: Labels.transactionsAll, 
               customProps: {
                 method: 'GET',
               },
@@ -143,7 +166,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.transactionIndividual, 
-              label: 'Transaction',
+              label:  Labels.transactionIndividual, 
               customProps: {
                 method: 'GET',
               },
@@ -151,32 +174,7 @@ import { Paths } from './src/constants/paths';
             },
            ],
         }, 
-        {
-          type: 'category',
-          label: 'Notifications',
-          collapsible: true,
-          collapsed: true,
-          items: [  
-            {
-              type: 'doc',
-              id: Paths.notificationsAll, 
-              label: 'Notifications',
-              customProps: {
-                method: 'GET',
-              },
-              
-            },
-            {
-              type: 'doc',
-              id: Paths.notificationsIndividual, 
-              label: 'Notification',
-              customProps: {
-                method: 'GET',
-              },
-              
-            }
-           ],
-        }, 
+      
     
         {
           type: 'category',
@@ -187,7 +185,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.coinsAll, 
-              label: 'Coins',
+              label: Labels.coinsAll, 
               customProps: {
                 method: 'GET',
               },
@@ -196,7 +194,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.coinsIndividual, 
-              label: 'Coin',
+              label: Labels.coinsIndividual, 
               customProps: {
                 method: 'GET',
               },
@@ -205,7 +203,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.coinsRedeem, 
-              label: 'Redeem',
+              label: Labels.coinsRedeem, 
               customProps: {
                 method: 'POST',
               },
@@ -214,7 +212,7 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.coinsDrop, 
-              label: 'Drop',
+              label: Labels.coinsDrop, 
               customProps: {
                 method: 'POST',
               },
@@ -223,19 +221,70 @@ import { Paths } from './src/constants/paths';
             {
               type: 'doc',
               id: Paths.coinsPending, 
-              label: 'Pending',
+              label: Labels.coinsPending, 
               customProps: {
                 method: 'GET',
               },
               
-            },              
+            },  
+            {
+              type: 'doc',
+              id: Paths.coinsNumberToCollect, 
+              label: Labels.coinsNumberToCollect, 
+              customProps: {
+                method: 'GET',
+              },
+              
+            },               
            ],
-        }
-
+        }, 
+        
       ], 
       
     },
-   , 
+    {
+      type: 'category',
+      label: Labels.dto,     
+      collapsible: true,
+      collapsed: true,
+      link: {
+        type: 'doc',
+        id: Paths.dto, // Replace 'scopes' with the ID of the page you want to link
+      },
+      items: [        
+      {
+        type: 'category',
+        label: "Complement Objects",     
+        collapsible: true,
+        collapsed: true,          
+        items: [
+          {
+            type: 'doc',
+            id: Paths.userDto, 
+            label: Labels.userDto,       
+          },
+          {
+            type: 'doc',
+            id: Paths.deviceInfoDto, 
+            label: Labels.deviceInfoDto,       
+          },
+          {
+            type: 'doc',
+            id: Paths.balanceDto, 
+            label: Labels.balanceDto,       
+          },
+          {
+            type: 'doc',
+            id: Paths.genericResponseDto, 
+            label: Labels.genericResponseDto,       
+          },
+  
+          ]
+        },
+  
+  
+        ]
+      },
   ],
 };
 

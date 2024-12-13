@@ -26,14 +26,15 @@ export const method = 'GET';
 | Key      | Value     |
 |-------------|----------|
 | `Accept` | application/json |
-| `Authorization` | Bearer key|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 ### Parameter
+<a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
 
- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameter**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**verbose**</a>
+  
 
-  - verbose
 
 
 <details className='details-custom'> 
@@ -74,7 +75,7 @@ export const method = 'GET';
 ```JSON
 {
     "coinId": 123456789,
-    "coinStatus": 1,
+    "coinStatus": 2,
     "latitude": 37.7749,
     "longitude": -122.4194,
     "message": "Happy Birthday!",
@@ -104,8 +105,8 @@ export const method = 'GET';
 | `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
 | `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
-| `userSender`          | `Object`   | Information about the user who sent the coin. See <a href={`./${Paths.userObject}`}> User Object Details</a>  |
-| `userRecipient`       | `Object`   | Information about the user who received the coin. See <a href={`./${Paths.userObject}`}> User Object Details </a>   |
+| `userSender`          | `Object`   | Information about the user who sent the coin. See [User Object Details.](/docs/Objects/userObject) |
+| `userRecipient`       | `Object`   | Information about the user who received the coin. See [User Object Details.](/docs/Objects/userObject)  |
 
 
 
@@ -115,7 +116,7 @@ export const method = 'GET';
   ```JSON
  {
     "coinId": 101,
-    "coinStatus": 1,
+    "coinStatus": 2,
     "latitude": 40.7128,
     "longitude": -74.0060,
     "message": "Happy Birthday!",
@@ -143,7 +144,7 @@ export const method = 'GET';
 
 
 
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 
 <details className='details-custom'> 
@@ -151,7 +152,7 @@ export const method = 'GET';
 
 ```json
 {
-  "code": "INVALID_PARAMETERS",
+  "event": "INVALID_PARAMETERS",
   "message": "One or more query parameters are invalid or malformed."
 }
 ```
@@ -162,7 +163,7 @@ export const method = 'GET';
 <summary>401 Unauthorized</summary>
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+  "event": "UNAUTHORIZED",
   "message": "Authentication failed. Please provide a valid Bearer token."
 }
 
@@ -175,7 +176,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "ACCESS_FORBIDDEN",
+  "event": "ACCESS_FORBIDDEN",
   "message": "You do not have permission to access this resource."
 }
 
@@ -188,7 +189,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "RESOURCE_NOT_FOUND",
+  "event": "RESOURCE_NOT_FOUND",
   "message": "No coins were found for the provided filters."
 }
 
@@ -200,7 +201,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "UNPROCESSABLE_ENTITY",
+  "event": "UNPROCESSABLE_ENTITY",
   "message": "The provided pagination values (page or pageSize) are invalid."
 }
 
@@ -213,7 +214,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "TOO_MANY_REQUESTS",
+  "event": "TOO_MANY_REQUESTS",
   "message": "You have exceeded the rate limit. Please wait and try again later."
 }
 
@@ -226,7 +227,7 @@ export const method = 'GET';
 
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while processing the request. Please try again later."
 }
 

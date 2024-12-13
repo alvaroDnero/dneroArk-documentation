@@ -28,10 +28,25 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 
 | Key      | Value     |
 |-------------|----------|
-| `Authorization` | Bearer `{{accessToken}}`|
+| `Authorization` | Bearer `{accessToken}`|
 |`Accept`|application/json|
 
 
+### JSON Body
+| Name           | Type     | Required           | Description                                                |
+|----------------|----------|--------------------|------------------------------------------------------------|
+| `refreshToken` | `string` | :white_check_mark: | Long-lived token.                                          |
+
+<details className='details-custom' open>
+ <summary>Body example</summary>
+
+```JSON
+{  
+  "refreshToken": "actualRefreshToken"
+}
+
+```
+</details>
 
 
 
@@ -44,7 +59,7 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 | `accessToken`  | `string` | Short-lived token containing user information. |
 | `refreshToken` | `string` | Long-lived token.                             |
 
-<details className='details-custom'>
+<details className='details-custom' open>
  <summary>200 OK</summary>
 ```JSON
 {
@@ -55,14 +70,14 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 ```
 </details>
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 <details className='details-custom'>
  <summary>400 Bad Request</summary>
 ```JSON
 {
 {
-  "code": "INVALID_REQUEST",
+  "event": "INVALID_REQUEST",
   "message": "El refresh token es inválido o está mal formado."
 }
 }
@@ -76,7 +91,7 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 
 ``` JSON
 {
-  "code": "TOKEN_EXPIRED",
+  "event": "TOKEN_EXPIRED",
   "message": "El refresh token ha expirado. Por favor, inicia sesión nuevamente."
 }
 ```
@@ -88,7 +103,7 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 
 ``` JSON
 {
-  "code": "TOO_MANY_REQUESTS",
+  "event": "TOO_MANY_REQUESTS",
   "message": "Has intentado actualizar los tokens demasiadas veces en poco tiempo. Por favor, espera 2 minutos antes de intentarlo nuevamente."
 }
 ```
@@ -100,7 +115,7 @@ Create a new accessToken and a new refreshToken, and delete the old ones.
 
 ``` JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 ```

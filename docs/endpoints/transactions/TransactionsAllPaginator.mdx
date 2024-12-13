@@ -33,7 +33,7 @@ If no parameters are provided, it returns all notifications from the most recent
 | Key      | Value     |
 |-------------|----------|
 | `Accept` | application/json |
-| `Authorization` | Bearer key|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 ---
@@ -104,11 +104,11 @@ If no parameters are provided, it returns all notifications from the most recent
   "currentPage": 2,
   "totalPages": 5,
   "pageSize": 10,
-  "totalTransactions": 45,
+  "totalElements": 45,
   "transactions": [
     {
     "id": 123456789,
-    "type": "sent",
+    "event": "sent",
     "userName": "Alice Smith",
     "userImgUrl": "https://example.com/images/alice.jpg",
     "date": "2023-11-24T15:30:00Z",
@@ -119,7 +119,7 @@ If no parameters are provided, it returns all notifications from the most recent
   },
   {
     "id": 987654321,
-    "type": "received",
+    "event": "received",
     "userName": "Bob Johnson",
     "userImgUrl": "https://example.com/images/bob.jpg",
     "date": "2023-11-23T12:00:00Z",
@@ -130,7 +130,7 @@ If no parameters are provided, it returns all notifications from the most recent
   },
   {
     "id": 192837465,
-    "type": "sent",
+    "event": "sent",
     "userName": "Charlie Brown",
     "userImgUrl": "https://example.com/images/charlie.jpg",
     "date": "2023-11-22T08:15:00Z",
@@ -155,7 +155,7 @@ If no parameters are provided, it returns all notifications from the most recent
 - 400 Bad Request
 ```JSON
 {
-  "code": "INVALID_STATUSES",
+  "event": "INVALID_STATUSES",
   "message": "The provided statuses are invalid or malformed."
 }
 
@@ -164,7 +164,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "MISSING_PAGINATION",
+  "event": "MISSING_PAGINATION",
   "message": "Both 'pageSize' and 'page' are required when using the paginator."
 }
 
@@ -173,7 +173,7 @@ If no parameters are provided, it returns all notifications from the most recent
 - 401 Unauthorized
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+  "event": "UNAUTHORIZED",
   "message": "You are not authorized to access this resource. Please provide a valid authentication token."
 }
 
@@ -182,7 +182,7 @@ If no parameters are provided, it returns all notifications from the most recent
 - 403 Forbidden
 ```JSON
 {
-  "code": "ACCESS_FORBIDDEN",
+  "event": "ACCESS_FORBIDDEN",
   "message": "You do not have permission to access these transactions."
 }
 
@@ -191,7 +191,7 @@ If no parameters are provided, it returns all notifications from the most recent
 - 404 Not Found
 ```JSON
 {
-  "code": "TRANSACTIONS_NOT_FOUND",
+  "event": "TRANSACTIONS_NOT_FOUND",
   "message": "No transactions were found for the given criteria."
 }
 
@@ -201,7 +201,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "INVALID_PAGE",
+  "event": "INVALID_PAGE",
   "message": "The page number must be a positive integer starting from 1."
 }
 
@@ -210,7 +210,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "INVALID_PAGE_SIZE",
+  "event": "INVALID_PAGE_SIZE",
   "message": "The page size must be a positive integer."
 }
 
@@ -220,7 +220,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while processing your request. Please try again later."
 }
 

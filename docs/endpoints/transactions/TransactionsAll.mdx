@@ -33,19 +33,20 @@ If no parameters are provided, it returns all notifications from the most recent
 | Key      | Value     |
 |-------------|----------|
 | `Accept` | application/json |
-| `Authorization` | Bearer key|
+| `Authorization` | Bearer `{accessToken}`|
 
 
 ---
 ### Parameter
 
+<a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
 
- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**statuses**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**pageSize**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**page**</a>
+- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**sortOrder**</a>
 
-  - statuses
-  - pageSize
-  - page
-  - reverseOrder
+
 
 <details className='details-custom'>
   <summary>Query parameters example: Only Status</summary>
@@ -63,9 +64,9 @@ If no parameters are provided, it returns all notifications from the most recent
 </details>
 
 <details className='details-custom'>
-  <summary>Query parameters example: Only Reverse Order</summary>
+  <summary>Query parameters example: Only Sort Order</summary>
     <div className="examples-style"> 
-      {apiPath}`?reverseOrder=false`
+      {apiPath}`?sortOrder=DESC`
     </div>
 </details>
 
@@ -88,15 +89,15 @@ If no parameters are provided, it returns all notifications from the most recent
 |-----------------------|------------|-----------------------------------------------------------------------------------------------|
 | `transactionId`       | `long`     | Unique identifier of the transaction notification.                                           |
 | `interactionType`     | `int`      | Possible values: `0` for sent or `1` received.                                                        |
-| `user`                | `object`   | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/userObject) |  
 | `amount`              | `string`   | The amount of money involved in the transaction.                                             |
 | `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
 | `expirationDate`      | `DateTime` | Expiration date of the coin. |
 | `capturedDate`        | `DateTime` | Date when the coin was captured. |
 | `createDate`          | `DateTime` | Date when the coin was created. |
+| `user`                | `object`   | If `interactionType` is `0` it’s the recipient's information, ; if `1`, it’s the sender's information. See [ User Object Details.](/docs/Objects/userObject) |  
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK: No paginator</summary>
 ```JSON
 
@@ -105,58 +106,56 @@ If no parameters are provided, it returns all notifications from the most recent
   [
     {
       "transactionId": 301,
-      "interactionType": 0,
-      "user": {
-        "userId": 1001,
-        "userName": "Alice Johnson",
-        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
-      },
+      "interactionType": 0,      
       "amount": "50.00",
       "coinStatus": 1,
       "expirationDate": "2024-12-01T00:00:00Z",
       "capturedDate": null,
-      "createDate": "2024-11-20T10:00:00Z"
+      "createDate": "2024-11-20T10:00:00Z",
+      "user": {
+        "userId": 1001,
+        "userName": "Alice Johnson",
+        "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+      }
     },
     {
       "transactionId": 302,
-      "interactionType": 1,
-      "user": {
-        "userId": 1002,
-        "userName": "Bob Williams",
-        "userImgUrl": "https://example.com/images/bob_williams.jpg"
-      },
+      "interactionType": 1,      
       "amount": "75.25",
       "coinStatus": 2,
       "expirationDate": "2024-12-05T00:00:00Z",
       "capturedDate": "2024-11-27T09:00:00Z",
-      "createDate": "2024-11-19T15:45:00Z"
+      "createDate": "2024-11-19T15:45:00Z",
+      "user": {
+        "userId": 1002,
+        "userName": "Bob Williams",
+        "userImgUrl": "https://example.com/images/bob_williams.jpg"
+      }
     },
     {
       "transactionId": 303,
-      "interactionType": 0,
-      "user": {
-        "userId": 1003,
-        "userName": "Charlie Davis",
-        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
-      },
+      "interactionType": 0,      
       "amount": "100.00",
       "coinStatus": 3,
       "expirationDate": "2024-11-30T00:00:00Z",
       "capturedDate": null,
-      "createDate": "2024-11-18T12:30:00Z"
+      "createDate": "2024-11-18T12:30:00Z",
+      "user": {
+        "userId": 1003,
+        "userName": "Charlie Davis",
+        "userImgUrl": "https://example.com/images/charlie_davis.jpg"
+      }
     }
   ]
 
 }
-
-
 ```
 </details>
 
 
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK: Paginator</summary>
 ```JSON
 
@@ -164,7 +163,7 @@ If no parameters are provided, it returns all notifications from the most recent
   "currentPage": 2,
   "totalPages": 5,
   "pageSize": 10,
-  "totalTransactions": 45,
+  "totalElements": 45,
   "transactions":  
   [
     {
@@ -218,14 +217,14 @@ If no parameters are provided, it returns all notifications from the most recent
 
 
 ---
-### [JSON Response](/docs/genericResponse): Error
+### [JSON Response](/docs/Objects/genericResponse): Error
 
 <details className='details-custom'>
  <summary>400 Bad Request</summary>
 
 ```JSON
 {
-  "code": "INVALID_STATUSES",
+  "event": "INVALID_STATUSES",
   "message": "The provided statuses are invalid or malformed."
 }
 
@@ -234,7 +233,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "MISSING_PAGINATION",
+  "event": "MISSING_PAGINATION",
   "message": "Both 'pageSize' and 'page' are required when using the paginator."
 }
 
@@ -247,7 +246,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "UNAUTHORIZED",
+  "event": "UNAUTHORIZED",
   "message": "Authentication failed. Please provide a valid Bearer token."
 }
 
@@ -260,7 +259,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "ACCESS_FORBIDDEN",
+  "event": "ACCESS_FORBIDDEN",
   "message": "You do not have permission to access these transactions."
 }
 
@@ -272,7 +271,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "TRANSACTIONS_NOT_FOUND",
+  "event": "TRANSACTIONS_NOT_FOUND",
   "message": "No transactions were found for the given criteria."
 }
 
@@ -286,7 +285,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "INVALID_PAGE",
+  "event": "INVALID_PAGE",
   "message": "The page number must be a positive integer starting from 1."
 }
 
@@ -295,7 +294,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ```JSON
 {
-  "code": "INVALID_PAGE_SIZE",
+  "event": "INVALID_PAGE_SIZE",
   "message": "The page size must be a positive integer."
 }
 
@@ -307,7 +306,7 @@ If no parameters are provided, it returns all notifications from the most recent
 
 ``` JSON
 {
-  "code": "INTERNAL_SERVER_ERROR",
+  "event": "INTERNAL_SERVER_ERROR",
   "message": "An unexpected error occurred while validating the OTP. Please try again later."
 }
 ```

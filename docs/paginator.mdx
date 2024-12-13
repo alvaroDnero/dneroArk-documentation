@@ -14,6 +14,7 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 | `currentPage`         | `int`      | The current page number being returned (starting from 1 for the first page).                |
 | `totalPages`          | `int`      | The total number of pages available based on the `pageSize` and total records.              |
 | `pageSize`            | `int`      | The number of items per page in the paginated results.                                       |
+| `totalElements`       | `long`     | The total number of elements available based on the provided filters.                   |
 
 
 
@@ -24,11 +25,10 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 ### Transactions
 | Name                  | Type       |   Description                                                                                  |
 |-----------------------|------------|-----------------------------------------------------------------------------------------------|
-| `totalTransactions`   | `long`     | The total number of transactions available based on the provided filters.                   |
 | `transactions`        | `Array`    | A list containing all the transactions for the requested page.                              |
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>Transactions Example</summary>
 ```JSON
 
@@ -36,10 +36,8 @@ import { Endpoint } from '@site/src/constants/endpointPath';
   "currentPage": 2,
   "totalPages": 5,
   "pageSize": 10,
-  "totalTransactions": 45,
-  "transactions": [
-    
-  ]
+  "totalElements": 45,
+  "transactions": [...]
 }
 
 
@@ -56,23 +54,19 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 
 | Name                  | Type       |   Description                                                                                  |
 |-----------------------|------------|-----------------------------------------------------------------------------------------------|
-| `totalNotifications`  | `long`     | The total number of transactions available based on the provided filters.                   |
 | `notifications`       | `Array`    | A list containing all the notifications for the requested page.                              |
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary className='details-custom'>Notfications Example</summary>
 ```JSON
 {
   "currentPage": 2,
   "totalPages": 5,
   "pageSize": 10,
-  "totalTransactions": 45,
-  "notifications": [    
-
-    ]
+  "totalElements": 45,
+  "notifications": [...]
 }
-
 ```
 **Full Example**
 
@@ -85,19 +79,17 @@ import { Endpoint } from '@site/src/constants/endpointPath';
 
 | Name                  | Type       |   Description                                                                                  |
 |-----------------------|------------|-----------------------------------------------------------------------------------------------|
-| `totalCoins`          | `long`     | The total number of Coins available based on the provided filters.                   |
 | `coins`               | `Array`    | A list containing all the Coins for the requested page.                              |
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>Coins Example</summary>
 ```JSON
 {
   "currentPage": 1,
   "totalPages": 5,
   "pageSize": 2,
-  "totalCoins": 10,
-  "coins": [    
-  ]
+  "totalElements": 10,
+  "coins": [...]
 }
 
 ```

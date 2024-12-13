@@ -1,0 +1,127 @@
+---
+id: coinsNumberToCollect
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Endpoint } from '@site/src/constants/endpointPath';
+import { Paths } from '@site/src/constants/paths';
+export const apiPath = Endpoint.coinsNumberToCollect;
+export const method = 'GET';
+
+# Coin
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath} 
+</div>
+
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Accept` | application/json |
+| `Authorization` | Bearer `{accessToken}`|
+
+
+
+
+
+
+
+### JSON Response: Success
+
+
+| Name   | Type  | Description                          |
+|--------|-------|--------------------------------------|
+| `count`| `int` | The total number of coins available for collection. |
+
+<details className='details-custom' open>
+  <summary>200 OK</summary>
+```JSON
+{
+  "count": 42
+}
+```
+</details>      
+
+
+
+
+### [JSON Response](/docs/Objects/genericResponse): Error
+
+
+
+
+<details className='details-custom'> 
+<summary>400 Bad Request</summary>
+
+```json
+{
+  "event": "INVALID_PARAMETERS",
+  "message": "One or more query parameters are invalid or malformed."
+}
+```
+
+</details> 
+
+<details className='details-custom'> 
+<summary>401 Unauthorized</summary>
+
+```json
+{
+  "event": "UNAUTHORIZED",
+  "message": "Authentication failed. Please provide a valid Bearer token."
+}
+```
+
+</details> 
+
+<details className='details-custom'> 
+<summary>403 Forbidden</summary>
+
+```json
+{
+  "event": "FORBIDDEN",
+  "message": "You do not have the necessary permissions to access this resource."
+}
+```
+
+</details> 
+
+<details className='details-custom'> 
+<summary>404 Not Found</summary>
+
+```json
+{
+  "event": "RESOURCE_NOT_FOUND",
+  "message": "The requested resource could not be found."
+}
+```
+
+</details> 
+
+<details className='details-custom'> 
+<summary>429 Too Many Requests</summary>
+
+```json
+{
+  "event": "RATE_LIMIT_EXCEEDED",
+  "message": "You have exceeded the maximum number of allowed requests. Please try again later."
+}
+```
+
+</details> 
+
+<details className='details-custom'> 
+<summary>500 Internal Server Error</summary>
+
+```json
+{
+  "event": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred. Please try again later."
+}
+```
+
+</details>
+
+
