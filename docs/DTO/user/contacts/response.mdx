@@ -46,7 +46,13 @@ import TabItem from '@theme/TabItem';
   <TabItem value="c#" label="C#">
 
 ```c#
-
+public class UserListDto
+{
+    /// <summary>
+    /// A list of users associated with the phone numbers.
+    /// </summary>
+    public List<UserDto> Users { get; set; }   
+}
 ```
 
   </TabItem>

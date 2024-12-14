@@ -30,6 +30,97 @@ export const method = 'POST';
 | `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
 | `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
 | `message`             | `string`   | A message associated with the coin.                                   |
-| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `cashAmount`          | `double`   | The dollar equivalent value of the coin.                                                   |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
-| `userRecipientId`     | `int`      | Id of the user who will receive the coin.    |
+| `userRecipientId`     | `long`      | Id of the user who will receive the coin.    |
+
+<details className='details-custom' open>
+ <summary>Example</summary>
+
+```JSON
+{
+  "latitude": 37.7749,
+  "longitude": -122.4194,
+  "message": "Happy Birthday!",
+  "cashAmount": 25.75,
+  "expirationDate": "2024-12-31T23:59:59Z",
+  "userRecipientId": 123456
+}
+```
+</details>
+
+
+---
+
+### [JSON Response](/docs/DTO/Objects/genericResponseDTO): Success 
+<details className='details-custom'>
+ <summary>200 OK</summary>
+```JSON
+{
+  "event": "THROW_SUCCESS",
+  "message": "Coin successfully thrown."
+}
+```
+</details>
+
+
+
+---
+
+### [JSON Response](/docs/DTO/Objects/genericResponseDTO): Error
+
+<details className='details-custom'>
+ <summary>400 Bad Request: Invalid Parameters</summary>
+
+```JSON
+{
+  "event": "INVALID_PARAMETERS",
+  "message": "One or more required parameters are missing or invalid."
+}
+```
+
+</details>
+
+
+<details className='details-custom'> 
+<summary>403 Forbidden: Already Dropped</summary>
+
+```JSON
+{
+  "event": "COIN_ALREADY_DROPPED",
+  "message": "This coin has already been dropped."
+}
+```
+
+```JSON
+{
+  "event": "USER_NOT_AUTHORIZED",
+  "message": "You do not have permission to drop this coin."
+}
+```
+
+</details>
+
+<details className='details-custom'> 
+<summary>429 Too Many Requests</summary>
+
+```JSON
+{
+  "event": "RATE_LIMIT_EXCEEDED",
+  "message": "You have reached the limit for dropping coins. Please wait and try again later."
+}
+```
+
+</details>
+
+<details className='details-custom'> 
+<summary>500 Internal Server Error</summary>
+
+```JSON
+{
+  "event": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred. Please try again later."
+}
+```
+
+</details>

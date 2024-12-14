@@ -26,7 +26,19 @@ import TabItem from '@theme/TabItem';
   <TabItem value="c#" label="C#">
 
 ```c#
+public class OtpDto
+{
+    /// <summary>
+    /// Code received via OTP.
+    /// </summary>
+    public string Otp { get; set; }
 
+    /// <summary>
+    /// Device info to prevent open sessions on multiple devices.
+    /// For detailed information, see the DeviceInfoDto class.
+    /// </summary>
+    public DeviceInfoDto DeviceInfo { get; set; }
+}
 ```
 
   </TabItem>

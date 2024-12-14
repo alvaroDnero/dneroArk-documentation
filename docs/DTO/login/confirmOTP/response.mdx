@@ -28,6 +28,23 @@ import TabItem from '@theme/TabItem';
   <TabItem value="c#" label="C#">
 
 ```c#
+public class TokenDto
+{
+    /// <summary>
+    /// Id of the user's profile.
+    /// </summary>
+    public long UserId { get; set; }
+
+    /// <summary>
+    /// Short-lived token containing user information.
+    /// </summary>
+    public string AccessToken { get; set; }
+
+    /// <summary>
+    /// Long-lived token.
+    /// </summary>
+    public string RefreshToken { get; set; }
+}
 
 ```
 

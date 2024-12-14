@@ -70,7 +70,7 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 
-  <TabItem value="c#" label="JSON Paginator">
+  <TabItem value="Json2" label="JSON Paginator">
 
 ```JSON
 {
@@ -124,6 +124,86 @@ import TabItem from '@theme/TabItem';
     }
   ]
 
+}
+
+```
+
+  </TabItem>
+
+
+    <TabItem value="c#" label="C#">
+
+```c#
+public class TransactionDto
+{
+    /// <summary>
+    /// Unique identifier of the transaction notification.
+    /// </summary>
+    public long TransactionId { get; set; }
+
+    /// <summary>
+    /// Possible values: 0 for sent or 1 for received.
+    /// </summary>
+    public int InteractionType { get; set; }
+
+    /// <summary>
+    /// The amount of money involved in the transaction.
+    /// </summary>
+    public string Amount { get; set; }
+
+    /// <summary>
+    /// Coin status must not be zero.
+    /// </summary>
+    public int CoinStatus { get; set; }
+
+    /// <summary>
+    /// Expiration date of the coin.
+    /// </summary>
+    public DateTime? ExpirationDate { get; set; }
+
+    /// <summary>
+    /// Date when the coin was captured.
+    /// </summary>
+    public DateTime? CapturedDate { get; set; }
+
+    /// <summary>
+    /// Date when the coin was created.
+    /// </summary>
+    public DateTime CreateDate { get; set; }
+
+    /// <summary>
+    /// User details based on interaction type.
+    /// </summary>
+    public UserDto User { get; set; }
+}
+
+
+public class PaginatedTransactionResponseDto
+{
+    /// <summary>
+    /// The current page number being returned (starting from 1).
+    /// </summary>
+    public int CurrentPage { get; set; }
+
+    /// <summary>
+    /// The total number of pages available based on the page size and total records.
+    /// </summary>
+    public int TotalPages { get; set; }
+
+    /// <summary>
+    /// The number of items per page in the paginated results.
+    /// </summary>
+    public int PageSize { get; set; }
+
+    /// <summary>
+    /// The total number of elements available.
+    /// </summary>
+    public int TotalElements { get; set; }
+
+    /// <summary>
+    /// A list containing all the transactions for the requested page.
+    /// </summary>
+    public List<TransactionDto> Transactions { get; set; }
 }
 
 ```

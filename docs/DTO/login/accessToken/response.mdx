@@ -25,6 +25,18 @@ import TabItem from '@theme/TabItem';
   <TabItem value="c#" label="C#">
 
 ```c#
+public class TokenDto
+{
+    /// <summary>
+    /// Short-lived token containing user information.
+    /// </summary>
+    public string AccessToken { get; set; }
+
+    /// <summary>
+    /// Long-lived token.
+    /// </summary>
+    public string RefreshToken { get; set; }
+}
 
 ```
 

@@ -2,6 +2,10 @@
 id: coinsAll
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
 import { Endpoint } from '@site/src/constants/endpointPath';
 import { Paths } from '@site/src/constants/paths';
@@ -97,8 +101,13 @@ export const method = 'GET';
 | `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
 | `senderName`          | `string`   | Name of the person who sent the coin.      
 
+
 <details className='details-custom' open>
-  <summary>200 OK: No paginator</summary>
+  <summary>200 OK</summary>
+
+<Tabs>
+  <TabItem value="json" label="No Paginator">
+
 ```JSON
 [
   {
@@ -121,11 +130,11 @@ export const method = 'GET';
   }
 ]
 ```
-</details>      
 
+  </TabItem>
 
-<details className='details-custom' open>
-  <summary>200 OK: Paginator</summary>
+  <TabItem value="c#" label="Paginator">
+
 ```JSON
 {
   "currentPage": 1,
@@ -153,9 +162,16 @@ export const method = 'GET';
     }
   ]
 }
-
-
 ```
+
+  </TabItem>
+
+  
+</Tabs>
+
+
+
+
 </details>  
 
 
@@ -181,11 +197,15 @@ export const method = 'GET';
 
 
 
-
 <details className='details-custom' open>
-  <summary>200 OK: Verbose without paginator</summary>
+  <summary>200 OK</summary>
 
-  ```JSON
+
+
+<Tabs>
+  <TabItem value="json" label="No Paginator">
+
+```JSON
 {
   
     {
@@ -233,11 +253,9 @@ export const method = 'GET';
 }
   ```
 
-</details>
+  </TabItem>
 
-
-<details className='details-custom' open>
-  <summary>200 OK: Verbose with paginator</summary>
+  <TabItem value="c#" label="Paginator">
 
 
 ```JSON
@@ -296,11 +314,16 @@ export const method = 'GET';
 
 ```
 
+  </TabItem>
+  
+</Tabs>
 
 </details>
 
 
-### [JSON Response](/docs/Objects/genericResponse): Error
+
+
+### [JSON Response](/docs/DTO/Objects/genericResponseDTO): Error
 
 
 <details className='details-custom'> 

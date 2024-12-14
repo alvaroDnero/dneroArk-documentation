@@ -70,7 +70,7 @@ export const method = 'GET';
 | `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
 | `senderName`          | `string`   | Name of the person who sent the coin.      
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK</summary>
 ```JSON
 {
@@ -103,12 +103,12 @@ export const method = 'GET';
 | `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
 | `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
-| `userSender`          | `Object`   | Information about the user who sent the coin. See [User Object Details.](/docs/Objects/userObject) |
-| `userRecipient`       | `Object`   | Information about the user who received the coin. See [User Object Details.](/docs/Objects/userObject)  |
+| `userSender`          | `Object`   | Information about the user who sent the coin. See [User Object Details.](/docs/DTO/Objects/userDTO) |
+| `userRecipient`       | `Object`   | Information about the user who received the coin. See [User Object Details.](/docs/DTO/Objects/userDTO)  |
 
 
 
-<details className='details-custom'>
+<details className='details-custom' open>
   <summary>200 OK</summary>
 
   ```JSON
@@ -142,7 +142,7 @@ export const method = 'GET';
 
 
 
-### [JSON Response](/docs/Objects/genericResponse): Error
+### [JSON Response](/docs/DTO/Objects/genericResponseDTO): Error
 
 
 <details className='details-custom'> 
