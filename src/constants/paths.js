@@ -67,6 +67,8 @@ export const Paths = {
   coinsDrop: 'endpoints/Coins/coinDrop', 
   coinsPending: 'endpoints/Coins/coinPending', 
   coinsNumberToCollect: 'endpoints/Coins/coinsNumberToCollect', 
+  coinRecieveWebhook: 'endpoints/Coins/CoinRecieveWebhook',
+
 
 
 

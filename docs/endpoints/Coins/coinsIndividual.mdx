@@ -67,7 +67,7 @@ export const method = 'GET';
 | `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
 | `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
 | `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
-| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `cashAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
 | `senderName`          | `string`   | Name of the person who sent the coin.      
 
 <details className='details-custom' open>
@@ -79,7 +79,7 @@ export const method = 'GET';
     "latitude": 37.7749,
     "longitude": -122.4194,
     "message": "Happy Birthday!",
-    "dollarAmount": 50.25,
+    "cashAmount": 50.25,
     "senderName": "Alice Smith"
 }
 ```
@@ -99,7 +99,7 @@ export const method = 'GET';
 | `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
 | `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
 | `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
-| `dollarAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `cashAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
 | `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
 | `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
@@ -118,7 +118,7 @@ export const method = 'GET';
     "latitude": 40.7128,
     "longitude": -74.0060,
     "message": "Happy Birthday!",
-    "dollarAmount": 25.50,
+    "cashAmount": 25.50,
     "creationDate": "2024-11-20T10:00:00Z",
     "expirationDate": "2024-12-01T00:00:00Z",
     "redeemedDate": null,

@@ -31,7 +31,7 @@ export const Labels = {
   contactDto: 'Validate Phones DTO',
 
   transactionsAllDto: 'Get All Transactions DTO',
-  transactionIndividualDto: 'Get A Transaction DTO',
+  transactionIndividualDto: 'Transaction DTO',
 
   coinsNumberToCollectDto: "Number of coins to collect DTO",
  
@@ -55,7 +55,8 @@ export const Labels = {
     coinsIndividual: 'Get A Coin',
     coinsRedeem: 'Redeem A Coin',
     coinsDrop: 'Drop A Coin', 
-    coinsPending: 'Coins To Collet', 
+    coinsPending: 'Coins To Collect', 
     coinsNumberToCollect : 'Number of coins to collect',
+    coinRecieveWebhook: 'Receive A New Coin',
 
 }

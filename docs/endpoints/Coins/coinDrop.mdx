@@ -32,8 +32,8 @@ export const method = 'POST';
 | `message`             | `string`   | A message associated with the coin.                                   |
 | `cashAmount`          | `double`   | The dollar equivalent value of the coin.                                                   |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
-| `userRecipientId`     | `long`      | Id of the user who will receive the coin.    |
-
+| `userRecipientId`     | `Long[]`   | Unique identifier(s) of the user(s) who will receive the coin. Recommended to prioritize this over `userRecipientPhone`. |
+| `userRecipientPhone`  | `object[]` | Phone number(s) of the user(s) who will receive the coin. Use this only if `userRecipientId` is not provided. See [Device Info Details.](/docs/DTO/Objects/deviceInfoDto)  |
 <details className='details-custom' open>
  <summary>Example</summary>
 
@@ -44,7 +44,8 @@ export const method = 'POST';
   "message": "Happy Birthday!",
   "cashAmount": 25.75,
   "expirationDate": "2024-12-31T23:59:59Z",
-  "userRecipientId": 123456
+  "userRecipientId": [...],
+  "userRecipientPhone": [...]
 }
 ```
 </details>

@@ -13,9 +13,11 @@ export const Endpoint = {
     coinsAll: '/DneroArk/coins',
     coinsIndividual: '/DneroArk/coins/{coinId}',    
     coinsDrop: '/DneroArk/coins/Drop',
-    coinsRedeem: '/DneroArk/coins/reedem/{coinId}',
-    coinsPending: '/DneroArk/coins/collectable/pending',
-    coinsNumberToCollect: '/DneroArk/coins/collectable/count',
+    coinsRedeem: '/DneroArk/coins/redeem/{coinId}',
+    coinsPending: '/DneroArk/coins/pending',
+    coinsNumberToCollect: '/DneroArk/coins/pending/count',
+    coinRecieveWebhook: '/DneroArk/coins/CoinRecieveWebhook',
+
    
   
   };

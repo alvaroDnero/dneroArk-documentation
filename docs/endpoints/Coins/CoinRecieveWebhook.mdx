@@ -1,0 +1,115 @@
+
+
+
+
+
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Endpoint } from '@site/src/constants/endpointPath';
+import { Paths } from '@site/src/constants/paths';
+export const apiPath = Endpoint.coinRecieveWebhook;
+export const method = 'POST';
+
+# Receive a Coin
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath} 
+</div>
+
+
+
+
+
+### **Headers**
+
+| Key             | Value                 |
+|------------------|-----------------------|
+| `Content-Type`  | `application/json`    |
+| `Authorization` | `Bearer {your-secret}`|
+
+
+### JSON Response: Success
+   
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)  |
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
+| `cashAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `senderName`          | `string`   | Name of the person who sent the coin.      
+
+<details className='details-custom' open>
+  <summary>200 OK</summary>
+```JSON
+{
+    "coinId": 123456789,
+    "coinStatus": 2,
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "message": "Happy Birthday!",
+    "cashAmount": 50.25,
+    "senderName": "Alice Smith"
+}
+```
+</details>   
+
+
+
+
+
+### [JSON Response](/docs/DTO/Objects/genericResponseDTO): Error
+
+
+
+
+<details className='details-custom'> 
+<summary>400 Bad Request</summary>
+```JSON
+{
+  "event": "INVALID_PAYLOAD",
+  "message": "The payload is missing required fields or contains invalid data."
+}
+```
+</details> 
+
+
+<details className='details-custom'> 
+<summary>401 Unauthorized</summary>
+
+```JSON
+{
+  "event": "UNAUTHORIZED",
+  "message": "The provided secret key is invalid."
+}
+```
+</details> 
+
+
+
+<details className='details-custom'> 
+<summary>429 Too Many Requests</summary>
+
+```JSON
+{
+  "event": "RATE_LIMIT_EXCEEDED",
+  "message": "You have exceeded the allowed webhook invocation rate. Please wait and try again."
+}
+```
+</details> 
+
+
+
+<details className='details-custom'> 
+<summary>500 Internal Server Error</summary>
+
+```JSON
+{
+  "event": "INTERNAL_SERVER_ERROR",
+  "message": "An error occurred while processing the webhook request."
+}
+```
+</details> 
+
+ 
