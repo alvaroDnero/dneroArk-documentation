@@ -31,15 +31,55 @@ export const method = 'POST';
 ---
 
 ### [JSON Response](/docs/DTO/Objects/genericResponseDTO): Success 
+
+| Name                  | Type       | Description                                                                                  |
+|-----------------------|------------|---------------------------------------------------------------------------------------------|
+| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
+| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)|
+| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
+| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
+| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
+| `cashAmount`          | `double`   | The dollar equivalent value of the coin.                                                   |
+| `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
+| `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
+| `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |
+| `userSender`          | `Object`   | Information about the user who sent the coin. See [User Object Details.](/docs/DTO/Objects/userDTO) |
+| `userRecipient`       | `Object`   | Information about the user who received the coin. See [User Object Details.](/docs/DTO/Objects/userDTO)  |
+
+
+
 <details className='details-custom' open>
- <summary>200 OK</summary>
-```JSON
-{
-  "event": "REDEEM_SUCCESS",
-  "message": "Coin successfully redeemed."
-}
-```
+  <summary>200 OK</summary>
+
+  ```JSON
+ {
+    "coinId": 101,
+    "coinStatus": 2,
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "message": "Happy Birthday!",
+    "cashAmount": 25.50,
+    "creationDate": "2024-11-20T10:00:00Z",
+    "expirationDate": "2024-12-01T00:00:00Z",
+    "redeemedDate": null,
+    "userSender": {
+      "userId": 1001,
+      "userName": "Alice Johnson",
+      "userImgUrl": "https://example.com/images/alice_johnson.jpg"
+    },
+    "userRecipient": {
+      "userId": 1002,
+      "userName": "Bob Williams",
+      "userImgUrl": "https://example.com/images/bob_williams.jpg"
+    }
+  }
+
+
+  ```
+
 </details>
+
+
 ---
 ### [JSON Response](/docs/DTO/Objects/genericResponseDTO): Error
 

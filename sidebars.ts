@@ -138,6 +138,15 @@ import { Labels } from './src/constants/sidebarLabels';
             },
             {
               type: 'doc',
+              id: Paths.balance, 
+              label: Labels.balance, 
+              customProps: {
+                method: 'GET',
+              },
+              
+            },
+            {
+              type: 'doc',
               id: Paths.contact, 
               label: Labels.contact, 
               customProps: {

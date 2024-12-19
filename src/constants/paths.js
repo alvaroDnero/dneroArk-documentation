@@ -56,6 +56,7 @@ export const Paths = {
   updateToken: 'endpoints/login/accessToken',
   logout: 'endpoints/login/logout',
   user: 'endpoints/user/profile',
+  balance: 'endpoints/user/balance',
   contact: 'endpoints/user/contacts',
   transactionsAll: 'endpoints/transactions/TransactionsAll',
   transactionIndividual: 'endpoints/transactions/TransactionsIndividual',

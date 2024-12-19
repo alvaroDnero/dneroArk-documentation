@@ -5,6 +5,7 @@ export const Endpoint = {
     updateToken: '/DneroArk/login/updateToken',
     logout: '/DneroArk/logout',
     user: '/DneroArk/user',
+    balance: '/DneroArk/balance',
     contact: '/DneroArk/user/contacts',
     transactionsAll: '/DneroArk/transactions',
     transactionIndividual: '/DneroArk/transactions/{transactionId}',
@@ -16,7 +17,7 @@ export const Endpoint = {
     coinsRedeem: '/DneroArk/coins/redeem/{coinId}',
     coinsPending: '/DneroArk/coins/pending',
     coinsNumberToCollect: '/DneroArk/coins/pending/count',
-    coinRecieveWebhook: '/DneroArk/coins/CoinRecieveWebhook',
+    coinRecieveWebhook: '/DneroArk/coins/Webhook/Recieve',
 
    
   

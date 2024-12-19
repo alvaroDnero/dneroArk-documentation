@@ -1,0 +1,121 @@
+ ---
+id: profile
+---
+
+import HttpMethodTag from '@site/src/components/HttpMethodTag/HttpMethodTag';
+import { Endpoint } from '@site/src/constants/endpointPath';
+export const apiPath = Endpoint.balance;
+export const method = 'GET';
+
+
+
+
+
+# User
+
+
+<div className="highlight-box">
+  <HttpMethodTag method={method} /> {apiPath}
+</div>
+
+
+
+
+
+Get user profile information.
+
+### Header
+
+| Key      | Value     |
+|-------------|----------|
+| `Authorization` | Bearer `{accessToken}`|
+
+
+
+---
+
+### JSON Response: Success
+
+| Name            | Type     | Description                                     |
+|-----------------|----------|-------------------------------------------------|
+| `balance`       | `object` | Information about Balance. For detailed information, see the **[balance info](/docs/Objects/balanceObject)**           |
+
+
+<details className='details-custom' open>
+ <summary>200 OK</summary>
+
+```JSON
+{
+  "cashBalance": 1500.75,
+  "cryptoBalance": 2.356
+}
+```
+</details>
+
+---
+### [JSON Response](/docs/Objects/genericResponse): Error
+
+
+
+
+<details className='details-custom'>
+ <summary>400 Bad Request</summary>
+
+```JSON
+{
+  "event": "INVALID_REQUEST",
+  "message": "The authorization token is required."
+}
+```
+</details>
+
+
+
+<details className='details-custom'>
+ <summary>401 Unauthorized</summary>
+
+```JSON
+{
+  "event": "UNAUTHORIZED",
+  "message": "The provided token is invalid or has expired. Please log in again."
+}
+```
+
+</details>
+
+<details className='details-custom'>
+ <summary>404 Not Found</summary>
+
+```JSON
+{
+  "event": "USER_NOT_FOUND",
+  "message": "The user with the provided ID does not exist."
+}
+```
+
+</details>
+
+<details className='details-custom'>
+ <summary>429 Too Many Requests</summary>
+
+```JSON
+{
+  "event": "TOO_MANY_REQUESTS",
+  "message": "You have exceeded the rate limit. Please wait and try again later."
+}
+```
+
+</details>
+
+<details className='details-custom'>
+<summary>500 Internal Server Error</summary>
+
+```JSON
+{
+  "event": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred while processing the request. Please try again later."
+}
+```
+
+</details>
+

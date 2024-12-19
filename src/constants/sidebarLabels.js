@@ -46,6 +46,7 @@ export const Labels = {
     updateToken: 'Update User Tokens',
     logout: 'Logout',
     user: 'User Profile',
+    balance: 'User Balance',
     contact: 'Validate Phones',
     transactionsAll: 'Get All Transactions',
     transactionIndividual: 'Get A Transaction',
