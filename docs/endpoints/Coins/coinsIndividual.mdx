@@ -29,68 +29,11 @@ export const method = 'GET';
 | `Authorization` | Bearer `{accessToken}`|
 
 
-### Parameter
-<a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**Definition for this parameters**</a>
-
-- <a href={`/DneroArk-Documentation/docs/${Paths.parameters}`}>**verbose**</a>
-  
-
-
-
-<details className='details-custom'> 
-    <summary>Query parameters example: Only Verbose</summary> 
-    <div className="examples-style"> 
-        {apiPath}`?verbose=true`
-     </div> 
-</details>
-
 
 ---
 
 
 ### JSON Response: Success
-
-   
-
-
-
-
-
-<div className="table-title">
-  Simple Coin Informations
-</div>
-
-| Name                  | Type       | Description                                                                                  |
-|-----------------------|------------|---------------------------------------------------------------------------------------------|
-| `coinId`              | `long`     | Unique identifier of the coin.                                                              |
-| `coinStatus`          | `int`      | Coin status must not be zero. For detailed information, see the [Status Codes page.](/docs/coinsStatuses)  |
-| `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
-| `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
-| `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
-| `cashAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
-| `senderName`          | `string`   | Name of the person who sent the coin.      
-
-<details className='details-custom' open>
-  <summary>200 OK</summary>
-```JSON
-{
-    "coinId": 123456789,
-    "coinStatus": 2,
-    "latitude": 37.7749,
-    "longitude": -122.4194,
-    "message": "Happy Birthday!",
-    "cashAmount": 50.25,
-    "senderName": "Alice Smith"
-}
-```
-</details>      
-
-
-<div className="table-title">
-  Coin Verbose Information
-</div>
-
-
 
 | Name                  | Type       | Description                                                                                  |
 |-----------------------|------------|---------------------------------------------------------------------------------------------|
@@ -99,7 +42,7 @@ export const method = 'GET';
 | `latitude`            | `double`   | Latitude of the location where the coin was sent or collected.                              |
 | `longitude`           | `double`   | Longitude of the location where the coin was sent or collected.                             |
 | `message`             | `string`   | An optional message or metadata associated with the coin.                                   |
-| `cashAmount`        | `double`   | The dollar equivalent value of the coin.                                                   |
+| `cashAmount`          | `double`   | The dollar equivalent value of the coin.                                                   |
 | `creationDate`        | `DateTime` | The date and time when the coin was created.                                                |
 | `expirationDate`      | `DateTime` | The date and time when the coin will expire. If it does not expire, this value is null.     |
 | `redeemedDate`        | `DateTime` | The date and time when the coin was redeemed. If it has not been redeemed, this value is null. |

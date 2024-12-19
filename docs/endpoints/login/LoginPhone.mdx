@@ -39,17 +39,20 @@ Confirm the OTP to log in.
 | Name         | Type     | Required           | Description                                                |
 |--------------|----------|--------------------|------------------------------------------------------------|
 | `otp`        | `string` | :white_check_mark: | Code received via OTP.                                     |
-| `deviceInfo` | `Object` | :x:                | Device info to prevent open sessions on multiple devices. For detailed information, see the **[Device Info](/docs/Objects/phoneObject)**    |
+| `phone`      | `string` | :white_check_mark: | Phone number   |
+| `coutryCode` | `string` | :white_check_mark: | country Code    |
+| `deviceId`   | `string` | :x:                | UUID
 
 <details className='details-custom' open>
  <summary>Body example</summary>
 
 ```JSON
 {
-  "phone": "7149816149",
-  "countryCode": "1",
   "otp": "999999",
-  "deviceID": "192.168.0.0"
+  "phone": "7149816149",
+  "countryCode": "1",  
+  "deviceID": "9774d56d682e549c
+"
 }
 
 ```
